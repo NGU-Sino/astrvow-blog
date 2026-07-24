@@ -1,0 +1,69 @@
+<div id="la-stats" class="la-stats">
+  <span class="la-stats__item">
+    今日访问 <span class="la-stats__num" data-la="today_pv">--</span>
+  </span>
+  <span class="la-stats__sep">·</span>
+  <span class="la-stats__item">
+    昨日访问 <span class="la-stats__num" data-la="yesterday_pv">--</span>
+  </span>
+  <span class="la-stats__sep">·</span>
+  <span class="la-stats__item">
+    本月访问 <span class="la-stats__num" data-la="month_pv">--</span>
+  </span>
+  <span class="la-stats__sep">·</span>
+  <span class="la-stats__item">
+    总访问 <span class="la-stats__num" data-la="total">--</span>
+  </span>
+</div>
+
+<script>
+  // 改成你的 widget URL，格式：https://v6-widget.51.la/v6/{ck}/quote.js
+  const WIDGET_URL = "https://v6-widget.51.la/v6/3Qeu7i7nc3VVDBd6/quote.js";
+
+  // 挂件返回的 7 个字段，按顺序对应
+  // 0 最近活跃  1 今日人数  2 今日访问  3 昨日人数
+  // 4 昨日访问  5 本月访问  6 总访问量
+  const FIELD_INDEX = {
+    today_pv: 2,
+    yesterday_pv: 4,
+    month_pv: 5,
+    total: 6,
+  };
+
+  fetch(WIDGET_URL)
+    .then((r) => r.text())
+    .then((text) => {
+      const matches = text.match(/(<\/span><span>).*?(\/span><\/p>)/g);
+      if (!matches) {
+        console.warn("51la widget 解析失败");
+        return;
+      }
+      const nums = matches.map((s) =>
+        s.replace(/(<\/span><span>|<\/span><\/p>)/g, ""),
+      );
+      for (const [key, idx] of Object.entries(FIELD_INDEX)) {
+        const el = document.querySelector(`[data-la="${key}"]`);
+        if (el && nums[idx] != null) el.textContent = nums[idx];
+      }
+    })
+    .catch(() => {
+      document.getElementById("la-stats").style.display = "none";
+    });
+</script>
+
+<style>
+  .la-stats {
+    display: inline-flex;
+    gap: 0.5em;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+  .la-stats__num {
+    font-variant-numeric: tabular-nums;
+    color: var(--primary);
+    font-weight: 600;
+  }
+  .la-stats__sep {
+    opacity: 0.4;
+  }
+</style>
