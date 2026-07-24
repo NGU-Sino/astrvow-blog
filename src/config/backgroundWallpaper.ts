@@ -50,15 +50,13 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		mobile: [
 			"assets/images/MobileWallpaper/1.png",
 			"assets/images/MobileWallpaper/2.png",
-			"assets/images/MobileWallpaper/3.png",			
+			"assets/images/MobileWallpaper/3.png",
 		],
 		// 背景视频播放地址
 		// 支持单个视频路径（字符串）或多个视频循环（数组）
 		// 支持远程视频URL，本地视频请放在 public/assets/videos/ 目录下
 		// playerUrl: "/assets/videos/firefly.mp4",
-		playerUrl: [
-			"",
-		],
+		playerUrl: [""],
 	},
 	// 横幅壁纸和全屏壁纸共享配置
 	common: {
@@ -75,10 +73,7 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			// 主页横幅主标题字体大小
 			titleSize: "3.8rem",
 			// 主页横幅副标题
-			subtitle: [
-				"欢迎访问星诺的博客！",
-				"只要热爱，太阳就会升起！",
-			],
+			subtitle: ["欢迎访问星诺的博客！", "只要热爱，太阳就会升起！"],
 			// 主页横幅副标题字体大小
 			subtitleSize: "1.5rem",
 			typewriter: {

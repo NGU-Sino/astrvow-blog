@@ -5,5 +5,4 @@ export const footerConfig: FooterConfig = {
 	enable: true,
 };
 
-
 // 直接编辑 config/FooterConfig.html 文件来添加备案号等自定义内容

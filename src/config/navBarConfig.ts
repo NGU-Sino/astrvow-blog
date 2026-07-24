@@ -93,7 +93,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 				url: "https://github.com/NGU-Sino",
 				external: true,
 				icon: "fa7-brands:github",
-			},			
+			},
 			{
 				name: "QQ",
 				url: "http://wpa.qq.com/msgrd?v=3&uin=2849903832&site=qq&menu=yes",

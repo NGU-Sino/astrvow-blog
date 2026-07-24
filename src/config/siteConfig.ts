@@ -15,18 +15,10 @@ export const siteConfig: SiteConfig = {
 	site_url: "https://blog.astrvow.com/",
 
 	// 站点描述
-	description:
-		"星诺Astrvow的个人博客",
+	description: "星诺Astrvow的个人博客",
 
 	// 站点关键词
-	keywords: [
-		"星诺",
-		"Astrvow",
-		"Sino",
-		"博客",
-		"技术博客",
-		"静态博客",
-	],
+	keywords: ["星诺", "Astrvow", "Sino", "博客", "技术博客", "静态博客"],
 
 	// 主题色
 	themeColor: {
