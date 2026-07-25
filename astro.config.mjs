@@ -56,7 +56,7 @@ if (process.env.NODE_ENV === "development") {
 	setMaxListeners(20);
 }
 
-const adapter = node({ mode: "hybrid" });
+const adapter = node({ mode: "standalone" });
 
 // https://astro.build/config
 export default defineConfig({
