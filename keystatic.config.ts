@@ -88,6 +88,10 @@ export default config({
 					label: "置顶",
 					defaultValue: false,
 				}),
+				description: fields.text({
+					label: "页面描述",
+					multiline: true,
+				}),
 				content: fields.markdoc({
 					label: "内容",
 					extension: "md",
@@ -247,7 +251,7 @@ export default config({
 					outdatedThreshold: fields.number({
 						label: "文章过期阈值(天)",
 					}),
-										rehypeCallouts: fields.object({
+					rehypeCallouts: fields.object({
 						theme: fields.text({
 							label: "Callouts 主题",
 							description: "例如: github",
@@ -259,7 +263,7 @@ export default config({
 					}, {
 						label: "Callouts 配置",
 					}),
-sharePoster: fields.checkbox({ label: "分享海报" }),
+					sharePoster: fields.checkbox({ label: "分享海报" }),
 					generateOgImages: fields.checkbox({
 						label: "OpenGraph 图片",
 						description: "开启后构建时间会显著增加",
