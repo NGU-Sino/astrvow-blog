@@ -1,5 +1,6 @@
 // PM2 进程管理配置
 // 在 /www/wwwroot/20.2.139.66 目录下执行 pm2 start dist/ecosystem.config.cjs
+// 敏感信息（KEYSTATIC_*）请放在同目录的 .env 文件中，不会随部署覆盖
 module.exports = {
 	apps: [
 		{
@@ -10,10 +11,8 @@ module.exports = {
 				HOST: "0.0.0.0",
 				PORT: 4321,
 				NODE_ENV: "production",
-				KEYSTATIC_GITHUB_CLIENT_ID: process.env.KEYSTATIC_GITHUB_CLIENT_ID || "",
-				KEYSTATIC_GITHUB_CLIENT_SECRET: process.env.KEYSTATIC_GITHUB_CLIENT_SECRET || "",
-				KEYSTATIC_SECRET: process.env.KEYSTATIC_SECRET || "",
 			},
+			env_file: ".env",
 		},
 	],
 };
