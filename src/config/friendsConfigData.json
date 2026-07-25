@@ -1,3 +1,15 @@
 {
-  "friends": []
+  "friends": [
+    {
+      "title": "fqzlr",
+      "imgurl": "https://fqzlr.com/avatar.png",
+      "desc": "坐而言不如起而行.",
+      "siteurl": "https://fqzlr.com/",
+      "tags": [
+        "Blog"
+      ],
+      "weight": 0,
+      "enabled": true
+    }
+  ]
 }
