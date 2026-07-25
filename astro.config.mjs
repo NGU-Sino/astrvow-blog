@@ -1,5 +1,6 @@
 import { setMaxListeners } from "node:events";
-import cloudflare from "@astrojs/cloudflare";
+import node from "@astrojs/node";
+import keystatic from "@keystatic/astro";
 import { unified } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
@@ -55,11 +56,7 @@ if (process.env.NODE_ENV === "development") {
 	setMaxListeners(20);
 }
 
-const adapter = process.env.CF_WORKERS
-	? cloudflare({
-			prerenderEnvironment: "node",
-		})
-	: undefined;
+const adapter = node({ mode: "hybrid" });
 
 // https://astro.build/config
 export default defineConfig({
@@ -113,6 +110,7 @@ export default defineConfig({
 	},
 
 	integrations: [
+		keystatic(),
 		swup({
 			theme: false,
 			animationClass: "transition-swup-", // see https://swup.js.org/options/#animationselector

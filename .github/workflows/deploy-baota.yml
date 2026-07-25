@@ -1,0 +1,53 @@
+name: Build and Deploy to Baota
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.14.4
+          run_install: false
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Build site
+        env:
+          KEYSTATIC_GITHUB_CLIENT_ID: ${{ secrets.KEYSTATIC_GITHUB_CLIENT_ID }}
+          KEYSTATIC_GITHUB_CLIENT_SECRET: ${{ secrets.KEYSTATIC_GITHUB_CLIENT_SECRET }}
+          KEYSTATIC_SECRET: ${{ secrets.KEYSTATIC_SECRET }}
+        run: pnpm run build
+
+      - name: Copy ecosystem config to dist
+        run: cp ecosystem.config.cjs dist/
+
+      - name: Deploy to Baota
+        uses: easingthemes/ssh-deploy@v5.1.0
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.BAOTA_SSH_KEY }}
+          ARGS: "-rlgoDzvc -i --delete"
+          SOURCE: "dist/"
+          REMOTE_HOST: ${{ secrets.BAOTA_HOST }}
+          REMOTE_USER: "blog-deploy"
+          TARGET: "/www/wwwroot/20.2.139.66/dist/"
+          SCRIPT_AFTER: |
+            cd /www/wwwroot/20.2.139.66
+            export KEYSTATIC_GITHUB_CLIENT_ID="${{ secrets.KEYSTATIC_GITHUB_CLIENT_ID }}"
+            export KEYSTATIC_GITHUB_CLIENT_SECRET="${{ secrets.KEYSTATIC_GITHUB_CLIENT_SECRET }}"
+            export KEYSTATIC_SECRET="${{ secrets.KEYSTATIC_SECRET }}"
+            pm2 reload blog-astrvow || pm2 start ecosystem.config.cjs

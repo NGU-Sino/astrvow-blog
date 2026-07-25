@@ -1,0 +1,71 @@
+{
+  "title": "欢迎访问星诺的博客",
+  "subtitle": "Astrvow Blog",
+  "description": "星诺Astrvow的个人博客",
+  "keywords": ["星诺", "Astrvow", "Sino", "博客", "技术博客", "静态博客"],
+  "themeColor": {
+    "hue": 165,
+    "defaultMode": "system"
+  },
+  "pageWidth": 100,
+  "card": {
+    "border": false,
+    "followTheme": false
+  },
+  "navbar": {
+    "title": "星诺Astrvow",
+    "widthFull": false,
+    "menuAlign": "center",
+    "followTheme": false,
+    "stickyNavbar": true
+  },
+  "siteStartDate": "2026-07-23",
+  "pages": {
+    "friends": true,
+    "sponsor": true,
+    "guestbook": true,
+    "bangumi": false,
+    "gallery": true,
+    "anime": false,
+    "dynamic": true
+  },
+  "categoryBar": true,
+  "foldArticle": true,
+  "postListLayout": {
+    "defaultMode": "list",
+    "mobileDefaultMode": "grid",
+    "descriptionLines": 2,
+    "showStatsIcons": true,
+    "tagsPosition": "bottom",
+    "meta": {
+      "showPublished": true,
+      "showCategory": true,
+      "showTags": true,
+      "tagCount": 5,
+      "showWords": false,
+      "showReadingTime": false
+    },
+    "stats": {
+      "showPublished": true,
+      "showWords": true,
+      "showReadingTime": true
+    },
+    "grid": {
+      "masonry": false,
+      "columnWidth": 320
+    }
+  },
+  "post": {
+    "rehypeCallouts": {
+      "theme": "github",
+      "enablePythonMarkdownAdmonitions": false
+    },
+    "showLastModified": true,
+    "outdatedThreshold": 30,
+    "sharePoster": true,
+    "generateOgImages": false
+  },
+  "pagination": {
+    "postsPerPage": 10
+  }
+}
