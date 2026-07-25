@@ -47,7 +47,7 @@ jobs:
           TARGET: "/www/wwwroot/20.2.139.66/dist/"
           SCRIPT_AFTER: |
             cd /www/wwwroot/20.2.139.66
-            npm install react react-dom 2>/dev/null
+            npm install react react-dom @keystatic/core @keystatic/astro 2>/dev/null
             pm2 delete blog-astrvow 2>/dev/null
             KEYSTATIC_GITHUB_CLIENT_ID="${{ secrets.KEYSTATIC_GITHUB_CLIENT_ID }}" \
             KEYSTATIC_GITHUB_CLIENT_SECRET="${{ secrets.KEYSTATIC_GITHUB_CLIENT_SECRET }}" \
