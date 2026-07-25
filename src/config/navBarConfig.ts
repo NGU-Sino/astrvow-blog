@@ -78,6 +78,13 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 
 			// 关于页面
 			LinkPresets.About,
+
+			// 站点配置（管理后台）
+			{
+				name: "站点配置",
+				url: "/keystatic/",
+				icon: "material-symbols:settings",
+			},
 		],
 	});
 
