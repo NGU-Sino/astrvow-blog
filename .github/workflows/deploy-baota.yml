@@ -50,4 +50,4 @@ jobs:
             export KEYSTATIC_GITHUB_CLIENT_ID="${{ secrets.KEYSTATIC_GITHUB_CLIENT_ID }}"
             export KEYSTATIC_GITHUB_CLIENT_SECRET="${{ secrets.KEYSTATIC_GITHUB_CLIENT_SECRET }}"
             export KEYSTATIC_SECRET="${{ secrets.KEYSTATIC_SECRET }}"
-            pm2 reload blog-astrvow || pm2 start ecosystem.config.cjs
+            pm2 reload blog-astrvow || pm2 start dist/ecosystem.config.cjs
