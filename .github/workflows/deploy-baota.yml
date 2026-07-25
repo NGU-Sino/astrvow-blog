@@ -49,7 +49,9 @@ jobs:
             cd /www/wwwroot/20.2.139.66
             npm install react react-dom @keystatic/core @keystatic/astro 2>/dev/null
             # 修复 Keystatic OAuth token 交换兼容性问题
-            # 修复 GitHub OAuth scope 权限（请求 public_repo scope）\n            sudo sed -i '/url.searchParams.set(.redirect_uri.*);/a\\  url.searchParams.set(\"scope\", \"public_repo\");' node_modules/@keystatic/core/dist/keystatic-core-api-generic.node.js 2>/dev/null\n            sudo sed -i 's/expires: new Date(Date.now() + tokenData.expires_in ?? 3600 \* 1000)/expires: new Date(Date.now() + (tokenData.expires_in ?? 3600) * 1000)/' node_modules/@keystatic/core/dist/keystatic-core-api-generic.node.js 2>/dev/null
+            # 修复 GitHub OAuth scope 权限（请求 public_repo scope）
+            sudo sed -i '/url.searchParams.set("redirect_uri".*);/a\  url.searchParams.set("scope", "public_repo");' node_modules/@keystatic/core/dist/keystatic-core-api-generic.node.js 2>/dev/null
+            sudo sed -i 's/expires: new Date(Date.now() + tokenData.expires_in ?? 3600 \* 1000)/expires: new Date(Date.now() + (tokenData.expires_in ?? 3600) * 1000)/' node_modules/@keystatic/core/dist/keystatic-core-api-generic.node.js 2>/dev/null
             sudo sed -i 's/expires: new Date(Date.now() + tokenData.refresh_token_expires_in ?? 3600 \* 100)/expires: new Date(Date.now() + (tokenData.refresh_token_expires_in ?? 3600) * 100)/' node_modules/@keystatic/core/dist/keystatic-core-api-generic.node.js 2>/dev/null
             sudo sed -i 's/await encryptValue(tokenData.refresh_token, config.secret)/await encryptValue(tokenData.refresh_token ?? "", config.secret)/' node_modules/@keystatic/core/dist/keystatic-core-api-generic.node.js 2>/dev/null
             # 修复 Astro Node adapter 协议检测（确保 HTTPS）
