@@ -1,11 +1,11 @@
 {
-  "title": "公告",
-  "content": "暂无内容",
-  "closable": true,
-  "link": {
-    "enable": false,
-    "text": "了解更多",
-    "url": "/about/",
-    "external": false
-  }
+	"title": "公告",
+	"content": "暂无内容",
+	"closable": true,
+	"link": {
+		"enable": false,
+		"text": "了解更多",
+		"url": "/about/",
+		"external": false
+	}
 }
