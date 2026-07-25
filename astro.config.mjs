@@ -3,6 +3,7 @@ import node from "@astrojs/node";
 import keystatic from "@keystatic/astro";
 import { unified } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
+import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
@@ -254,6 +255,7 @@ export default defineConfig({
 			},
 		}),
 		mdx(),
+		react(),
 	],
 	markdown: {
 		processor: unified({

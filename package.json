@@ -25,6 +25,7 @@
     "@astrojs/markdown-satteri": "^0.3.3",
     "@astrojs/mdx": "^7.0.2",
     "@astrojs/node": "^11.0.2",
+    "@astrojs/react": "^6.0.1",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
     "@astrojs/svelte": "9.0.1",
