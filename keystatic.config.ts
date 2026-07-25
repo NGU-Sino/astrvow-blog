@@ -247,7 +247,19 @@ export default config({
 					outdatedThreshold: fields.number({
 						label: "文章过期阈值(天)",
 					}),
-					sharePoster: fields.checkbox({ label: "分享海报" }),
+										rehypeCallouts: fields.object({
+						theme: fields.text({
+							label: "Callouts 主题",
+							description: "例如: github",
+						}),
+						enablePythonMarkdownAdmonitions: fields.checkbox({
+							label: "启用 Python Markdown Admonitions",
+							defaultValue: false,
+						}),
+					}, {
+						label: "Callouts 配置",
+					}),
+sharePoster: fields.checkbox({ label: "分享海报" }),
 					generateOgImages: fields.checkbox({
 						label: "OpenGraph 图片",
 						description: "开启后构建时间会显著增加",
