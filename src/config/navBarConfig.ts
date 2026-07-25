@@ -39,11 +39,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		url: "#",
 		icon: "material-symbols:group",
 		children: [
-			// 友链
-			LinkPresets.Friends,
-
-			// 留言
-			LinkPresets.Guestbook,
+			
 		],
 	});
 
@@ -80,11 +76,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			LinkPresets.About,
 
 			// 站点配置（管理后台）
-			{
-				name: "站点配置",
-				url: "/keystatic/",
-				icon: "material-symbols:settings",
-			},
+			LinkPresets.Sitesettings,
 		],
 	});
 
@@ -113,6 +105,11 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 				external: true,
 				icon: "fa7-brands:bilibili",
 			},
+			// 友链
+			LinkPresets.Friends,
+
+			// 留言
+			LinkPresets.Guestbook,
 		],
 	});
 
@@ -204,6 +201,12 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		icon: "material-symbols:live-tv",
 		pageKey: "anime",
 	},
+	Sitesettings: {
+		name: "站点配置",
+		url: "/keystatic/",
+		icon: "material-symbols:settings",
+		pageKey: "sitesettings",
+	}
 };
 
 export const navBarConfig: NavBarConfig = getDynamicNavBarConfig();
