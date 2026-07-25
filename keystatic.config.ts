@@ -113,6 +113,10 @@ export default config({
 						validation: { isRequired: true },
 					},
 				}),
+				description: fields.text({
+					label: "页面描述",
+					multiline: true,
+				}),
 				content: fields.markdoc({
 					label: "内容",
 					extension: "md",
