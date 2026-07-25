@@ -46,9 +46,8 @@ jobs:
           REMOTE_USER: "blog-deploy"
           TARGET: "/www/wwwroot/20.2.139.66/dist/"
           SCRIPT_AFTER: |
+            cd /www/wwwroot/20.2.139.66
             export KEYSTATIC_GITHUB_CLIENT_ID="${{ secrets.KEYSTATIC_GITHUB_CLIENT_ID }}"
             export KEYSTATIC_GITHUB_CLIENT_SECRET="${{ secrets.KEYSTATIC_GITHUB_CLIENT_SECRET }}"
             export KEYSTATIC_SECRET="${{ secrets.KEYSTATIC_SECRET }}"
-            pm2 delete blog-astrvow 2>/dev/null
-            pm2 start /www/wwwroot/20.2.139.66/dist/ecosystem.config.cjs
-            pm2 save
+            pm2 reload blog-astrvow || pm2 start ecosystem.config.cjs
