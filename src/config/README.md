@@ -1,80 +1,36 @@
-# 配置文件说明
+# 关于我 / About Me
 
-本目录包含 Firefly 主题的所有配置文件，采用模块化设计，每个文件负责特定的功能模块。
+你好，欢迎访问我的博客，我是 **星诺**！
 
-## 📁 配置文件结构
+一名编程初学者，也是一名热爱游戏与创作的普通人，MTBI为ESFJ。本站用于记录我的编程学习历程与日常琐碎，倘若这些文字能给你带来些许共鸣或帮助，那便是我最大的荣幸。
 
-```
-src/config/
-├── index.ts                  # 配置索引文件 - 统一导出
-├── siteConfig.ts             # 站点基础配置
-├── analyticsConfig.ts        # 统计分析配置（Google Analytics、Umami、51la 等）
-├── announcementConfig.ts     # 公告配置
-├── backgroundWallpaper.ts    # 背景壁纸配置
-├── commentConfig.ts          # 评论系统配置
-├── coverImageConfig.ts       # 封面图配置
-├── displaySettingsConfig.ts  # 设置面板配置
-├── dynamicConfig.ts          # 动态页面配置
-├── effectsConfig.ts          # 动画特效配置（樱花等）
-├── expressiveCodeConfig.ts   # 代码高亮配置
-├── fontConfig.ts             # 字体配置
-├── footerConfig.ts           # 页脚配置
-├── friendsConfig.ts          # 友链配置
-├── galleryConfig.ts          # 相册配置
-├── licenseConfig.ts          # 许可证配置
-├── musicConfig.ts            # 音乐播放器配置
-├── navBarConfig.ts           # 导航栏配置（含 LinkPresets 链接预设）
-├── pioConfig.ts              # 看板娘配置（Spine、Live2D）
-├── mermaidConfig.ts          # Mermaid 图表配置
-├── plantumlConfig.ts         # PlantUML 图表配置
-├── profileConfig.ts          # 用户资料配置
-├── sidebarConfig.ts          # 侧边栏布局配置
-├── sponsorConfig.ts          # 打赏配置
-└── README.md                 # 本文件
-```
+## 🎮 兴趣与游戏
 
-## 🚀 使用方式
+我喜欢玩游戏，也喜欢制作游戏。
 
-### 推荐：使用配置索引（统一导入）
-```typescript
-import { siteConfig, profileConfig } from "@/config";
-```
+- **原神** —— 1500+天老玩家，各路深渊随便满星，已连续9次抽卡不歪，喜欢纳西妲、瓦雷莎、哥伦比娅
+- **崩坏：星穹铁道** —— 1100+天老玩家，各路深渊随便满星，王棋关随便0T，抽2魂很欧，已连续6次抽卡不歪
+- **无畏契约** —— 黄金常驻玩家，上分已遇到瓶颈，各位置全能
+- **洛克王国：世界** —— 轻度休闲玩家，喜欢雪影娃娃和菊花梨
+- **王者荣耀** —— 曾上过王者50星，巅峰赛1800+分，目前暂时退坑，或某日再回归
 
-### 直接导入单个配置
-```typescript
-import { siteConfig } from "@/config/siteConfig";
-import { profileConfig } from "@/config/profileConfig";
-```
+## 🌌 我的创作
 
-## 📋 配置文件列表
+在原神「千星奇域」UGC 平台中，我创作了一款名为 **《【大富翁】璃月千年》** 的游戏关卡，目前已累计获得数十万热度。如果你是原神玩家且喜欢棋牌类游戏，欢迎前往体验，也期待你的反馈。
 
-| 文件 | 说明 |
-|------|------|
-| `siteConfig.ts` | 站点基础配置（标题、描述、主题色、页面宽度、文章内容页配置等） |
-| `analyticsConfig.ts` | 统计分析配置（Google Analytics、Microsoft Clarity、Umami、51la） |
-| `announcementConfig.ts` | 公告配置（标题、内容、类型、链接等） |
-| `backgroundWallpaper.ts` | 背景壁纸配置（壁纸模式、图片、横幅文字、水波纹等） |
-| `commentConfig.ts` | 评论系统配置（Twikoo、Waline、Artalk、Giscus、Disqus） |
-| `coverImageConfig.ts` | 封面图配置（文章封面图、随机封面图 API） |
-| `dynamicConfig.ts` | 动态页面配置（页面标题、描述、评论开关和每页显示数量） |
-| `effectsConfig.ts` | 动画特效配置（樱花数量、速度、尺寸等） |
-| `expressiveCodeConfig.ts` | 代码高亮配置（亮色/暗色主题、折叠、语言徽章） |
-| `fontConfig.ts` | 字体配置（字体列表、回退、预加载） |
-| `footerConfig.ts` | 页脚配置（自定义 HTML 注入，如备案号） |
-| `friendsConfig.ts` | 友链配置（友链列表、页面设置） |
-| `galleryConfig.ts` | 相册配置（相册列表、瀑布流列宽） |
-| `licenseConfig.ts` | 许可证配置（CC 协议等） |
-| `musicConfig.ts` | 音乐播放器配置（Meting API / 本地音乐、导航栏和侧边栏开关） |
-| `navBarConfig.ts` | 导航栏配置（动态链接、LinkPresets 链接预设、搜索配置） |
-| `pioConfig.ts` | 看板娘配置（Spine 模型、Live2D 模型） |
-| `plantumlConfig.ts` | PlantUML 图表渲染配置 |
-| `profileConfig.ts` | 用户资料配置（头像、姓名、社交链接） |
-| `sidebarConfig.ts` | 侧边栏布局配置（左侧/右侧/移动端组件列表） |
-| `sponsorConfig.ts` | 打赏配置（打赏方式、打赏者列表） |
+## 📬 联系我
 
-## 📝 说明
+如果你想与我交流、合作或只是闲聊几句，可以通过以下方式找到我：
 
-- 所有配置文件均可通过 `index.ts` 统一导入
-- 每个配置文件对应 `types/` 目录下的独立类型定义文件
-- `siteConfig.ts` 只保留站点核心信息，不聚合其他模块配置
-- `navBarConfig.ts` 底部的 `LinkPresets` 可自由自定义导航栏链接的名称、图标和 URL
+- **邮箱**：[sino.shi@qq.com](mailto:sino.shi@qq.com)
+- **Bilibili**：[星诺Astrvow](https://space.bilibili.com/2002388434)
+
+## 🛠️ 关于本站
+
+这是我的个人博客，使用 [Astro](https://astro.build/) 框架构建，主题采用 [Firefly](https://github.com/CuteLeaf/Firefly) 。
+
+站点内容以技术笔记、学习记录与生活随笔为主，不追求深度，只愿留下成长的痕迹。未来若有幸能与你长期相伴，那便再好不过。
+
+---
+
+*感谢你的来访，愿我们都能在热爱的事物里，慢慢变得更好。*
