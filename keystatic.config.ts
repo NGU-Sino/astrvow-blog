@@ -58,9 +58,42 @@ export default config({
 					label: "分类",
 					description: "例如：技术、日常",
 				}),
+				lang: fields.text({
+					label: "语言",
+					description: "文章语言代码，例如：zh, en, ja",
+					defaultValue: "",
+				}),
 				pinned: fields.checkbox({
 					label: "置顶",
 					defaultValue: false,
+				}),
+				author: fields.text({
+					label: "作者",
+					defaultValue: "",
+				}),
+				sourceLink: fields.text({
+					label: "原文链接",
+					defaultValue: "",
+				}),
+				licenseName: fields.text({
+					label: "许可证名称",
+					defaultValue: "",
+				}),
+				licenseUrl: fields.text({
+					label: "许可证链接",
+					defaultValue: "",
+				}),
+				comment: fields.checkbox({
+					label: "启用评论",
+					defaultValue: true,
+				}),
+				password: fields.text({
+					label: "访问密码",
+					defaultValue: "",
+				}),
+				passwordHint: fields.text({
+					label: "密码提示",
+					defaultValue: "",
 				}),
 				content: fields.markdoc({
 					label: "正文",
