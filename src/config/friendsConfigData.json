@@ -10,6 +10,17 @@
       ],
       "weight": 0,
       "enabled": true
+    },
+    {
+      "title": "潇绪空のBlog",
+      "imgurl": "https://reknal.com/assets/images/avatar.avif",
+      "desc": "共同见证奇迹诞生！",
+      "siteurl": "https://reknal.com",
+      "tags": [
+        "Blog"
+      ],
+      "weight": 0,
+      "enabled": true
     }
   ]
 }
