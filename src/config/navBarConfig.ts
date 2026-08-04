@@ -38,8 +38,21 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		name: "社交",
 		url: "#",
 		icon: "material-symbols:group",
+		children: [],
+	});
+
+	// 考研备考及其子菜单
+	links.push({
+		name: "考研备考",
+		url: "#",
+		icon: "material-symbols:school",
 		children: [
-			
+			// 考研英语进度
+			LinkPresets.StudyProgress,
+			// 考研数学进度
+			LinkPresets.MathProgress,
+			// 考研408进度
+			LinkPresets.Cs408Progress,
 		],
 	});
 
@@ -63,17 +76,6 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		],
 	});
 
-	// 考研备考及其子菜单
-	links.push({
-		name: "考研备考",
-		url: "#",
-		icon: "material-symbols:school",
-		children: [
-			// 考研英语进度
-			LinkPresets.StudyProgress,
-		],
-	});
-
 	// 关于及其子菜单
 	links.push({
 		name: "关于",
@@ -85,6 +87,9 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 
 			// 关于页面
 			LinkPresets.About,
+
+			// 历史更新记录
+			LinkPresets.Changelog,
 
 			// 站点配置（管理后台）
 			LinkPresets.Sitesettings,
@@ -194,6 +199,12 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		url: "/about/",
 		icon: "material-symbols:person",
 	},
+	Changelog: {
+		name: "历史更新记录",
+		url: "/changelog/",
+		icon: "material-symbols:history-rounded",
+		pageKey: "changelog",
+	},
 	Bangumi: {
 		name: "番组计划",
 		url: "/bangumi/",
@@ -219,10 +230,22 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		pageKey: "sitesettings",
 	},
 	StudyProgress: {
-		name: "考研英语进度",
+		name: "英语进度",
 		url: "/study-progress/",
 		icon: "material-symbols:school",
 		pageKey: "study-progress",
+	},
+	MathProgress: {
+		name: "数学进度",
+		url: "/math-progress/",
+		icon: "material-symbols:functions",
+		pageKey: "math-progress",
+	},
+	Cs408Progress: {
+		name: "408进度",
+		url: "/cs408-progress/",
+		icon: "material-symbols:computer",
+		pageKey: "cs408-progress",
 	},
 };
 

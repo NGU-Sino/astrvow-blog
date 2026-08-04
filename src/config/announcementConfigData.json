@@ -1,11 +1,11 @@
 {
-  "title": "公告",
-  "content": "【2026.7.25更新】导航栏中的“社交”现已关闭，其中的“友链”与“留言”已转入导航栏的“链接”当中。",
-  "closable": true,
-  "link": {
-    "enable": false,
-    "text": "了解更多",
-    "url": "/about/",
-    "external": false
-  }
+	"title": "公告",
+	"content": "【2026.8.4更新】考研备考模块上线：新增英语进度（墨墨背单词数据看板）、数学进度、408进度三个复习进度页面，章节状态与笔记。详情请查看历史更新记录。",
+	"closable": true,
+	"link": {
+		"enable": true,
+		"text": "查看更新记录",
+		"url": "/changelog/",
+		"external": false
+	}
 }

@@ -1,0 +1,265 @@
+---
+/**
+ * 考研408进度页面
+ * 展示基础/强化/冲刺三阶段章节完成情况，笔记以PDF嵌入（错题走王道小程序，不在此展示）
+ * 含二级目录，笔记和统计按小节（二级目录）管理
+ */
+import { Icon } from "astro-icon/components";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import CountdownBanner from "@/components/review/CountdownBanner.astro";
+import SubjectSwitcher from "@/components/review/SubjectSwitcher.astro";
+import { cs408Chapters, cs408Stages } from "@/data/cs408-chapters";
+import type { SubChapter } from "@/data/math-chapters";
+
+const pageTitle = "408进度";
+const pageDescription = "记录我的考研408复习进度";
+
+// 按科目分组
+const subjects = [
+	{ key: "data_structure", label: "数据结构" },
+	{ key: "computer_organization", label: "计算机组成原理" },
+	{ key: "operating_system", label: "操作系统" },
+	{ key: "computer_network", label: "计算机网络" },
+];
+
+const chaptersBySubject = subjects.map((s) => ({
+	...s,
+	chapters: cs408Chapters.filter((c) => c.subject === s.key),
+}));
+
+// 统计数据（按小节统计）
+const allSubChapters: SubChapter[] = cs408Chapters.flatMap((c) => c.subChapters || []);
+const totalSubChapters = allSubChapters.length;
+const completedSubChapters = allSubChapters.filter((s) => s.status === "completed").length;
+const totalPercent = totalSubChapters > 0 ? Math.round((completedSubChapters / totalSubChapters) * 100) : 0;
+
+const subjectStats = subjects.map((s) => {
+	const chapters = cs408Chapters.filter((c) => c.subject === s.key);
+	const subs = chapters.flatMap((c) => c.subChapters || []);
+	const done = subs.filter((s) => s.status === "completed").length;
+	return { ...s, total: subs.length, completed: done, percent: subs.length > 0 ? Math.round((done / subs.length) * 100) : 0 };
+});
+
+const statusConfig: Record<string, { label: string; color: string; bg: string }> = {
+	not_started: { label: "未开始", color: "text-neutral-500", bg: "bg-neutral-200 dark:bg-neutral-700" },
+	in_progress: { label: "进行中", color: "text-orange-600", bg: "bg-orange-100 dark:bg-orange-900/30" },
+	completed: { label: "已完成", color: "text-green-600", bg: "bg-green-100 dark:bg-green-900/30" },
+};
+---
+
+<MainGridLayout title={pageTitle} description={pageDescription}>
+	<div class="flex flex-col gap-6 w-full">
+		<!-- 科目切换器 -->
+		<SubjectSwitcher current="cs408" />
+
+		<!-- 页面标题 -->
+		<div class="card-base p-6">
+			<div class="flex items-center gap-3 mb-4">
+				<Icon name="material-symbols:computer" class="text-3xl text-(--primary)" />
+				<h1 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
+					{pageTitle}
+				</h1>
+			</div>
+			<p class="text-neutral-600 dark:text-neutral-400">
+				{pageDescription}
+			</p>
+		</div>
+
+		<!-- 考研倒计时 -->
+		<CountdownBanner />
+
+		<!-- 学习数据概览（按小节统计） -->
+		<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+			<div class="card-base p-5 text-center">
+				<Icon name="material-symbols:check-circle-outline" class="text-3xl text-green-500 mb-2" />
+				<div class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+					{completedSubChapters}
+				</div>
+				<div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">
+					已学小节
+				</div>
+			</div>
+			<div class="card-base p-5 text-center">
+				<Icon name="material-symbols:menu-book-outline" class="text-3xl text-(--primary) mb-2" />
+				<div class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+					{totalSubChapters}
+				</div>
+				<div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">
+					基础阶段总小节
+				</div>
+			</div>
+			<div class="card-base p-5 text-center">
+				<Icon name="material-symbols:percent" class="text-3xl text-blue-500 mb-2" />
+				<div class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+					{totalPercent}%
+				</div>
+				<div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">
+					总完成率
+				</div>
+			</div>
+		</div>
+
+		<!-- 各科完成率（按小节统计） -->
+		<div class="card-base p-6">
+			<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-4 flex items-center gap-2">
+				<Icon name="material-symbols:analytics" class="text-2xl text-(--primary)" />
+				各科完成率
+			</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+				{subjectStats.map((s) => (
+					<div>
+						<div class="flex items-center justify-between mb-2">
+							<span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">{s.label}</span>
+							<span class="text-sm text-neutral-500 dark:text-neutral-400">{s.completed} / {s.total}</span>
+						</div>
+						<div class="w-full h-3 bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden">
+							<div
+								class="h-full bg-(--primary) rounded-full transition-all duration-1000"
+								style={`width: ${s.percent}%`}
+							></div>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+
+		<!-- 阶段标签 -->
+		<div class="card-base p-6">
+			<div class="flex gap-2 mb-6 border-b border-neutral-200 dark:border-neutral-700 pb-4">
+				{cs408Stages.map((stage) => (
+					<button
+						class:list={[
+							"px-4 py-2 rounded-lg text-sm font-medium transition-colors stage-tab",
+							stage.active
+								? "bg-(--primary) text-white"
+								: "bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400",
+						]}
+						data-stage={stage.id}
+					>
+						{stage.name}
+					</button>
+				))}
+			</div>
+
+			<!-- 基础阶段 -->
+			<div id="stage-basic" class="stage-content">
+				{chaptersBySubject.map((subj) => (
+					<div class="mb-8">
+						<div class="flex items-center justify-between mb-3">
+							<h3 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
+								<span class="w-1 h-5 bg-(--primary) rounded-full"></span>
+								{subj.label}
+							</h3>
+							<span class="text-sm text-neutral-500 dark:text-neutral-400">
+								{(() => {
+									const subs = subj.chapters.flatMap((c) => c.subChapters || []);
+									return `${subs.filter((s) => s.status === "completed").length} / ${subs.length}`;
+								})()}
+							</span>
+						</div>
+
+						<!-- 科目进度条（按小节） -->
+						<div class="w-full h-2 bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden mb-4">
+							{(() => {
+								const subs = subj.chapters.flatMap((c) => c.subChapters || []);
+								const done = subs.filter((s) => s.status === "completed").length;
+								const pct = subs.length > 0 ? (done / subs.length) * 100 : 0;
+								return <div class="h-full bg-(--primary) rounded-full transition-all duration-1000" style={`width: ${pct}%`}></div>;
+							})()}
+						</div>
+
+						<!-- 章节列表（含二级目录，笔记在小节级别） -->
+						<div class="flex flex-col gap-2">
+							{subj.chapters.map((ch) => {
+								const subs = ch.subChapters || [];
+								const doneSubs = subs.filter((s) => s.status === "completed").length;
+								return (
+									<div class="rounded-lg bg-neutral-50 dark:bg-neutral-800/50 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors overflow-hidden">
+										<!-- 一级目录：章节标题 -->
+										<div class="flex items-center gap-3 p-3">
+											<span class="text-sm text-neutral-400 flex-shrink-0 whitespace-nowrap">
+												第{ch.index}章
+											</span>
+											<span class="flex-1 text-sm font-medium text-neutral-700 dark:text-neutral-300 truncate">
+												{ch.title}
+											</span>
+											<span class="text-xs text-neutral-400 flex-shrink-0 whitespace-nowrap">
+												{doneSubs}/{subs.length}
+											</span>
+										</div>
+										<!-- 二级目录：小节列表（含状态和笔记链接） -->
+										{subs.length > 0 && (
+											<div class="px-4 pb-3 pl-12 flex flex-col gap-1.5">
+												{subs.map((sub, i) => {
+													const sc = statusConfig[sub.status];
+													return (
+														<div class="flex items-center gap-2 py-1">
+															<span class="text-xs text-neutral-400 flex-shrink-0 whitespace-nowrap w-8">
+																{ch.index}.{i + 1}
+															</span>
+															<span class="flex-1 text-xs text-neutral-600 dark:text-neutral-400 truncate">
+																{sub.title}
+															</span>
+															<span class:list={["text-xs px-1.5 py-0.5 rounded-full flex-shrink-0", sc.bg, sc.color]}>
+																{sc.label}
+															</span>
+															{sub.notesUrl && (
+																<a
+																	href={sub.notesUrl}
+																	target="_blank"
+																	rel="noopener noreferrer"
+																	class="text-xs px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-600 hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors flex-shrink-0"
+																	title="查看笔记"
+																>
+																	<Icon name="material-symbols:description" class="text-sm" />
+																</a>
+															)}
+														</div>
+													);
+												})}
+											</div>
+										)}
+									</div>
+								);
+							})}
+						</div>
+					</div>
+				))}
+			</div>
+
+			<!-- 强化阶段 -->
+			<div id="stage-enhance" class="stage-content hidden">
+				<div class="text-center py-16">
+					<Icon name="material-symbols:lock-outline" class="text-5xl text-neutral-300 dark:text-neutral-600 mb-4" />
+					<p class="text-lg text-neutral-400 dark:text-neutral-500">暂未开始</p>
+				</div>
+			</div>
+
+			<!-- 冲刺阶段 -->
+			<div id="stage-advanced" class="stage-content hidden">
+				<div class="text-center py-16">
+					<Icon name="material-symbols:lock-outline" class="text-5xl text-neutral-300 dark:text-neutral-600 mb-4" />
+					<p class="text-lg text-neutral-400 dark:text-neutral-500">暂未开始</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</MainGridLayout>
+
+<script is:inline>
+	document.querySelectorAll(".stage-tab").forEach((tab) => {
+		tab.addEventListener("click", () => {
+			const stageId = tab.getAttribute("data-stage");
+			document.querySelectorAll(".stage-tab").forEach((t) => {
+				t.classList.remove("bg-(--primary)", "text-white");
+				t.classList.add("bg-neutral-100", "dark:bg-neutral-800", "text-neutral-500", "dark:text-neutral-400");
+			});
+			tab.classList.remove("bg-neutral-100", "dark:bg-neutral-800", "text-neutral-500", "dark:text-neutral-400");
+			tab.classList.add("bg-(--primary)", "text-white");
+
+			document.querySelectorAll(".stage-content").forEach((c) => c.classList.add("hidden"));
+			const target = document.getElementById(`stage-${stageId}`);
+			if (target) target.classList.remove("hidden");
+		});
+	});
+</script>

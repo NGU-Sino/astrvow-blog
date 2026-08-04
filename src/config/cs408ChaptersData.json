@@ -1,0 +1,245 @@
+{
+  "chapters": [
+    {
+      "id": "cs408-ds-01", "subject": "data_structure", "subjectLabel": "数据结构", "source": "2027王道", "index": 1, "title": "绪论", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-ds-01-01", "title": "数据结构的基本概念", "status": "not_started" },
+        { "id": "cs408-ds-01-02", "title": "算法和算法评价", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-ds-02", "subject": "data_structure", "subjectLabel": "数据结构", "source": "2027王道", "index": 2, "title": "线性表", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-ds-02-01", "title": "线性表的定义和基本操作", "status": "not_started" },
+        { "id": "cs408-ds-02-02", "title": "线性表的顺序表示", "status": "not_started" },
+        { "id": "cs408-ds-02-03", "title": "线性表的链式表示", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-ds-03", "subject": "data_structure", "subjectLabel": "数据结构", "source": "2027王道", "index": 3, "title": "栈、队列和数组", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-ds-03-01", "title": "栈", "status": "not_started" },
+        { "id": "cs408-ds-03-02", "title": "队列", "status": "not_started" },
+        { "id": "cs408-ds-03-03", "title": "栈和队列的应用", "status": "not_started" },
+        { "id": "cs408-ds-03-04", "title": "数组和特殊矩阵", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-ds-04", "subject": "data_structure", "subjectLabel": "数据结构", "source": "2027王道", "index": 4, "title": "串", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-ds-04-01", "title": "串的定义和实现*", "status": "not_started" },
+        { "id": "cs408-ds-04-02", "title": "串的模式匹配", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-ds-05", "subject": "data_structure", "subjectLabel": "数据结构", "source": "2027王道", "index": 5, "title": "树与二叉树", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-ds-05-01", "title": "树的基本概念", "status": "not_started" },
+        { "id": "cs408-ds-05-02", "title": "二叉树的概念", "status": "not_started" },
+        { "id": "cs408-ds-05-03", "title": "二叉树的遍历和线索二叉树", "status": "not_started" },
+        { "id": "cs408-ds-05-04", "title": "树、森林", "status": "not_started" },
+        { "id": "cs408-ds-05-05", "title": "树与二叉树的应用", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-ds-06", "subject": "data_structure", "subjectLabel": "数据结构", "source": "2027王道", "index": 6, "title": "图", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-ds-06-01", "title": "图的基本概念", "status": "not_started" },
+        { "id": "cs408-ds-06-02", "title": "图的存储及基本操作", "status": "not_started" },
+        { "id": "cs408-ds-06-03", "title": "图的遍历", "status": "not_started" },
+        { "id": "cs408-ds-06-04", "title": "图的应用", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-ds-07", "subject": "data_structure", "subjectLabel": "数据结构", "source": "2027王道", "index": 7, "title": "查找", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-ds-07-01", "title": "查找的基本概念", "status": "not_started" },
+        { "id": "cs408-ds-07-02", "title": "顺序查找和折半查找", "status": "not_started" },
+        { "id": "cs408-ds-07-03", "title": "树型查找", "status": "not_started" },
+        { "id": "cs408-ds-07-04", "title": "B树和B+树", "status": "not_started" },
+        { "id": "cs408-ds-07-05", "title": "散列表", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-ds-08", "subject": "data_structure", "subjectLabel": "数据结构", "source": "2027王道", "index": 8, "title": "排序", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-ds-08-01", "title": "排序的基本概念", "status": "not_started" },
+        { "id": "cs408-ds-08-02", "title": "插入排序", "status": "not_started" },
+        { "id": "cs408-ds-08-03", "title": "交换排序", "status": "not_started" },
+        { "id": "cs408-ds-08-04", "title": "选择排序", "status": "not_started" },
+        { "id": "cs408-ds-08-05", "title": "归并排序、基数排序和计数排序", "status": "not_started" },
+        { "id": "cs408-ds-08-06", "title": "各种内部排序算法的比较及应用", "status": "not_started" },
+        { "id": "cs408-ds-08-07", "title": "外部排序", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-co-01", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 1, "title": "计算机系统概述", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-co-01-01", "title": "计算机发展历程*", "status": "not_started" },
+        { "id": "cs408-co-01-02", "title": "计算机系统层次结构", "status": "not_started" },
+        { "id": "cs408-co-01-03", "title": "计算机的性能指标", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-co-02", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 2, "title": "数据的表示和运算", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-co-02-01", "title": "数制与编码", "status": "not_started" },
+        { "id": "cs408-co-02-02", "title": "运算方法和运算电路", "status": "not_started" },
+        { "id": "cs408-co-02-03", "title": "浮点数的表示与运算", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-co-03", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 3, "title": "存储系统", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-co-03-01", "title": "存储器概述", "status": "not_started" },
+        { "id": "cs408-co-03-02", "title": "主存储器", "status": "not_started" },
+        { "id": "cs408-co-03-03", "title": "主存储器与CPU的连接", "status": "not_started" },
+        { "id": "cs408-co-03-04", "title": "外部存储器", "status": "not_started" },
+        { "id": "cs408-co-03-05", "title": "高速缓冲存储器", "status": "not_started" },
+        { "id": "cs408-co-03-06", "title": "虚拟存储器", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-co-04", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 4, "title": "指令系统", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-co-04-01", "title": "指令系统", "status": "not_started" },
+        { "id": "cs408-co-04-02", "title": "寻址方式", "status": "not_started" },
+        { "id": "cs408-co-04-03", "title": "程序的机器级代码表示", "status": "not_started" },
+        { "id": "cs408-co-04-04", "title": "CISC和RISC的基本概念", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-co-05", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 5, "title": "中央处理器", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-co-05-01", "title": "CPU的功能和基本结构", "status": "not_started" },
+        { "id": "cs408-co-05-02", "title": "指令执行过程", "status": "not_started" },
+        { "id": "cs408-co-05-03", "title": "数据通路的功能和基本结构", "status": "not_started" },
+        { "id": "cs408-co-05-04", "title": "控制器的功能和工作原理", "status": "not_started" },
+        { "id": "cs408-co-05-05", "title": "异常和中断机制", "status": "not_started" },
+        { "id": "cs408-co-05-06", "title": "指令流水线", "status": "not_started" },
+        { "id": "cs408-co-05-07", "title": "多处理器的基本概念", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-co-06", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 6, "title": "总线", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-co-06-01", "title": "总线概述", "status": "not_started" },
+        { "id": "cs408-co-06-02", "title": "总线事务和定时", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-co-07", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 7, "title": "输入/输出系统", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-co-07-01", "title": "I/O系统基本概念*", "status": "not_started" },
+        { "id": "cs408-co-07-02", "title": "I/O接口", "status": "not_started" },
+        { "id": "cs408-co-07-03", "title": "I/O方式", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-os-01", "subject": "operating_system", "subjectLabel": "操作系统", "source": "2027王道", "index": 1, "title": "计算机系统概述", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-os-01-01", "title": "操作系统的基本概念", "status": "not_started" },
+        { "id": "cs408-os-01-02", "title": "操作系统发展历程", "status": "not_started" },
+        { "id": "cs408-os-01-03", "title": "操作系统的运行环境", "status": "not_started" },
+        { "id": "cs408-os-01-04", "title": "操作系统结构", "status": "not_started" },
+        { "id": "cs408-os-01-05", "title": "操作系统引导", "status": "not_started" },
+        { "id": "cs408-os-01-06", "title": "虚拟机", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-os-02", "subject": "operating_system", "subjectLabel": "操作系统", "source": "2027王道", "index": 2, "title": "进程与线程", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-os-02-01", "title": "进程与线程简介", "status": "not_started" },
+        { "id": "cs408-os-02-02", "title": "CPU调度", "status": "not_started" },
+        { "id": "cs408-os-02-03", "title": "同步与互斥", "status": "not_started" },
+        { "id": "cs408-os-02-04", "title": "死锁", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-os-03", "subject": "operating_system", "subjectLabel": "操作系统", "source": "2027王道", "index": 3, "title": "内存管理", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-os-03-01", "title": "内存管理概念", "status": "not_started" },
+        { "id": "cs408-os-03-02", "title": "虚拟内存管理", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-os-04", "subject": "operating_system", "subjectLabel": "操作系统", "source": "2027王道", "index": 4, "title": "文件管理", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-os-04-01", "title": "文件系统基础", "status": "not_started" },
+        { "id": "cs408-os-04-02", "title": "目录与文件", "status": "not_started" },
+        { "id": "cs408-os-04-03", "title": "文件系统", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-os-05", "subject": "operating_system", "subjectLabel": "操作系统", "source": "2027王道", "index": 5, "title": "输入/输出管理", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-os-05-01", "title": "I/O管理概述", "status": "not_started" },
+        { "id": "cs408-os-05-02", "title": "设备独立性软件", "status": "not_started" },
+        { "id": "cs408-os-05-03", "title": "磁盘和固态硬盘", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-cn-01", "subject": "computer_network", "subjectLabel": "计算机网络", "source": "2027王道", "index": 1, "title": "计算机网络体系结构", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-cn-01-01", "title": "计算机网络概述", "status": "not_started" },
+        { "id": "cs408-cn-01-02", "title": "计算机网络体系结构与参考模型", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-cn-02", "subject": "computer_network", "subjectLabel": "计算机网络", "source": "2027王道", "index": 2, "title": "物理层", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-cn-02-01", "title": "通信基础", "status": "not_started" },
+        { "id": "cs408-cn-02-02", "title": "传输介质", "status": "not_started" },
+        { "id": "cs408-cn-02-03", "title": "物理层设备", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-cn-03", "subject": "computer_network", "subjectLabel": "计算机网络", "source": "2027王道", "index": 3, "title": "数据链路层", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-cn-03-01", "title": "数据链路层的功能", "status": "not_started" },
+        { "id": "cs408-cn-03-02", "title": "组帧", "status": "not_started" },
+        { "id": "cs408-cn-03-03", "title": "差错控制", "status": "not_started" },
+        { "id": "cs408-cn-03-04", "title": "流量控制与可靠传输机制", "status": "not_started" },
+        { "id": "cs408-cn-03-05", "title": "介质访问控制", "status": "not_started" },
+        { "id": "cs408-cn-03-06", "title": "局域网", "status": "not_started" },
+        { "id": "cs408-cn-03-07", "title": "广域网", "status": "not_started" },
+        { "id": "cs408-cn-03-08", "title": "数据链路层设备", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-cn-04", "subject": "computer_network", "subjectLabel": "计算机网络", "source": "2027王道", "index": 4, "title": "网络层", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-cn-04-01", "title": "网络层的功能", "status": "not_started" },
+        { "id": "cs408-cn-04-02", "title": "IPv4", "status": "not_started" },
+        { "id": "cs408-cn-04-03", "title": "IPv6", "status": "not_started" },
+        { "id": "cs408-cn-04-04", "title": "路由算法与路由协议", "status": "not_started" },
+        { "id": "cs408-cn-04-05", "title": "IP多播", "status": "not_started" },
+        { "id": "cs408-cn-04-06", "title": "移动IP", "status": "not_started" },
+        { "id": "cs408-cn-04-07", "title": "网络层设备", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-cn-05", "subject": "computer_network", "subjectLabel": "计算机网络", "source": "2027王道", "index": 5, "title": "传输层", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-cn-05-01", "title": "传输层提供的服务", "status": "not_started" },
+        { "id": "cs408-cn-05-02", "title": "UDP协议", "status": "not_started" },
+        { "id": "cs408-cn-05-03", "title": "TCP协议", "status": "not_started" }
+      ]
+    },
+    {
+      "id": "cs408-cn-06", "subject": "computer_network", "subjectLabel": "计算机网络", "source": "2027王道", "index": 6, "title": "应用层", "status": "not_started",
+      "subChapters": [
+        { "id": "cs408-cn-06-01", "title": "网络应用模型", "status": "not_started" },
+        { "id": "cs408-cn-06-02", "title": "域名系统", "status": "not_started" },
+        { "id": "cs408-cn-06-03", "title": "文件传送协议", "status": "not_started" },
+        { "id": "cs408-cn-06-04", "title": "电子邮件", "status": "not_started" },
+        { "id": "cs408-cn-06-05", "title": "万维网", "status": "not_started" }
+      ]
+    }
+  ],
+  "stages": [
+    { "id": "basic", "name": "基础", "active": true },
+    { "id": "enhance", "name": "强化", "active": false },
+    { "id": "advanced", "name": "冲刺", "active": false }
+  ]
+}

@@ -5,16 +5,21 @@
  */
 import { Icon } from "astro-icon/components";
 import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import CountdownBanner from "@/components/review/CountdownBanner.astro";
+import SubjectSwitcher from "@/components/review/SubjectSwitcher.astro";
 import { maimemoConfig } from "@/config";
 
-const pageTitle = "考研英语进度";
-const pageDescription = "记录我的考研词汇学习进度";
+const pageTitle = "英语进度";
+const pageDescription = "记录我的考研英语学习进度";
 
 const isEnabled = maimemoConfig.enable;
 ---
 
 <MainGridLayout title={pageTitle} description={pageDescription}>
 	<div class="flex flex-col gap-6 w-full">
+		<!-- 科目切换器 -->
+		<SubjectSwitcher current="english" />
+
 		{!isEnabled && (
 			<div class="card-base p-8 text-center">
 				<Icon name="material-symbols:info-outline" class="text-5xl text-neutral-400 mb-4" />
@@ -41,6 +46,9 @@ const isEnabled = maimemoConfig.enable;
 						{pageDescription}
 					</p>
 				</div>
+
+				<!-- 考研倒计时 -->
+				<CountdownBanner />
 
 				<!-- 加载中状态 -->
 				<div id="loading-state" class="card-base p-8 text-center">

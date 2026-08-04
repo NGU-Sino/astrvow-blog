@@ -1,0 +1,181 @@
+---
+/**
+ * 历史更新记录页面
+ * 仿归档页时间轴样式，按年份分组展示站点更新记录
+ * 数据文件：src/config/changelogData.json（通过 Keystatic 后台管理）
+ */
+import { Icon } from "astro-icon/components";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import changelogData from "@/config/changelogData.json";
+
+interface ChangelogEntry {
+	date: string;
+	title: string;
+	tags?: string[];
+	content: string;
+}
+
+const entries: ChangelogEntry[] = (changelogData.entries || [])
+	.slice()
+	.sort((a, b) => (a.date < b.date ? 1 : -1));
+
+// 按年份分组
+const grouped = new Map<number, ChangelogEntry[]>();
+for (const entry of entries) {
+	const year = new Date(entry.date + "T00:00:00+08:00").getFullYear();
+	if (!grouped.has(year)) grouped.set(year, []);
+	grouped.get(year)?.push(entry);
+}
+const groups = Array.from(grouped.entries())
+	.map(([year, yearEntries]) => ({ year, entries: yearEntries }))
+	.sort((a, b) => b.year - a.year);
+
+function formatDate(date: string) {
+	const d = new Date(date + "T00:00:00+08:00");
+	const month = (d.getMonth() + 1).toString().padStart(2, "0");
+	const day = d.getDate().toString().padStart(2, "0");
+	return `${month}-${day}`;
+}
+
+const totalCount = entries.length;
+---
+
+<MainGridLayout title="历史更新记录" description="本站功能更新与调整的历史记录">
+	<div class="flex flex-col gap-6 w-full">
+		<!-- 页面标题 -->
+		<div class="card-base p-6">
+			<div class="flex items-center gap-3 mb-2">
+				<Icon name="material-symbols:history-rounded" class="text-3xl text-(--primary)" />
+				<h1 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
+					历史更新记录
+				</h1>
+			</div>
+			<p class="text-neutral-600 dark:text-neutral-400">
+				本站功能更新与调整的历史记录，共 {totalCount} 条更新。
+			</p>
+		</div>
+
+		<!-- 时间轴 -->
+		<changelog-panel class="card-base px-8 py-6">
+			{groups.map((group, groupIndex) => {
+				const collapsed = groupIndex > 0;
+				return (
+					<div class="changelog-year-block" data-year={group.year} data-count={group.entries.length}>
+						<button
+							class="changelog-year-toggle flex flex-row w-full items-center h-15 cursor-pointer rounded-lg hover:bg-(--btn-plain-bg-hover) transition-colors group/yr"
+							aria-expanded={collapsed ? "false" : "true"}
+						>
+							<div class="w-[15%] md:w-[10%] transition text-2xl font-bold text-right text-75 group-hover/yr:text-(--primary)">
+								{group.year}
+							</div>
+							<div class="w-[15%] md:w-[10%]">
+								<div class="h-3 w-3 bg-none rounded-full outline-(--primary) mx-auto -outline-offset-2 z-50 outline-3"></div>
+							</div>
+							<div class="w-[70%] md:w-[80%] transition text-left text-50 flex items-center gap-2 group-hover/yr:text-(--primary)">
+								<span class="changelog-year-count">{group.entries.length}</span>
+								{" "}
+								<span>条更新</span>
+								<span class="changelog-arrow" style={collapsed ? "transform: rotate(-90deg)" : ""}>
+									<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+										<path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+									</svg>
+								</span>
+							</div>
+						</button>
+
+						<div class="changelog-year-content" hidden={collapsed}>
+							{group.entries.map((entry) => (
+								<div class="changelog-entry group btn-plain block! w-full rounded-lg hover:text-[initial]">
+									<div class="flex flex-row justify-start items-start h-auto py-3">
+										{/* 日期 */}
+										<div class="w-[15%] md:w-[10%] transition text-sm text-right text-50 pt-1">
+											{formatDate(entry.date)}
+										</div>
+
+										{/* 时间轴点和连线 */}
+										<div class="w-[15%] md:w-[10%] relative dash-line h-full flex items-start justify-center pt-3">
+											<div class="transition-all mx-auto w-1 h-1 rounded-sm group-hover:h-5 bg-[oklch(0.5_0.05_var(--hue))] group-hover:bg-(--primary) outline-4 z-50 outline-(--card-bg) group-hover:outline-(--btn-plain-bg-hover) group-active:outline-(--btn-plain-bg-active)"></div>
+										</div>
+
+										{/* 内容 */}
+										<div class="w-[70%] md:w-[80%] text-left flex flex-col gap-2 pr-4">
+											<div class="flex items-center gap-2 flex-wrap">
+												<h3 class="text-base font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-(--primary) transition-colors">
+													{entry.title}
+												</h3>
+												{entry.tags && entry.tags.length > 0 && (
+													<div class="flex gap-1 flex-wrap">
+														{entry.tags.map((tag) => (
+															<span class="shrink-0 inline-block text-xs font-medium px-1.5 py-0.5 rounded-sm bg-[oklch(0.95_0.025_var(--hue))] dark:bg-[oklch(0.25_0.025_var(--hue))] text-(--primary) transition-colors">
+																#{tag}
+															</span>
+														))}
+													</div>
+												)}
+											</div>
+											<p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed whitespace-pre-line">
+												{entry.content}
+											</p>
+										</div>
+									</div>
+								</div>
+							))}
+						</div>
+					</div>
+				);
+			})}
+		</changelog-panel>
+	</div>
+</MainGridLayout>
+
+<style>
+	changelog-panel {
+		display: block;
+	}
+	.changelog-arrow {
+		display: inline-flex;
+	}
+</style>
+
+<script is:inline>
+	class ChangelogPanel extends HTMLElement {
+		constructor() {
+			super();
+			if (this.dataset.initialized === "true") return;
+			this.dataset.initialized = "true";
+			this.init();
+		}
+
+		init() {
+			const blocks = Array.from(this.querySelectorAll(".changelog-year-block"));
+			for (const block of blocks) {
+				const toggle = block.querySelector(".changelog-year-toggle");
+				const content = block.querySelector(".changelog-year-content");
+				const arrow = block.querySelector(".changelog-arrow");
+				if (!toggle || !content) continue;
+
+				toggle.addEventListener("click", () => {
+					const willCollapse = !content.hidden;
+					content.hidden = willCollapse;
+					toggle.setAttribute("aria-expanded", willCollapse ? "false" : "true");
+
+					if (arrow) {
+						requestAnimationFrame(() => {
+							arrow.animate(
+								[
+									{ transform: willCollapse ? "rotate(0deg)" : "rotate(-90deg)" },
+									{ transform: willCollapse ? "rotate(-90deg)" : "rotate(0deg)" },
+								],
+								{ duration: 200, easing: "ease", fill: "forwards" },
+							);
+						});
+					}
+				});
+			}
+		}
+	}
+
+	if (!customElements.get("changelog-panel")) {
+		customElements.define("changelog-panel", ChangelogPanel);
+	}
+</script>

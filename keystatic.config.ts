@@ -288,18 +288,21 @@ export default config({
 					outdatedThreshold: fields.number({
 						label: "文章过期阈值(天)",
 					}),
-					rehypeCallouts: fields.object({
-						theme: fields.text({
-							label: "Callouts 主题",
-							description: "例如: github",
-						}),
-						enablePythonMarkdownAdmonitions: fields.checkbox({
-							label: "启用 Python Markdown Admonitions",
-							defaultValue: false,
-						}),
-					}, {
-						label: "Callouts 配置",
-					}),
+					rehypeCallouts: fields.object(
+						{
+							theme: fields.text({
+								label: "Callouts 主题",
+								description: "例如: github",
+							}),
+							enablePythonMarkdownAdmonitions: fields.checkbox({
+								label: "启用 Python Markdown Admonitions",
+								defaultValue: false,
+							}),
+						},
+						{
+							label: "Callouts 配置",
+						},
+					),
 					sharePoster: fields.checkbox({ label: "分享海报" }),
 					generateOgImages: fields.checkbox({
 						label: "OpenGraph 图片",
@@ -394,6 +397,161 @@ export default config({
 					{
 						label: "友链列表",
 						itemLabel: (props) => props.fields.title.value || "新友链",
+					},
+				),
+			},
+		}),
+
+		/** 考研数学进度 */
+		mathChapters: singleton({
+			label: "考研数学进度",
+			path: "src/config/mathChaptersData",
+			format: "json",
+			schema: {
+				chapters: fields.array(
+					fields.object({
+						id: fields.text({ label: "ID" }),
+						subject: fields.text({ label: "科目标识" }),
+						subjectLabel: fields.text({ label: "科目名称" }),
+						source: fields.text({ label: "教辅来源" }),
+						index: fields.number({ label: "序号" }),
+						title: fields.text({ label: "章节标题" }),
+						status: fields.select({
+							label: "状态",
+							options: [
+								{ label: "未开始", value: "not_started" },
+								{ label: "进行中", value: "in_progress" },
+								{ label: "已完成", value: "completed" },
+							],
+							defaultValue: "not_started",
+						}),
+						notesUrl: fields.text({
+							label: "笔记PDF路径",
+							description: "例如：/review-assets/math/极限-笔记.pdf",
+						}),
+						errorsUrl: fields.text({
+							label: "错题PDF路径",
+							description: "例如：/review-assets/math/极限-错题.pdf",
+						}),
+					}),
+					{
+						label: "章节列表",
+						itemLabel: (props) =>
+							`${props.fields.subjectLabel.value || ""} - ${props.fields.title.value || "新章节"}`,
+					},
+				),
+				stages: fields.array(
+					fields.object({
+						id: fields.text({ label: "ID" }),
+						name: fields.text({ label: "阶段名称" }),
+						active: fields.checkbox({ label: "当前阶段" }),
+					}),
+					{
+						label: "阶段",
+						itemLabel: (props) => props.fields.name.value || "新阶段",
+					},
+				),
+			},
+		}),
+
+		/** 考研408进度 */
+		cs408Chapters: singleton({
+			label: "考研408进度",
+			path: "src/config/cs408ChaptersData",
+			format: "json",
+			schema: {
+				chapters: fields.array(
+					fields.object({
+						id: fields.text({ label: "ID" }),
+						subject: fields.text({ label: "科目标识" }),
+						subjectLabel: fields.text({ label: "科目名称" }),
+						source: fields.text({ label: "教辅来源" }),
+						index: fields.number({ label: "序号" }),
+						title: fields.text({ label: "章节标题" }),
+						status: fields.select({
+							label: "章节状态",
+							options: [
+								{ label: "未开始", value: "not_started" },
+								{ label: "进行中", value: "in_progress" },
+								{ label: "已完成", value: "completed" },
+							],
+							defaultValue: "not_started",
+						}),
+						subChapters: fields.array(
+							fields.object({
+								id: fields.text({ label: "ID" }),
+								title: fields.text({ label: "小节标题" }),
+								status: fields.select({
+									label: "小节状态",
+									options: [
+										{ label: "未开始", value: "not_started" },
+										{ label: "进行中", value: "in_progress" },
+										{ label: "已完成", value: "completed" },
+									],
+									defaultValue: "not_started",
+								}),
+								notesUrl: fields.text({
+									label: "笔记PDF路径",
+									description:
+										"例如：/review-assets/cs408/数据结构-线性表-顺序表.pdf",
+								}),
+							}),
+							{
+								label: "小节列表",
+								itemLabel: (props) => props.fields.title.value || "新小节",
+							},
+						),
+					}),
+					{
+						label: "章节列表",
+						itemLabel: (props) =>
+							`${props.fields.subjectLabel.value || ""} - ${props.fields.title.value || "新章节"}`,
+					},
+				),
+				stages: fields.array(
+					fields.object({
+						id: fields.text({ label: "ID" }),
+						name: fields.text({ label: "阶段名称" }),
+						active: fields.checkbox({ label: "当前阶段" }),
+					}),
+					{
+						label: "阶段",
+						itemLabel: (props) => props.fields.name.value || "新阶段",
+					},
+				),
+			},
+		}),
+
+		/** 历史更新记录 */
+		changelog: singleton({
+			label: "历史更新记录",
+			path: "src/config/changelogData",
+			format: "json",
+			schema: {
+				entries: fields.array(
+					fields.object({
+						date: fields.date({
+							label: "更新日期",
+							validation: { isRequired: true },
+						}),
+						title: fields.text({
+							label: "更新标题",
+							validation: { isRequired: true },
+						}),
+						tags: fields.array(fields.text({ label: "标签" }), {
+							label: "标签",
+							itemLabel: (props) => props.value || "新标签",
+						}),
+						content: fields.text({
+							label: "更新内容",
+							multiline: true,
+							description: "支持换行；可使用「·」开头表示列表项",
+						}),
+					}),
+					{
+						label: "更新条目",
+						itemLabel: (props) =>
+							`${props.fields.date.value || ""} ${props.fields.title.value || "新条目"}`,
 					},
 				),
 			},

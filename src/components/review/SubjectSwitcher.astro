@@ -1,0 +1,36 @@
+---
+/**
+ * 考研备考科目切换器
+ * 在英语/数学/408三个进度页面顶部显示，方便快速切换
+ */
+interface Props {
+	/** 当前页面标识：english | math | cs408 */
+	current: string;
+}
+
+const { current } = Astro.props;
+
+const tabs = [
+	{ key: "english", name: "英语", url: "/study-progress/", icon: "material-symbols:school-outline" },
+	{ key: "math", name: "数学", url: "/math-progress/", icon: "material-symbols:functions" },
+	{ key: "cs408", name: "408", url: "/cs408-progress/", icon: "material-symbols:computer" },
+];
+---
+
+<div class="card-base p-3">
+	<div class="flex items-center gap-2 justify-center flex-wrap">
+		{tabs.map((tab) => (
+			<a
+				href={tab.url}
+				class:list={[
+					"flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-medium transition-colors",
+					tab.key === current
+						? "bg-(--primary) text-white"
+						: "bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700",
+				]}
+			>
+				<span class="text-base">{tab.name}</span>
+			</a>
+		))}
+	</div>
+</div>
