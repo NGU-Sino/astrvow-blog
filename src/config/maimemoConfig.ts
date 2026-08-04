@@ -9,7 +9,7 @@ export const maimemoConfig: MaimemoConfig = {
 	enable: true,
 	// API Token（从墨墨背单词 App 获取）
 	// 获取方式：我的 -> 更多设置 -> 实验功能 -> 开放 API
-	apiToken: import.meta.env.MAIMEMO_API_TOKEN || "",
+	apiToken: (import.meta as any).env?.MAIMEMO_API_TOKEN || "",
 	// API 基础 URL
 	apiBaseUrl: "https://open.maimemo.com/open",
 	// 考研词汇目标总量

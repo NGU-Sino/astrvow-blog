@@ -38,6 +38,8 @@ jobs:
         run: pnpm install --no-frozen-lockfile
       
       - name: Build site
+        env:
+          MAIMEMO_API_TOKEN: ${{ secrets.MAIMEMO_API_TOKEN }}
         run: pnpm run build
 
       - name: Create .nojekyll file
