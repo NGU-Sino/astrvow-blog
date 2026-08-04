@@ -1,0 +1,241 @@
+---
+import { Icon } from "astro-icon/components";
+import WidgetLayout from "@/components/common/WidgetLayout.astro";
+import { maimemoConfig } from "@/config";
+import type { WidgetComponentConfig } from "@/types/config";
+
+interface Props {
+	class?: string;
+	style?: string;
+	widgetConfig?: WidgetComponentConfig;
+}
+
+const { class: className, style, widgetConfig } = Astro.props;
+
+const showTitle = widgetConfig?.showTitle !== false;
+const isEnabled = maimemoConfig.enable;
+---
+
+{isEnabled && (
+	<WidgetLayout
+		name="考研英语进度"
+		showTitle={showTitle}
+		id="maimemo-stats"
+		class={className}
+		style={style}
+	>
+		<div id="maimemo-stats-content" class="flex flex-col gap-3">
+			<div class="flex items-center justify-center py-4">
+				<div class="text-neutral-500 dark:text-neutral-400">
+					<Icon name="material-symbols:hourglass-empty" class="text-3xl mb-2" />
+					<p class="text-sm">加载中...</p>
+				</div>
+			</div>
+		</div>
+	</WidgetLayout>
+)}
+
+{!isEnabled && (
+	<WidgetLayout
+		name="考研英语进度"
+		showTitle={showTitle}
+		id="maimemo-stats"
+		class={className}
+		style={style}
+	>
+		<div class="text-center py-4 text-neutral-500 dark:text-neutral-400">
+			<Icon name="material-symbols:info-outline" class="text-3xl mb-2" />
+			<p class="text-sm">功能未启用</p>
+		</div>
+	</WidgetLayout>
+)}
+
+<script is:inline>
+(function() {
+	// 防止重复初始化
+	if (window.__maimemoStatsInit) {
+		if (typeof window.__loadMaimemoStats === "function") {
+			window.__loadMaimemoStats();
+		}
+		return;
+	}
+	window.__maimemoStatsInit = true;
+
+	// 记忆状态配置
+	const STATUS_CONFIG = {
+		WELL_FAMILIAR: { label: "熟知", color: "#10b981" },
+		FAMILIAR: { label: "认识", color: "#3b82f6" },
+		VAGUE: { label: "模糊", color: "#f59e0b" },
+		FORGET: { label: "忘记", color: "#ef4444" },
+	};
+
+	// SVG 图标
+	const ICON_REFRESH = '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>';
+	const ICON_TIMER = '<svg class="w-4 h-4 text-blue-500" viewBox="0 0 24 24" fill="currentColor"><path d="M15 1H9v2h6V1zm-4 13h2V8h-2v6zm8.03-6.61l1.42-1.42c-.43-.51-.9-.99-1.41-1.41l-1.42 1.42C16.07 4.74 14.12 4 12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9 9-4.03 9-9c0-2.12-.74-4.07-1.97-5.61zM12 20c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>';
+	const ICON_ARROW = '<svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M6.23 20.23L8 22l10-10L8 2 6.23 3.77 14.46 12z"/></svg>';
+	const ICON_ERROR = '<svg class="w-8 h-8 mb-2 mx-auto" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>';
+	const ICON_BOOK = '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5c-1.95 0-4.05.4-5.5 1.5c-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5c.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5c1.35-.85 3.8-1.5 5.5-1.5c1.65 0 3.35.3 4.75 1.05c.1.05.15.05.25.05c.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1z"/></svg>';
+
+	function escapeHtml(str) {
+		if (!str) return "";
+		return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+	}
+
+	function formatDate(dateStr) {
+		if (!dateStr) return "";
+		const d = new Date(dateStr);
+		return `${d.getMonth() + 1}月${d.getDate()}日`;
+	}
+
+	async function loadMaimemoStats() {
+		const container = document.getElementById("maimemo-stats-content");
+		if (!container) return;
+
+		try {
+			const response = await fetch("/api/maimemo/study-progress.json");
+			if (!response.ok) throw new Error("Failed to fetch stats");
+			const result = await response.json();
+
+			if (!result.success || !result.data) {
+				throw new Error(result.error || "Invalid response");
+			}
+
+			const stats = result.data;
+			const todayFinished = stats.today_finished || 0;
+			const todayTotal = stats.today_total || 0;
+			const todayPercent = todayTotal > 0 ? Math.round((todayFinished / todayTotal) * 100) : 0;
+
+			container.innerHTML = `
+				<!-- 今日学习进度 -->
+				<div class="mb-2">
+					<div class="flex items-center justify-between mb-1.5">
+						<span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">今日进度</span>
+						<span class="text-sm font-bold text-(--primary)">${todayFinished} / ${todayTotal}</span>
+					</div>
+					<div class="w-full h-2.5 bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden">
+						<div class="h-full bg-gradient-to-r from-(--primary) to-(--primary)/70 transition-all duration-500" style="width: ${todayPercent}%"></div>
+					</div>
+				</div>
+
+				<!-- 统计数据 -->
+				<div class="grid grid-cols-2 gap-1.5 mb-2">
+					<div class="flex flex-col items-center p-2 bg-(--primary)/5 rounded-lg">
+						<div class="text-lg font-bold text-(--primary)">${stats.today_review || 0}</div>
+						<div class="text-xs text-neutral-600 dark:text-neutral-400">复习</div>
+					</div>
+					<div class="flex flex-col items-center p-2 bg-(--primary)/5 rounded-lg">
+						<div class="text-lg font-bold text-(--primary)">${stats.study_time_minutes || 0}</div>
+						<div class="text-xs text-neutral-600 dark:text-neutral-400">分钟</div>
+					</div>
+				</div>
+
+				<!-- 随机单词卡片 -->
+				<div class="border-t border-neutral-200 dark:border-neutral-700 pt-3">
+					<div class="flex items-center justify-between mb-2">
+						<span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">随机复习</span>
+						<button id="maimemo-refresh-word" class="flex items-center gap-1 text-xs text-(--primary) hover:bg-(--primary)/5 px-2 py-1 rounded transition-colors">
+							${ICON_REFRESH}
+							<span>换一个</span>
+						</button>
+					</div>
+					<div id="maimemo-random-word" class="bg-neutral-100 dark:bg-neutral-800 rounded-lg p-3 min-h-[100px] flex items-center justify-center">
+						<div class="text-neutral-500 dark:text-neutral-400 text-sm">加载单词中...</div>
+					</div>
+				</div>
+
+				<!-- 查看详情链接 -->
+				<a href="/study-progress/" class="flex items-center justify-center gap-1 mt-2 py-2 text-sm text-(--primary) hover:bg-(--primary)/5 rounded-lg transition-colors">
+					<span>查看详细进度</span>
+					${ICON_ARROW}
+				</a>
+			`;
+
+			// 加载随机单词
+			loadRandomWord();
+
+			// 绑定换一个按钮
+			const refreshBtn = document.getElementById("maimemo-refresh-word");
+			if (refreshBtn) {
+				refreshBtn.addEventListener("click", loadRandomWord);
+			}
+		} catch (error) {
+			console.error("Failed to load maimemo stats:", error);
+			container.innerHTML = `
+				<div class="text-center py-4 text-neutral-500 dark:text-neutral-400">
+					${ICON_ERROR}
+					<p class="text-sm">加载失败</p>
+					<p class="text-xs mt-1">${escapeHtml(error instanceof Error ? error.message : "请稍后重试")}</p>
+				</div>
+			`;
+		}
+	}
+
+	async function loadRandomWord() {
+		const container = document.getElementById("maimemo-random-word");
+		if (!container) return;
+
+		// 加载中状态
+		container.innerHTML = '<div class="text-neutral-500 dark:text-neutral-400 text-sm">加载中...</div>';
+
+		try {
+			const response = await fetch("/api/maimemo/random-word.json");
+			if (!response.ok) throw new Error("Failed to fetch word");
+			const result = await response.json();
+
+			if (!result.success || !result.data) {
+				throw new Error(result.error || "No word available");
+			}
+
+			const word = result.data;
+			const status = STATUS_CONFIG[word.last_response] || { label: "未学", color: "#9ca3af" };
+			const nextReview = word.next_study_date ? formatDate(word.next_study_date) : "";
+			const dictUrl = `https://dict.youdao.com/result?word=${encodeURIComponent(word.spelling)}&lang=en`;
+
+			container.innerHTML = `
+				<div class="w-full">
+					<div class="flex items-center justify-between mb-2">
+						<span class="text-xl font-bold text-neutral-900 dark:text-neutral-100 break-all">
+							${escapeHtml(word.spelling)}
+						</span>
+						<span
+							class="text-xs px-2 py-0.5 rounded-full text-white font-medium flex-shrink-0 ml-2"
+							style="background: ${status.color}"
+						>
+							${status.label}
+						</span>
+					</div>
+					<div class="flex items-center justify-between text-xs text-neutral-500 dark:text-neutral-400">
+						<span>已学 ${word.study_count || 0} 次</span>
+						${nextReview ? `<span>下次复习: ${nextReview}</span>` : ""}
+					</div>
+					<a href="${dictUrl}" target="_blank" rel="noopener noreferrer"
+						class="flex items-center justify-center gap-1 mt-2 py-1.5 text-xs text-(--primary) hover:bg-(--primary)/5 rounded transition-colors"
+					>
+						${ICON_BOOK}
+						<span>查释义</span>
+					</a>
+				</div>
+			`;
+		} catch (error) {
+			console.error("Failed to load random word:", error);
+			container.innerHTML = `
+				<div class="text-neutral-500 dark:text-neutral-400 text-sm text-center">
+					<p>单词加载失败</p>
+					<button onclick="loadRandomWord()" class="text-(--primary) text-xs mt-1 hover:underline">重试</button>
+				</div>
+			`;
+		}
+	}
+
+	// 暴露到全局，供 Swup 导航和 onclick 调用
+	window.__loadMaimemoStats = loadMaimemoStats;
+	window.loadRandomWord = loadRandomWord;
+
+	// Swup 页面切换后重新加载
+	document.addEventListener("swup:contentReplaced", () => window.__loadMaimemoStats());
+	document.addEventListener("astro:page-load", () => window.__loadMaimemoStats());
+
+	// 首次加载
+	loadMaimemoStats();
+})();
+</script>

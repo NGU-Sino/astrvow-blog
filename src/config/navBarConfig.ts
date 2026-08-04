@@ -63,6 +63,17 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		],
 	});
 
+	// 考研备考及其子菜单
+	links.push({
+		name: "考研备考",
+		url: "#",
+		icon: "material-symbols:school",
+		children: [
+			// 考研英语进度
+			LinkPresets.StudyProgress,
+		],
+	});
+
 	// 关于及其子菜单
 	links.push({
 		name: "关于",
@@ -206,7 +217,13 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		url: "/keystatic/",
 		icon: "material-symbols:settings",
 		pageKey: "sitesettings",
-	}
+	},
+	StudyProgress: {
+		name: "考研英语进度",
+		url: "/study-progress/",
+		icon: "material-symbols:school",
+		pageKey: "study-progress",
+	},
 };
 
 export const navBarConfig: NavBarConfig = getDynamicNavBarConfig();

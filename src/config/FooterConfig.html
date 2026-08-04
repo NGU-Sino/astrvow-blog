@@ -16,7 +16,8 @@
   </span>
 </div>
 
-<script>
+<script data-swup-ignore-script>
+(function() {
   // 改成你的 widget URL，格式：https://v6-widget.51.la/v6/{ck}/quote.js
   const WIDGET_URL = "https://v6-widget.51.la/v6/3Qeu7i7nc3VVDBd6/quote.js";
 
@@ -49,6 +50,7 @@
     .catch(() => {
       document.getElementById("la-stats").style.display = "none";
     });
+})();
 </script>
 
 <style>

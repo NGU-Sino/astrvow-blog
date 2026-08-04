@@ -1,0 +1,145 @@
+---
+/**
+ * 每日单词卡片组件
+ * 在首页展示今日学习统计
+ */
+import { Icon } from "astro-icon/components";
+import { maimemoConfig } from "@/config";
+
+interface Props {
+	class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const isEnabled = maimemoConfig.enable;
+---
+
+{isEnabled && (
+	<div class:list={["daily-word-card", "card-base", "p-6", className]}>
+		<div class="flex items-center justify-between mb-4">
+			<div class="flex items-center gap-2">
+				<Icon name="material-symbols:book-2-outline" class="text-2xl text-(--primary)" />
+				<h3 class="text-lg font-bold text-neutral-900 dark:text-neutral-100">
+					今日学习
+				</h3>
+			</div>
+			<a href="/study-progress" class="text-sm text-(--primary) hover:underline">
+				查看更多
+			</a>
+		</div>
+
+		<div id="daily-word-content" class="min-h-[200px] flex items-center justify-center">
+			<div class="text-neutral-500 dark:text-neutral-400">
+				<Icon name="material-symbols:hourglass-empty" class="text-4xl mb-2" />
+				<p>加载中...</p>
+			</div>
+		</div>
+	</div>
+)}
+
+{!isEnabled && (
+	<div class:list={["daily-word-card", "card-base", "p-6", "text-center", "text-neutral-500", className]}>
+		<Icon name="material-symbols:info-outline" class="text-4xl mb-2" />
+		<p>墨墨背单词功能未启用</p>
+		<p class="text-sm mt-2">请在配置中设置 MAIMEMO_API_TOKEN</p>
+	</div>
+)}
+
+<script>
+	async function loadDailyWord() {
+		const container = document.getElementById("daily-word-content");
+		if (!container) return;
+
+		try {
+			const response = await fetch("/api/maimemo/study-progress.json");
+			if (!response.ok) {
+				throw new Error("Failed to fetch study progress");
+			}
+			const result = await response.json();
+
+			if (!result.success || !result.data) {
+				throw new Error(result.error || "Invalid response");
+			}
+
+			const stats = result.data;
+			const todayPercent = stats.today_total > 0
+				? Math.round((stats.today_finished / stats.today_total) * 100)
+				: 0;
+
+			container.innerHTML = `
+				<div class="w-full">
+					<!-- 今日完成进度 -->
+					<div class="mb-4">
+						<div class="flex items-center justify-between mb-2">
+							<span class="text-sm text-neutral-600 dark:text-neutral-400">今日完成</span>
+							<span class="text-lg font-bold text-(--primary)">
+								${stats.today_finished} / ${stats.today_total}
+							</span>
+						</div>
+						<div class="w-full h-3 bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden">
+							<div
+								class="h-full bg-gradient-to-r from-(--primary) to-(--primary)/70 transition-all duration-500"
+								style="width: ${todayPercent}%"
+							></div>
+						</div>
+					</div>
+
+					<!-- 统计数据 -->
+					<div class="grid grid-cols-2 gap-4 mb-4">
+						<div class="text-center p-4 bg-(--primary)/10 rounded-lg">
+							<div class="text-3xl font-bold text-(--primary)">${stats.today_new || 0}</div>
+							<div class="text-sm text-neutral-600 dark:text-neutral-400 mt-1">今日新学</div>
+						</div>
+						<div class="text-center p-4 bg-(--primary)/10 rounded-lg">
+							<div class="text-3xl font-bold text-(--primary)">${stats.today_review || 0}</div>
+							<div class="text-sm text-neutral-600 dark:text-neutral-400 mt-1">今日复习</div>
+						</div>
+					</div>
+
+					<!-- 学习时长和总量 -->
+					<div class="flex items-center justify-between text-sm text-neutral-600 dark:text-neutral-400 pt-2 border-t border-neutral-200 dark:border-neutral-700">
+						<div class="flex items-center gap-1">
+							<Icon name="material-symbols:timer-outline" class="text-base text-blue-500" />
+							<span>${stats.study_time_minutes || 0} 分钟</span>
+						</div>
+						<div class="flex items-center gap-1">
+							<Icon name="material-symbols:menu-book-outline" class="text-base text-green-500" />
+							<span>累计 ${stats.total_planned || 0} 词</span>
+						</div>
+					</div>
+				</div>
+			`;
+		} catch (error) {
+			console.error("Failed to load daily word:", error);
+			container.innerHTML = `
+				<div class="text-center text-neutral-500 dark:text-neutral-400">
+					<Icon name="material-symbols:error-outline" class="text-4xl mb-2" />
+					<p>加载失败</p>
+					<p class="text-xs mt-1">${error instanceof Error ? error.message : "请稍后重试"}</p>
+				</div>
+			`;
+		}
+	}
+
+	// 页面加载时获取数据
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", loadDailyWord);
+	} else {
+		loadDailyWord();
+	}
+
+	// Swup 页面切换后重新加载
+	document.addEventListener("swup:contentReplaced", loadDailyWord);
+</script>
+
+<style>
+	.daily-word-card {
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
+
+	.daily-word-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
+	}
+</style>

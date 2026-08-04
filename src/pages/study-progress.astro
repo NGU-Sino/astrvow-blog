@@ -1,0 +1,385 @@
+---
+/**
+ * 考研英语进度看板页面
+ * 展示墨墨背单词学习进度、记忆状态、复习计划等
+ */
+import { Icon } from "astro-icon/components";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import { maimemoConfig } from "@/config";
+
+const pageTitle = "考研英语进度";
+const pageDescription = "记录我的考研词汇学习进度";
+
+const isEnabled = maimemoConfig.enable;
+---
+
+<MainGridLayout title={pageTitle} description={pageDescription}>
+	<div class="flex flex-col gap-6 w-full">
+		{!isEnabled && (
+			<div class="card-base p-8 text-center">
+				<Icon name="material-symbols:info-outline" class="text-5xl text-neutral-400 mb-4" />
+				<h2 class="text-xl font-bold text-neutral-700 dark:text-neutral-300 mb-2">
+					功能未启用
+				</h2>
+				<p class="text-neutral-500 dark:text-neutral-400">
+					请在配置中设置 MAIMEMO_API_TOKEN 以启用墨墨背单词功能
+				</p>
+			</div>
+		)}
+
+		{isEnabled && (
+			<>
+				<!-- 页面标题 -->
+				<div class="card-base p-6">
+					<div class="flex items-center gap-3 mb-4">
+						<Icon name="material-symbols:school-outline" class="text-3xl text-(--primary)" />
+						<h1 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
+							{pageTitle}
+						</h1>
+					</div>
+					<p class="text-neutral-600 dark:text-neutral-400">
+						{pageDescription}
+					</p>
+				</div>
+
+				<!-- 加载中状态 -->
+				<div id="loading-state" class="card-base p-8 text-center">
+					<div class="inline-flex items-center gap-3">
+						<Icon name="material-symbols:hourglass-empty" class="text-4xl text-(--primary) animate-spin" />
+						<span class="text-lg text-neutral-600 dark:text-neutral-400">
+							正在加载学习数据...
+						</span>
+					</div>
+				</div>
+
+				<!-- 错误状态 -->
+				<div id="error-state" class="card-base p-8 text-center hidden">
+					<Icon name="material-symbols:error-outline" class="text-5xl text-red-400 mb-4" />
+					<h2 class="text-xl font-bold text-neutral-700 dark:text-neutral-300 mb-2">
+						加载失败
+					</h2>
+					<p id="error-message" class="text-neutral-500 dark:text-neutral-400 mb-4">
+						无法获取学习数据，请检查 API 配置或稍后重试
+					</p>
+					<button
+						id="retry-button"
+						class="px-6 py-2 bg-(--primary) text-white rounded-lg hover:opacity-90 transition-opacity"
+					>
+						重新加载
+					</button>
+				</div>
+
+				<!-- 主要内容 -->
+				<div id="main-content" class="hidden flex flex-col gap-6">
+					<!-- 核心数据卡片 -->
+					<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+						<div class="card-base p-5 text-center">
+							<Icon name="material-symbols:menu-book-outline" class="text-3xl text-(--primary) mb-2" />
+							<div id="total-words" class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+								0
+							</div>
+							<div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">
+								累计学习单词
+							</div>
+						</div>
+						<div class="card-base p-5 text-center">
+							<Icon name="material-symbols:refresh" class="text-3xl text-blue-500 mb-2" />
+							<div id="today-review" class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+								0
+							</div>
+							<div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">
+								今日复习
+							</div>
+						</div>
+						<div class="card-base p-5 text-center">
+							<Icon name="material-symbols:timer-outline" class="text-3xl text-orange-500 mb-2" />
+							<div id="study-time" class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+								0
+							</div>
+							<div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">
+								今日学习（分钟）
+							</div>
+						</div>
+					</div>
+
+					<!-- 今日进度 -->
+					<div class="card-base p-6">
+						<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-4 flex items-center gap-2">
+							<Icon name="material-symbols:today" class="text-2xl text-(--primary)" />
+							今日学习进度
+						</h2>
+						<div class="mb-3">
+							<div class="flex items-center justify-between mb-2">
+								<span class="text-sm text-neutral-600 dark:text-neutral-400">
+									已完成
+								</span>
+								<span id="today-progress-text" class="text-lg font-bold text-(--primary)">
+									0 / 0
+								</span>
+							</div>
+							<div class="w-full h-4 bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden">
+								<div
+									id="today-progress-bar"
+									class="h-full bg-gradient-to-r from-(--primary) to-(--primary)/70 transition-all duration-1000 ease-out"
+									style="width: 0%"
+								></div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 未来 7 天复习计划 -->
+				<div class="card-base p-6">
+					<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-4 flex items-center gap-2">
+						<Icon name="material-symbols:calendar-month-outline" class="text-2xl text-(--primary)" />
+						未来 7 天复习计划
+					</h2>
+					<div id="upcoming-reviews" class="grid grid-cols-7 gap-2">
+						<!-- 动态填充 -->
+					</div>
+				</div>
+
+					<!-- 今日记忆单词 -->
+					<div class="card-base p-6">
+						<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-4 flex items-center gap-2">
+							<Icon name="material-symbols:today-outline" class="text-2xl text-(--primary)" />
+							今日记忆单词
+							<span id="today-review-count" class="text-sm font-normal text-neutral-500"></span>
+						</h2>
+						<div id="today-review-words" class="flex flex-wrap gap-2">
+							<!-- 动态填充 -->
+						</div>
+					</div>
+
+					<!-- 记忆风险单词 -->
+				<div class="card-base p-6">
+					<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-4 flex items-center gap-2">
+						<Icon name="material-symbols:warning-outline" class="text-2xl text-orange-500" />
+						记忆风险单词
+					</h2>
+					<p class="text-xs text-neutral-400 mb-3">未来 7 天内要复习的忘记和模糊状态单词</p>
+					<div id="risk-words" class="flex flex-wrap gap-2">
+						<!-- 动态填充 -->
+					</div>
+				</div>
+				</div>
+			</>
+		)}
+	</div>
+</MainGridLayout>
+
+<script is:inline>
+(function() {
+	// 记忆状态配置
+	const STATUS_CONFIG = {
+		WELL_FAMILIAR: { label: "熟知", color: "#10b981" },
+		FAMILIAR: { label: "认识", color: "#3b82f6" },
+		VAGUE: { label: "模糊", color: "#f59e0b" },
+		FORGET: { label: "忘记", color: "#ef4444" },
+	};
+
+	const WEEKDAY_NAMES = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+
+	function escapeHtml(str) {
+		if (!str) return "";
+		return String(str)
+			.replace(/&/g, "&amp;")
+			.replace(/</g, "&lt;")
+			.replace(/>/g, "&gt;")
+			.replace(/"/g, "&quot;")
+			.replace(/'/g, "&#039;");
+	}
+
+	function getDictUrl(spelling) {
+		return `https://dict.youdao.com/result?word=${encodeURIComponent(spelling)}&lang=en`;
+	}
+
+	function makeWordTag(spelling, status, extraInfo) {
+		const config = STATUS_CONFIG[status] || { color: "#9ca3af", label: "未学" };
+		return `
+			<a href="${getDictUrl(spelling)}" target="_blank" rel="noopener noreferrer"
+				class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 border-l-2 hover:scale-105 transition-transform"
+				style="border-color: ${config.color}"
+				title="${escapeHtml(config.label)}${extraInfo ? ' | ' + escapeHtml(extraInfo) : ''}"
+			>
+				<span class="text-sm font-medium text-neutral-800 dark:text-neutral-200">
+					${escapeHtml(spelling)}
+				</span>
+			</a>
+		`;
+	}
+
+	async function loadStudyProgress() {
+		const loadingState = document.getElementById("loading-state");
+		const errorState = document.getElementById("error-state");
+		const errorMessage = document.getElementById("error-message");
+		const mainContent = document.getElementById("main-content");
+
+		if (!loadingState || !errorState || !mainContent) return;
+
+		// 重置状态：显示加载中，隐藏错误和主内容
+		errorState.classList.add("hidden");
+		mainContent.classList.add("hidden");
+		loadingState.classList.remove("hidden");
+
+		try {
+			const response = await fetch("/api/maimemo/study-progress.json");
+			if (!response.ok) {
+				throw new Error("Failed to fetch data");
+			}
+
+			const result = await response.json();
+
+			if (!result.success || !result.data) {
+				throw new Error(result.error || "Invalid response");
+			}
+
+			const stats = result.data;
+
+			// 更新核心数据
+			document.getElementById("total-words").textContent = (stats.total_planned || 0).toLocaleString();
+			document.getElementById("today-review").textContent = (stats.today_review || 0).toString();
+			document.getElementById("study-time").textContent = (stats.study_time_minutes || 0).toString();
+
+			// 更新今日进度
+			const todayFinished = stats.today_finished || 0;
+			const todayTotal = stats.today_total || 0;
+			const todayPercent = todayTotal > 0 ? Math.round((todayFinished / todayTotal) * 100) : 0;
+
+			document.getElementById("today-progress-text").textContent = `${todayFinished} / ${todayTotal}`;
+			setTimeout(() => {
+				document.getElementById("today-progress-bar").style.width = `${todayPercent}%`;
+			}, 100);
+
+			// 更新未来 7 天复习计划
+			renderUpcomingReviews(stats.upcoming_reviews || []);
+
+			// 更新今日记忆单词
+			renderTodayReviewWords(stats.today_review_words || []);
+
+			// 更新记忆风险单词
+			renderRiskWords(stats.risk_words || []);
+
+			// 切换显示状态
+			loadingState.classList.add("hidden");
+			mainContent.classList.remove("hidden");
+		} catch (error) {
+			console.error("Failed to load study progress:", error);
+			loadingState.classList.add("hidden");
+			if (errorMessage) {
+				errorMessage.textContent = error instanceof Error
+					? error.message
+					: "无法获取学习数据，请检查 API 配置或稍后重试";
+			}
+			errorState.classList.remove("hidden");
+		}
+	}
+
+	function renderUpcomingReviews(reviews) {
+		const container = document.getElementById("upcoming-reviews");
+		if (!container) return;
+
+		if (!reviews || reviews.length === 0) {
+			container.innerHTML = '<p class="text-sm text-neutral-500 col-span-7 text-center py-4">暂无数据</p>';
+			return;
+		}
+
+		const maxCount = Math.max(...reviews.map(r => r.count), 1);
+
+		container.innerHTML = reviews.map((r, i) => {
+			const date = new Date(r.date + "T00:00:00+08:00");
+			const weekday = WEEKDAY_NAMES[date.getDay()];
+			const dayNum = date.getDate();
+			const month = date.getMonth() + 1;
+			const heightPercent = Math.max(10, (r.count / maxCount) * 100);
+			const isTomorrow = i === 0;
+
+			return `
+				<div class="flex flex-col items-center gap-1">
+					<span class="text-xs text-neutral-500 dark:text-neutral-400">${weekday}</span>
+					<span class="text-xs font-bold ${isTomorrow ? 'text-(--primary)' : 'text-neutral-700 dark:text-neutral-300'}">
+						${month}/${dayNum}
+					</span>
+					<div class="w-full h-20 bg-neutral-200 dark:bg-neutral-700 rounded-lg overflow-hidden flex items-end relative">
+						<div
+							class="w-full rounded-lg transition-all duration-1000 ease-out"
+							style="height: ${heightPercent}%; background: ${isTomorrow ? 'var(--primary)' : 'color-mix(in oklch, var(--primary) 60%, transparent)'}"
+						></div>
+					</div>
+					<span class="text-sm font-bold ${isTomorrow ? 'text-(--primary)' : 'text-neutral-700 dark:text-neutral-300'}">
+						${r.count}
+					</span>
+				</div>
+			`;
+		}).join("");
+	}
+
+	function renderTodayReviewWords(words) {
+		const container = document.getElementById("today-review-words");
+		const countEl = document.getElementById("today-review-count");
+		if (!container) return;
+
+		if (countEl) {
+			countEl.textContent = words.length > 0 ? `（${words.length} 个）` : "";
+		}
+
+		if (!words || words.length === 0) {
+			container.innerHTML = '<p class="text-sm text-neutral-500 text-center py-4 w-full">今日没有待复习单词</p>';
+			return;
+		}
+
+		container.innerHTML = words.map(w => makeWordTag(w.spelling, w.last_response)).join("");
+	}
+
+	function renderRiskWords(words) {
+		const container = document.getElementById("risk-words");
+		if (!container) return;
+
+		if (!words || words.length === 0) {
+			container.innerHTML = '<p class="text-sm text-neutral-500 text-center py-4 w-full">暂无风险单词</p>';
+			return;
+		}
+
+		container.innerHTML = words.map(w => 
+			makeWordTag(w.spelling, w.last_response, `已学 ${w.study_count} 次`)
+		).join("");
+	}
+
+	// 每次脚本执行时更新全局函数引用（确保引用最新闭包）
+	window.__studyProgressLoad = loadStudyProgress;
+
+	// 只注册一次 astro:page-load 监听器，用于 Swup 导航后重新加载
+	if (!window.__studyProgressListenerAdded) {
+		window.__studyProgressListenerAdded = true;
+		document.addEventListener("astro:page-load", () => {
+			// 仅在 study-progress 页面执行（检查关键 DOM 元素是否存在）
+			if (document.getElementById("loading-state")) {
+				window.__studyProgressLoad();
+			}
+		});
+	}
+
+	// 重试按钮（事件委托，只注册一次）
+	if (!window.__studyProgressRetryAdded) {
+		window.__studyProgressRetryAdded = true;
+		document.addEventListener("click", (e) => {
+			const target = e.target;
+			if (target && target.id === "retry-button") {
+				window.__studyProgressLoad();
+			}
+		});
+	}
+
+	// 首次加载（直接调用）
+	loadStudyProgress();
+})();
+</script>
+
+<style>
+	@keyframes spin {
+		from { transform: rotate(0deg); }
+		to { transform: rotate(360deg); }
+	}
+	.animate-spin {
+		animation: spin 1s linear infinite;
+	}
+</style>
