@@ -21,6 +21,83 @@
       ],
       "weight": 0,
       "enabled": true
+    },
+    {
+      "title": "夏夜流萤",
+      "imgurl": "https://weavatar.com/avatar/d252655d40d6874417a720bad0a6c5f77f8f6a1fd2f882f8f338402dc37e4190?s=640",
+      "desc": "飞萤之火自无梦的长夜亮起，绽放在终竟的明天。",
+      "siteurl": "https://blog.cuteleaf.cn",
+      "tags": [
+        "Blog"
+      ],
+      "weight": 0,
+      "enabled": true
+    },
+    {
+      "title": "MmzMing的知识库",
+      "imgurl": "https://i.stardots.io/784774835/StarDots-2026052116374135506.jpg",
+      "desc": "哈基米，南北绿豆",
+      "siteurl": "https://tblog.mmzhiku.xyz",
+      "tags": [
+        "Blog"
+      ],
+      "weight": 0,
+      "enabled": true
+    },
+    {
+      "title": "团子和蛋糕",
+      "imgurl": "https://blog.tsh520.cn/assets/ziyuan/tx.webp",
+      "desc": "如果你喜欢那么欢迎来到我的世界！",
+      "siteurl": "https://blog.tsh520.cn",
+      "tags": [
+        "Blog"
+      ],
+      "weight": 0,
+      "enabled": true
+    },
+    {
+      "title": "Olinl Blog",
+      "imgurl": "https://blog.olinl.com/assets/images/avatar.webp",
+      "desc": "分享、实践、学习",
+      "siteurl": "https://blog.olinl.com",
+      "tags": [
+        "Blog"
+      ],
+      "weight": 0,
+      "enabled": true
+    },
+    {
+      "title": "星遐蝶梦",
+      "imgurl": "https://blog.casto.top/assets/images/avatar.png",
+      "desc": "星穹漫遐，蝶携清梦。",
+      "siteurl": "https://blog.casto.top",
+      "tags": [
+        "Blog"
+      ],
+      "weight": 0,
+      "enabled": true
+    },
+    {
+      "title": "versus0",
+      "imgurl": "https://img.542000.xyz/file/friend_avatar/1778931720838_f167cb95af9d881f4378b92b3e181d89_4647054993754934443.jpg",
+      "desc": "技术+算法blog",
+      "siteurl": "https://blog.542000.xyz",
+      "tags": [
+        "Blog"
+      ],
+      "weight": 0,
+      "enabled": true
+    },
+    {
+      "title": "年华",
+      "imgurl": "https://q1.qlogo.cn/g?b=qq&nk=1323860289&s=640",
+      "desc": "分享生活和技术。",
+      "siteurl": "https://blog.amamo.top",
+      "tags": [
+        "Blog"
+      ],
+      "weight": 0,
+      "enabled": true
     }
   ]
 }
