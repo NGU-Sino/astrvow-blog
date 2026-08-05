@@ -1,6 +1,4 @@
 {
-  "public:gallery/firefly-2026/cover.avif": "7588a28a8f989e8d88",
-  "public:gallery/firefly-2026/1.avif": "c8bca9dde6d2babfb5",
   "src:assets/images/DesktopWallpaper/5.png": "acd8d07f6156714e3c",
   "src:assets/images/DesktopWallpaper/4.png": "d5ead3cbd0a19ab284",
   "src:assets/images/DesktopWallpaper/3.png": "bcd3b6bde3c8d0d497",
@@ -12,5 +10,13 @@
   "public:assets/images/sponsor/WeChat.jpg": "a4a4a4a9aaa9a5a8a5",
   "public:assets/images/sponsor/alipay.jpg": "888889a0a0a0a3a2a2",
   "src:assets/images/logo.png": "e4ded7e4dfd7edddd4",
-  "src:content/posts/guide/cover.png": "e4ded7e4dfd7edddd4"
+  "src:content/posts/guide/cover.png": "e4ded7e4dfd7edddd4",
+  "src:content/posts/ugc_liyueqiannian/cover.png": "9e8755978259cbb279",
+  "public:assets/images/sponsor/avatar/1.jpg": "2f495937394b7f8a9f",
+  "public:assets/images/Blogs/ugc_liyueqiannian/ranking.png": "919abc8e93b0bcc4f4",
+  "public:assets/images/Blogs/ugc_liyueqiannian/promotion4.png": "1b1b251a1a231b2654",
+  "public:assets/images/Blogs/ugc_liyueqiannian/promotion3.jpg": "3d6b7f3d6d78436654",
+  "public:assets/images/Blogs/ugc_liyueqiannian/promotion2.jpg": "6480987f9096827d78",
+  "public:assets/images/Blogs/ugc_liyueqiannian/promotion1.png": "588daf5897b8809994",
+  "public:assets/images/Blogs/ugc_liyueqiannian/heat.png": "8888959ea0aaa9adc3"
 }
