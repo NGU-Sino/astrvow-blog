@@ -231,9 +231,9 @@ const isEnabled = maimemoConfig.enable;
 
 		try {
 			const response = await fetch("/api/maimemo/study-progress.json");
-			if (!response.ok) {
-				throw new Error("Failed to fetch data");
-			}
+		if (!response.ok) {
+			throw new Error("Failed to fetch data");
+		}
 
 			const result = await response.json();
 

@@ -1,6 +1,35 @@
 import type { APIRoute } from "astro";
 import { maimemoConfig } from "@/config";
 
+// === 服务端内存缓存（5 分钟 TTL）===
+// 目的：控制对墨墨 API 的调用频率，避免触发限流
+// 注意：仅当前 Node 进程有效，PM2 重启或多实例时缓存独立
+// 修复历史：原先用 Cache-Control: public, max-age=300 让 Nginx 缓存，
+// 但宝塔面板的 Nginx proxy_cache 配置异常导致响应被锁死 14 小时不刷新。
+// 改为内存缓存后，Nginx 不再缓存（Cache-Control: no-store），缓存逻辑完全在代码内可控。
+const CACHE_TTL_MS = 5 * 60 * 1000;
+type CachedEntry = { body: unknown; ts: number };
+let cachedEntry: CachedEntry | null = null;
+
+function getCached(): CachedEntry | null {
+	if (!cachedEntry) return null;
+	if (Date.now() - cachedEntry.ts > CACHE_TTL_MS) return null;
+	return cachedEntry;
+}
+
+function setCached(body: unknown) {
+	cachedEntry = { body, ts: Date.now() };
+}
+
+const NO_STORE_HEADERS = {
+	"Content-Type": "application/json",
+	// 禁止任何中间层缓存：Nginx、CDN、浏览器都不缓存
+	// 缓存由本进程内存管理（5 分钟 TTL）
+	"Cache-Control": "no-store, max-age=0",
+	"Surrogate-Control": "no-store",
+	Pragma: "no-cache",
+} as const;
+
 export const GET: APIRoute = async () => {
 	if (!maimemoConfig.enable || !maimemoConfig.apiToken) {
 		return new Response(
@@ -11,6 +40,18 @@ export const GET: APIRoute = async () => {
 			{
 				status: 400,
 				headers: { "Content-Type": "application/json" },
+			}
+		);
+	}
+
+	// 1. 命中内存缓存直接返回（不调用墨墨 API）
+	const cached = getCached();
+	if (cached) {
+		return new Response(
+			JSON.stringify({ success: true, data: cached.body }),
+			{
+				status: 200,
+				headers: { ...NO_STORE_HEADERS, "X-Cache": "HIT" },
 			}
 		);
 	}
@@ -123,31 +164,46 @@ export const GET: APIRoute = async () => {
 		const studyTimeMs = progress.study_time || 0;
 		const studyTimeMinutes = Math.round(studyTimeMs / 60000);
 
+		const data = {
+			today_finished: todayFinished,
+			today_total: todayTotal,
+			today_new: todayNewCount,
+			today_review: todayReviewCount,
+			study_time_ms: studyTimeMs,
+			study_time_minutes: studyTimeMinutes,
+			total_planned: totalPlanned,
+			upcoming_reviews: upcomingReviews,
+			today_review_words: todayReviewWords,
+			risk_words: riskWords,
+		};
+
+		// 2. 写入内存缓存
+		setCached(data);
+
 		return new Response(
-			JSON.stringify({
-				success: true,
-				data: {
-					today_finished: todayFinished,
-					today_total: todayTotal,
-					today_new: todayNewCount,
-					today_review: todayReviewCount,
-					study_time_ms: studyTimeMs,
-					study_time_minutes: studyTimeMinutes,
-					total_planned: totalPlanned,
-					upcoming_reviews: upcomingReviews,
-					today_review_words: todayReviewWords,
-					risk_words: riskWords,
-				},
-			}),
+			JSON.stringify({ success: true, data }),
 			{
 				status: 200,
-				headers: {
-					"Content-Type": "application/json",
-					"Cache-Control": "public, max-age=300",
-				},
+				headers: { ...NO_STORE_HEADERS, "X-Cache": "MISS" },
 			}
 		);
 	} catch (error) {
+		// 3. 错误时若有未过期旧缓存，返回 stale 数据保证页面可用
+		const stale = cachedEntry;
+		if (stale) {
+			return new Response(
+				JSON.stringify({ success: true, data: stale.body }),
+				{
+					status: 200,
+					headers: {
+						...NO_STORE_HEADERS,
+						"X-Cache": "STALE",
+						"X-Error":
+							error instanceof Error ? error.message : "unknown",
+					},
+				}
+			);
+		}
 		return new Response(
 			JSON.stringify({
 				success: false,
