@@ -75,165 +75,165 @@
     {
       "id": "cs408-co-01", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 1, "title": "计算机系统概述", "status": "completed",
       "subChapters": [
-        { "id": "cs408-co-01-01", "title": "计算机发展历程*", "status": "completed" },
-        { "id": "cs408-co-01-02", "title": "计算机系统层次结构", "status": "completed" },
-        { "id": "cs408-co-01-03", "title": "计算机的性能指标", "status": "completed" }
+        { "id": "cs408-co-01-01", "title": "计算机发展历程*", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/01-01-计算机发展历程.pdf" },
+        { "id": "cs408-co-01-02", "title": "计算机系统层次结构", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/01-02-计算机系统层次结构.pdf" },
+        { "id": "cs408-co-01-03", "title": "计算机的性能指标", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/01-03-计算机的性能指标.pdf" }
       ]
     },
     {
       "id": "cs408-co-02", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 2, "title": "数据的表示和运算", "status": "completed",
       "subChapters": [
-        { "id": "cs408-co-02-01", "title": "数制与编码", "status": "completed" },
-        { "id": "cs408-co-02-02", "title": "运算方法和运算电路", "status": "completed" },
-        { "id": "cs408-co-02-03", "title": "浮点数的表示与运算", "status": "completed" }
+        { "id": "cs408-co-02-01", "title": "数制与编码", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/02-01-数制与编码.pdf" },
+        { "id": "cs408-co-02-02", "title": "运算方法和运算电路", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/02-02-运算方法和运算电路.pdf" },
+        { "id": "cs408-co-02-03", "title": "浮点数的表示与运算", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/02-03-浮点数的表示与运算.pdf" }
       ]
     },
     {
       "id": "cs408-co-03", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 3, "title": "存储系统", "status": "in_progress",
       "subChapters": [
-        { "id": "cs408-co-03-01", "title": "存储器概述", "status": "completed" },
-        { "id": "cs408-co-03-02", "title": "主存储器", "status": "completed" },
-        { "id": "cs408-co-03-03", "title": "主存储器与CPU的连接", "status": "completed" },
-        { "id": "cs408-co-03-04", "title": "外部存储器", "status": "completed" },
-        { "id": "cs408-co-03-05", "title": "高速缓冲存储器", "status": "completed" },
+        { "id": "cs408-co-03-01", "title": "存储器概述", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/03-01-存储器概述.pdf" },
+        { "id": "cs408-co-03-02", "title": "主存储器", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/03-02-主存储器.pdf" },
+        { "id": "cs408-co-03-03", "title": "主存储器与CPU的连接", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/03-03-主存储器与CPU的连接.pdf" },
+        { "id": "cs408-co-03-04", "title": "外部存储器", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/03-04-外部存储器.pdf" },
+        { "id": "cs408-co-03-05", "title": "高速缓冲存储器", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/03-05-高速缓冲存储器.pdf" },
         { "id": "cs408-co-03-06", "title": "虚拟存储器", "status": "not_started" }
       ]
     },
     {
       "id": "cs408-co-04", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 4, "title": "指令系统", "status": "completed",
       "subChapters": [
-        { "id": "cs408-co-04-01", "title": "指令系统", "status": "completed" },
-        { "id": "cs408-co-04-02", "title": "寻址方式", "status": "completed" },
-        { "id": "cs408-co-04-03", "title": "程序的机器级代码表示", "status": "completed" },
-        { "id": "cs408-co-04-04", "title": "CISC和RISC的基本概念", "status": "completed" }
+        { "id": "cs408-co-04-01", "title": "指令系统", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/04-01-指令系统.pdf" },
+        { "id": "cs408-co-04-02", "title": "寻址方式", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/04-02-寻址方式.pdf" },
+        { "id": "cs408-co-04-03", "title": "程序的机器级代码表示", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/04-03-程序的机器级代码表示.pdf" },
+        { "id": "cs408-co-04-04", "title": "CISC和RISC的基本概念", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/04-04-CISC和RISC的基本概念.pdf" }
       ]
     },
     {
       "id": "cs408-co-05", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 5, "title": "中央处理器", "status": "completed",
       "subChapters": [
-        { "id": "cs408-co-05-01", "title": "CPU的功能和基本结构", "status": "completed" },
-        { "id": "cs408-co-05-02", "title": "指令执行过程", "status": "completed" },
-        { "id": "cs408-co-05-03", "title": "数据通路的功能和基本结构", "status": "completed" },
-        { "id": "cs408-co-05-04", "title": "控制器的功能和工作原理", "status": "completed" },
+        { "id": "cs408-co-05-01", "title": "CPU的功能和基本结构", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/05-01-CPU的功能和基本结构.pdf" },
+        { "id": "cs408-co-05-02", "title": "指令执行过程", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/05-02-指令执行过程.pdf" },
+        { "id": "cs408-co-05-03", "title": "数据通路的功能和基本结构", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/05-03-数据通路的功能和基本结构.pdf" },
+        { "id": "cs408-co-05-04", "title": "控制器的功能和工作原理", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/05-04-控制器的功能和工作原理.pdf" },
         { "id": "cs408-co-05-05", "title": "异常和中断机制", "status": "completed" },
-        { "id": "cs408-co-05-06", "title": "指令流水线", "status": "completed" },
-        { "id": "cs408-co-05-07", "title": "多处理器的基本概念", "status": "completed" }
+        { "id": "cs408-co-05-06", "title": "指令流水线", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/05-06-指令流水线.pdf" },
+        { "id": "cs408-co-05-07", "title": "多处理器的基本概念", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/05-07-多处理器的基本概念.pdf" }
       ]
     },
     {
       "id": "cs408-co-06", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 6, "title": "总线", "status": "completed",
       "subChapters": [
-        { "id": "cs408-co-06-01", "title": "总线概述", "status": "completed" },
-        { "id": "cs408-co-06-02", "title": "总线事务和定时", "status": "completed" }
+        { "id": "cs408-co-06-01", "title": "总线概述", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/06-01-总线概述.pdf" },
+        { "id": "cs408-co-06-02", "title": "总线事务和定时", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/06-02-总线事务和定时.pdf" }
       ]
     },
     {
       "id": "cs408-co-07", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 7, "title": "输入/输出系统", "status": "completed",
       "subChapters": [
-        { "id": "cs408-co-07-01", "title": "I/O系统基本概念*", "status": "completed" },
-        { "id": "cs408-co-07-02", "title": "I/O接口", "status": "completed" },
-        { "id": "cs408-co-07-03", "title": "I/O方式", "status": "completed" }
+        { "id": "cs408-co-07-01", "title": "I/O系统基本概念*", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/07-01-I-O系统基本概念.pdf" },
+        { "id": "cs408-co-07-02", "title": "I/O接口", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/07-02-I-O接口.pdf" },
+        { "id": "cs408-co-07-03", "title": "I/O方式", "status": "completed", "notesUrl": "/review-assets/cs408/computer-organization/07-03-I-O方式.pdf" }
       ]
     },
     {
       "id": "cs408-os-01", "subject": "operating_system", "subjectLabel": "操作系统", "source": "2027王道", "index": 1, "title": "计算机系统概述", "status": "completed",
       "subChapters": [
-        { "id": "cs408-os-01-01", "title": "操作系统的基本概念", "status": "completed" },
-        { "id": "cs408-os-01-02", "title": "操作系统发展历程", "status": "completed" },
-        { "id": "cs408-os-01-03", "title": "操作系统的运行环境", "status": "completed" },
-        { "id": "cs408-os-01-04", "title": "操作系统结构", "status": "completed" },
-        { "id": "cs408-os-01-05", "title": "操作系统引导", "status": "completed" },
-        { "id": "cs408-os-01-06", "title": "虚拟机", "status": "completed" }
+        { "id": "cs408-os-01-01", "title": "操作系统的基本概念", "status": "completed", "notesUrl": "/review-assets/cs408/operating-system/01-01-操作系统的基本概念.pdf" },
+        { "id": "cs408-os-01-02", "title": "操作系统发展历程", "status": "completed", "notesUrl": "/review-assets/cs408/operating-system/01-02-操作系统发展历程.pdf" },
+        { "id": "cs408-os-01-03", "title": "操作系统的运行环境", "status": "completed", "notesUrl": "/review-assets/cs408/operating-system/01-03-操作系统的运行环境.pdf" },
+        { "id": "cs408-os-01-04", "title": "操作系统结构", "status": "completed", "notesUrl": "/review-assets/cs408/operating-system/01-04-操作系统结构.pdf" },
+        { "id": "cs408-os-01-05", "title": "操作系统引导", "status": "completed", "notesUrl": "/review-assets/cs408/operating-system/01-05-操作系统引导.pdf" },
+        { "id": "cs408-os-01-06", "title": "虚拟机", "status": "completed", "notesUrl": "/review-assets/cs408/operating-system/01-06-虚拟机.pdf" }
       ]
     },
     {
       "id": "cs408-os-02", "subject": "operating_system", "subjectLabel": "操作系统", "source": "2027王道", "index": 2, "title": "进程与线程", "status": "in_progress",
       "subChapters": [
-        { "id": "cs408-os-02-01", "title": "进程与线程简介", "status": "completed" },
-        { "id": "cs408-os-02-02", "title": "CPU调度", "status": "completed" },
-        { "id": "cs408-os-02-03", "title": "同步与互斥", "status": "in_progress" },
-        { "id": "cs408-os-02-04", "title": "死锁", "status": "not_started" }
+        { "id": "cs408-os-02-01", "title": "进程与线程简介", "status": "completed", "notesUrl": "/review-assets/cs408/operating-system/02-01-进程与线程简介.pdf" },
+        { "id": "cs408-os-02-02", "title": "CPU调度", "status": "completed", "notesUrl": "/review-assets/cs408/operating-system/02-02-CPU调度.pdf" },
+        { "id": "cs408-os-02-03", "title": "同步与互斥", "status": "in_progress", "notesUrl": "/review-assets/cs408/operating-system/02-03-同步与互斥.pdf" },
+        { "id": "cs408-os-02-04", "title": "死锁", "status": "not_started", "notesUrl": "/review-assets/cs408/operating-system/02-04-死锁.pdf" }
       ]
     },
     {
       "id": "cs408-os-03", "subject": "operating_system", "subjectLabel": "操作系统", "source": "2027王道", "index": 3, "title": "内存管理", "status": "not_started",
       "subChapters": [
-        { "id": "cs408-os-03-01", "title": "内存管理概念", "status": "not_started" },
-        { "id": "cs408-os-03-02", "title": "虚拟内存管理", "status": "not_started" }
+        { "id": "cs408-os-03-01", "title": "内存管理概念", "status": "not_started", "notesUrl": "/review-assets/cs408/operating-system/03-01-内存管理概念.pdf" },
+        { "id": "cs408-os-03-02", "title": "虚拟内存管理", "status": "not_started", "notesUrl": "/review-assets/cs408/operating-system/03-02-虚拟内存管理.pdf" }
       ]
     },
     {
       "id": "cs408-os-04", "subject": "operating_system", "subjectLabel": "操作系统", "source": "2027王道", "index": 4, "title": "文件管理", "status": "not_started",
       "subChapters": [
-        { "id": "cs408-os-04-01", "title": "文件系统基础", "status": "not_started" },
-        { "id": "cs408-os-04-02", "title": "目录与文件", "status": "not_started" },
-        { "id": "cs408-os-04-03", "title": "文件系统", "status": "not_started" }
+        { "id": "cs408-os-04-01", "title": "文件系统基础", "status": "not_started", "notesUrl": "/review-assets/cs408/operating-system/04-01-文件系统基础.pdf" },
+        { "id": "cs408-os-04-02", "title": "目录与文件", "status": "not_started", "notesUrl": "/review-assets/cs408/operating-system/04-02-目录与文件.pdf" },
+        { "id": "cs408-os-04-03", "title": "文件系统", "status": "not_started", "notesUrl": "/review-assets/cs408/operating-system/04-03-文件系统.pdf" }
       ]
     },
     {
       "id": "cs408-os-05", "subject": "operating_system", "subjectLabel": "操作系统", "source": "2027王道", "index": 5, "title": "输入/输出管理", "status": "not_started",
       "subChapters": [
-        { "id": "cs408-os-05-01", "title": "I/O管理概述", "status": "not_started" },
-        { "id": "cs408-os-05-02", "title": "设备独立性软件", "status": "not_started" },
-        { "id": "cs408-os-05-03", "title": "磁盘和固态硬盘", "status": "not_started" }
+        { "id": "cs408-os-05-01", "title": "I/O管理概述", "status": "not_started", "notesUrl": "/review-assets/cs408/operating-system/05-01-I-O管理概述.pdf" },
+        { "id": "cs408-os-05-02", "title": "设备独立性软件", "status": "not_started", "notesUrl": "/review-assets/cs408/operating-system/05-02-设备独立性软件.pdf" },
+        { "id": "cs408-os-05-03", "title": "磁盘和固态硬盘", "status": "not_started", "notesUrl": "/review-assets/cs408/operating-system/05-03-磁盘和固态硬盘.pdf" }
       ]
     },
     {
       "id": "cs408-cn-01", "subject": "computer_network", "subjectLabel": "计算机网络", "source": "2027王道", "index": 1, "title": "计算机网络体系结构", "status": "completed",
       "subChapters": [
-        { "id": "cs408-cn-01-01", "title": "计算机网络概述", "status": "completed" },
-        { "id": "cs408-cn-01-02", "title": "计算机网络体系结构与参考模型", "status": "completed" }
+        { "id": "cs408-cn-01-01", "title": "计算机网络概述", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/01-01-计算机网络概述.pdf" },
+        { "id": "cs408-cn-01-02", "title": "计算机网络体系结构与参考模型", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/01-02-计算机网络体系结构与参考模型.pdf" }
       ]
     },
     {
       "id": "cs408-cn-02", "subject": "computer_network", "subjectLabel": "计算机网络", "source": "2027王道", "index": 2, "title": "物理层", "status": "completed",
       "subChapters": [
-        { "id": "cs408-cn-02-01", "title": "通信基础", "status": "completed" },
-        { "id": "cs408-cn-02-02", "title": "传输介质", "status": "completed" },
-        { "id": "cs408-cn-02-03", "title": "物理层设备", "status": "completed" }
+        { "id": "cs408-cn-02-01", "title": "通信基础", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/02-01-通信基础.pdf" },
+        { "id": "cs408-cn-02-02", "title": "传输介质", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/02-02-传输介质.pdf" },
+        { "id": "cs408-cn-02-03", "title": "物理层设备", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/02-03-物理层设备.pdf" }
       ]
     },
     {
       "id": "cs408-cn-03", "subject": "computer_network", "subjectLabel": "计算机网络", "source": "2027王道", "index": 3, "title": "数据链路层", "status": "completed",
       "subChapters": [
-        { "id": "cs408-cn-03-01", "title": "数据链路层的功能", "status": "completed" },
-        { "id": "cs408-cn-03-02", "title": "组帧", "status": "completed" },
-        { "id": "cs408-cn-03-03", "title": "差错控制", "status": "completed" },
-        { "id": "cs408-cn-03-04", "title": "流量控制与可靠传输机制", "status": "completed" },
-        { "id": "cs408-cn-03-05", "title": "介质访问控制", "status": "completed" },
-        { "id": "cs408-cn-03-06", "title": "局域网", "status": "completed" },
-        { "id": "cs408-cn-03-07", "title": "广域网", "status": "completed" },
-        { "id": "cs408-cn-03-08", "title": "数据链路层设备", "status": "completed" }
+        { "id": "cs408-cn-03-01", "title": "数据链路层的功能", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/03-01-数据链路层的功能.pdf" },
+        { "id": "cs408-cn-03-02", "title": "组帧", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/03-02-组帧.pdf" },
+        { "id": "cs408-cn-03-03", "title": "差错控制", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/03-03-差错控制.pdf" },
+        { "id": "cs408-cn-03-04", "title": "流量控制与可靠传输机制", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/03-04-流量控制与可靠传输机制.pdf" },
+        { "id": "cs408-cn-03-05", "title": "介质访问控制", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/03-05-介质访问控制.pdf" },
+        { "id": "cs408-cn-03-06", "title": "局域网", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/03-06-局域网.pdf" },
+        { "id": "cs408-cn-03-07", "title": "广域网", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/03-07-广域网.pdf" },
+        { "id": "cs408-cn-03-08", "title": "数据链路层设备", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/03-08-数据链路层设备.pdf" }
       ]
     },
     {
       "id": "cs408-cn-04", "subject": "computer_network", "subjectLabel": "计算机网络", "source": "2027王道", "index": 4, "title": "网络层", "status": "completed",
       "subChapters": [
-        { "id": "cs408-cn-04-01", "title": "网络层的功能", "status": "completed" },
-        { "id": "cs408-cn-04-02", "title": "IPv4", "status": "completed" },
-        { "id": "cs408-cn-04-03", "title": "IPv6", "status": "completed" },
-        { "id": "cs408-cn-04-04", "title": "路由算法与路由协议", "status": "completed" },
-        { "id": "cs408-cn-04-05", "title": "IP多播", "status": "completed" },
-        { "id": "cs408-cn-04-06", "title": "移动IP", "status": "completed" },
-        { "id": "cs408-cn-04-07", "title": "网络层设备", "status": "completed" }
+        { "id": "cs408-cn-04-01", "title": "网络层的功能", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/04-01-网络层的功能.pdf" },
+        { "id": "cs408-cn-04-02", "title": "IPv4", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/04-02-IPv4.pdf" },
+        { "id": "cs408-cn-04-03", "title": "IPv6", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/04-03-IPv6.pdf" },
+        { "id": "cs408-cn-04-04", "title": "路由算法与路由协议", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/04-04-路由算法与路由协议.pdf" },
+        { "id": "cs408-cn-04-05", "title": "IP多播", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/04-05-IP多播.pdf" },
+        { "id": "cs408-cn-04-06", "title": "移动IP", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/04-06-移动IP.pdf" },
+        { "id": "cs408-cn-04-07", "title": "网络层设备", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/04-07-网络层设备.pdf" }
       ]
     },
     {
       "id": "cs408-cn-05", "subject": "computer_network", "subjectLabel": "计算机网络", "source": "2027王道", "index": 5, "title": "传输层", "status": "completed",
       "subChapters": [
-        { "id": "cs408-cn-05-01", "title": "传输层提供的服务", "status": "completed" },
-        { "id": "cs408-cn-05-02", "title": "UDP协议", "status": "completed" },
-        { "id": "cs408-cn-05-03", "title": "TCP协议", "status": "completed" }
+        { "id": "cs408-cn-05-01", "title": "传输层提供的服务", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/05-01-传输层提供的服务.pdf" },
+        { "id": "cs408-cn-05-02", "title": "UDP协议", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/05-02-UDP协议.pdf" },
+        { "id": "cs408-cn-05-03", "title": "TCP协议", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/05-03-TCP协议.pdf" }
       ]
     },
     {
       "id": "cs408-cn-06", "subject": "computer_network", "subjectLabel": "计算机网络", "source": "2027王道", "index": 6, "title": "应用层", "status": "completed",
       "subChapters": [
-        { "id": "cs408-cn-06-01", "title": "网络应用模型", "status": "completed" },
-        { "id": "cs408-cn-06-02", "title": "域名系统", "status": "completed" },
-        { "id": "cs408-cn-06-03", "title": "文件传送协议", "status": "completed" },
-        { "id": "cs408-cn-06-04", "title": "电子邮件", "status": "completed" },
-        { "id": "cs408-cn-06-05", "title": "万维网", "status": "completed" }
+        { "id": "cs408-cn-06-01", "title": "网络应用模型", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/06-01-网络应用模型.pdf" },
+        { "id": "cs408-cn-06-02", "title": "域名系统", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/06-02-域名系统.pdf" },
+        { "id": "cs408-cn-06-03", "title": "文件传送协议", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/06-03-文件传送协议.pdf" },
+        { "id": "cs408-cn-06-04", "title": "电子邮件", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/06-04-电子邮件.pdf" },
+        { "id": "cs408-cn-06-05", "title": "万维网", "status": "completed", "notesUrl": "/review-assets/cs408/computer-network/06-05-万维网.pdf" }
       ]
     }
   ],
