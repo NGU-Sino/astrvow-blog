@@ -88,7 +88,10 @@ export const GET: APIRoute = async () => {
 				headers: {
 					"Content-Type": "application/json",
 					// 不缓存，每次请求都返回不同的随机单词（数据源由内存缓存控制）
-					"Cache-Control": "no-cache, no-store, must-revalidate",
+					// 多重 no-store 头针对不同中间层：Nginx/CDN/浏览器
+					"Cache-Control": "no-store, max-age=0",
+					"Surrogate-Control": "no-store",
+					Pragma: "no-cache",
 				},
 			}
 		);
