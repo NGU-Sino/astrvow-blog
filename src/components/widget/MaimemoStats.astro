@@ -170,64 +170,80 @@ const isEnabled = maimemoConfig.enable;
 		}
 	}
 
+	// 客户端缓存的词库数组（从服务端一次性拉取，本地随机选词）
+	// 这样设计的原因：宝塔 Nginx proxy_cache 会锁死 API 响应，
+	// 改为服务端返回 50 个词、客户端本地随机选，即使整份响应被缓存也能切换
+	let wordPool = [];
+	let lastWordIndex = -1;
+
 	async function loadRandomWord() {
 		const container = document.getElementById("maimemo-random-word");
 		if (!container) return;
 
-		// 加载中状态
-		container.innerHTML = '<div class="text-neutral-500 dark:text-neutral-400 text-sm">加载中...</div>';
-
-		try {
-			// 加时间戳参数 + cache: no-store 双重保险绕过 Nginx proxy_cache
-			// 宝塔反向代理可能忽略源头的 no-store 头，URL 加时间戳让缓存 key 每次不同
-			const url = `/api/maimemo/random-word.json?t=${Date.now()}`;
-			const response = await fetch(url, { cache: "no-store" });
-			if (!response.ok) throw new Error("Failed to fetch word");
-			const result = await response.json();
-
-			if (!result.success || !result.data) {
-				throw new Error(result.error || "No word available");
-			}
-
-			const word = result.data;
-			const status = STATUS_CONFIG[word.last_response] || { label: "未学", color: "#9ca3af" };
-			const nextReview = word.next_study_date ? formatDate(word.next_study_date) : "";
-			const dictUrl = `https://dict.youdao.com/result?word=${encodeURIComponent(word.spelling)}&lang=en`;
-
-			container.innerHTML = `
-				<div class="w-full">
-					<div class="flex items-center justify-between mb-2">
-						<span class="text-xl font-bold text-neutral-900 dark:text-neutral-100 break-all">
-							${escapeHtml(word.spelling)}
-						</span>
-						<span
-							class="text-xs px-2 py-0.5 rounded-full text-white font-medium flex-shrink-0 ml-2"
-							style="background: ${status.color}"
-						>
-							${status.label}
-						</span>
-					</div>
-					<div class="flex items-center justify-between text-xs text-neutral-500 dark:text-neutral-400">
-						<span>已学 ${word.study_count || 0} 次</span>
-						${nextReview ? `<span>下次复习: ${nextReview}</span>` : ""}
-					</div>
-					<a href="${dictUrl}" target="_blank" rel="noopener noreferrer"
-						class="flex items-center justify-center gap-1 mt-2 py-1.5 text-xs text-(--primary) hover:bg-(--primary)/5 rounded transition-colors"
-					>
-						${ICON_BOOK}
-						<span>查释义</span>
-					</a>
-				</div>
-			`;
-		} catch (error) {
-			console.error("Failed to load random word:", error);
-			container.innerHTML = `
-				<div class="text-neutral-500 dark:text-neutral-400 text-sm text-center">
-					<p>单词加载失败</p>
-					<button onclick="loadRandomWord()" class="text-(--primary) text-xs mt-1 hover:underline">重试</button>
-				</div>
-			`;
+		// 加载中状态（仅词库为空时显示）
+		if (wordPool.length === 0) {
+			container.innerHTML = '<div class="text-neutral-500 dark:text-neutral-400 text-sm">加载中...</div>';
 		}
+
+		// 词库为空时从服务端拉取一批（50 个）；非空时直接本地随机选，不调 API
+		if (wordPool.length === 0) {
+			try {
+				const response = await fetch("/api/maimemo/random-word.json");
+				if (!response.ok) throw new Error("Failed to fetch words");
+				const result = await response.json();
+				if (!result.success || !Array.isArray(result.data) || result.data.length === 0) {
+					throw new Error(result.error || "No word available");
+				}
+				wordPool = result.data;
+			} catch (error) {
+				console.error("Failed to load word pool:", error);
+				container.innerHTML = `
+					<div class="text-neutral-500 dark:text-neutral-400 text-sm text-center">
+						<p>单词加载失败</p>
+						<button onclick="loadRandomWord()" class="text-(--primary) text-xs mt-1 hover:underline">重试</button>
+					</div>
+				`;
+				return;
+			}
+		}
+
+		// 从本地词库随机选一个，尽量避免与上一次相同
+		let randomIndex = Math.floor(Math.random() * wordPool.length);
+		if (wordPool.length > 1 && randomIndex === lastWordIndex) {
+			randomIndex = (randomIndex + 1) % wordPool.length;
+		}
+		lastWordIndex = randomIndex;
+		const word = wordPool[randomIndex];
+
+		const status = STATUS_CONFIG[word.last_response] || { label: "未学", color: "#9ca3af" };
+		const nextReview = word.next_study_date ? formatDate(word.next_study_date) : "";
+		const dictUrl = `https://dict.youdao.com/result?word=${encodeURIComponent(word.spelling)}&lang=en`;
+
+		container.innerHTML = `
+			<div class="w-full">
+				<div class="flex items-center justify-between mb-2">
+					<span class="text-xl font-bold text-neutral-900 dark:text-neutral-100 break-all">
+						${escapeHtml(word.spelling)}
+					</span>
+					<span
+						class="text-xs px-2 py-0.5 rounded-full text-white font-medium flex-shrink-0 ml-2"
+						style="background: ${status.color}"
+					>
+						${status.label}
+					</span>
+				</div>
+				<div class="flex items-center justify-between text-xs text-neutral-500 dark:text-neutral-400">
+					<span>已学 ${word.study_count || 0} 次</span>
+					${nextReview ? `<span>下次复习: ${nextReview}</span>` : ""}
+				</div>
+				<a href="${dictUrl}" target="_blank" rel="noopener noreferrer"
+					class="flex items-center justify-center gap-1 mt-2 py-1.5 text-xs text-(--primary) hover:bg-(--primary)/5 rounded transition-colors"
+				>
+					${ICON_BOOK}
+					<span>查释义</span>
+				</a>
+			</div>
+		`;
 	}
 
 	// 暴露到全局，供 Swup 导航和 onclick 调用

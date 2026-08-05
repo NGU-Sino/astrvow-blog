@@ -2,10 +2,20 @@ import type { APIRoute } from "astro";
 import { maimemoConfig } from "@/config";
 
 // 内存缓存：5 分钟内复用已拉取的词库，避免每次随机都打墨墨 API
-// 每次从缓存中随机选一个词返回，实现"高频随机"而不增加 API 调用
+// 拉取策略：按 next_study_date 筛选未来（不含今天）即将学习的词，最多 1000 个
 let cachedWords: any[] = [];
 let cacheFetchedAt = 0;
 const CACHE_TTL_MS = 5 * 60 * 1000; // 5 分钟
+
+// 获取北京时间（+08:00）的 YYYY-MM-DD 日期字符串
+function getBeijingDateString(date: Date) {
+	return new Intl.DateTimeFormat("en-CA", {
+		timeZone: "Asia/Shanghai",
+		year: "numeric",
+		month: "2-digit",
+		day: "2-digit",
+	}).format(date);
+}
 
 async function loadWordsIntoCache() {
 	const now = Date.now();
@@ -13,6 +23,14 @@ async function loadWordsIntoCache() {
 	if (cachedWords.length > 0 && now - cacheFetchedAt < CACHE_TTL_MS) {
 		return;
 	}
+
+	// 筛选条件：未来（不含今天）即将学习的词
+	// start = 明天 00:00:00 +08:00，不设 end（覆盖所有未来日期）
+	// 这样拉到的是"接下来要复习的全部词"中按 next_study_date 升序的前 1000 个
+	const tomorrow = new Date();
+	tomorrow.setDate(tomorrow.getDate() + 1);
+	const tomorrowStr = getBeijingDateString(tomorrow);
+	const startStr = `${tomorrowStr}T00:00:00+08:00`;
 
 	const res = await fetch(
 		`${maimemoConfig.apiBaseUrl}/api/v1/memo/study/query_study_records`,
@@ -23,7 +41,12 @@ async function loadWordsIntoCache() {
 				"Content-Type": "application/json",
 				Accept: "application/json",
 			},
-			body: JSON.stringify({ limit: 1000 }),
+			body: JSON.stringify({
+				limit: 1000,
+				next_study_date: {
+					start: startStr,
+				},
+			}),
 		}
 	);
 
@@ -66,32 +89,33 @@ export const GET: APIRoute = async () => {
 			);
 		}
 
-		// 从缓存中随机选一个词
-		const randomIndex = Math.floor(Math.random() * cachedWords.length);
-		const word = cachedWords[randomIndex];
+		// 将服务端缓存的全量词库（最多 1000 个）返回给客户端
+		// 客户端本地随机选词，5 分钟内可切换全部 1000 个词
+		// 这样设计的原因：宝塔 Nginx proxy_cache 会锁死 API 响应，
+		// 改为返回全量词库后，即使整个响应被缓存 5 分钟，客户端仍能本地随机切换
+		// 响应体约 200KB（gzip 后约 50KB），一次性下载可接受
+		const wordsData = cachedWords.map((word) => ({
+			spelling: word.voc_spelling || "",
+			last_response: word.last_response || "",
+			study_count: word.study_count || 0,
+			add_date: word.add_date || "",
+			last_study_date: word.last_study_date || "",
+			next_study_date: word.next_study_date || "",
+			tags: word.tags || [],
+		}));
 
 		return new Response(
 			JSON.stringify({
 				success: true,
-				data: {
-					spelling: word.voc_spelling || "",
-					last_response: word.last_response || "",
-					study_count: word.study_count || 0,
-					add_date: word.add_date || "",
-					last_study_date: word.last_study_date || "",
-					next_study_date: word.next_study_date || "",
-					tags: word.tags || [],
-				},
+				data: wordsData,
 			}),
 			{
 				status: 200,
 				headers: {
 					"Content-Type": "application/json",
-					// 不缓存，每次请求都返回不同的随机单词（数据源由内存缓存控制）
-					// 多重 no-store 头针对不同中间层：Nginx/CDN/浏览器
-					"Cache-Control": "no-store, max-age=0",
-					"Surrogate-Control": "no-store",
-					Pragma: "no-cache",
+					// 5 分钟缓存：与内存缓存 TTL 一致
+					// 客户端本地随机选词，缓存整个词库不影响切换体验
+					"Cache-Control": "public, max-age=300",
 				},
 			}
 		);
