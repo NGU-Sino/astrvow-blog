@@ -230,13 +230,14 @@
 
 		<script>
 			import * as pdfjsLib from "pdfjs-dist";
+			import type { PDFDocumentProxy } from "pdfjs-dist";
 			import workerUrl from "pdfjs-dist/build/pdf.worker.min.mjs?url";
 
 			// 设置 worker
 			pdfjsLib.GlobalWorkerOptions.workerSrc = workerUrl;
 
 			// 返回按钮逻辑：新标签页无历史记录时关闭标签页，否则返回上一页
-			const backLink = document.getElementById("back-link");
+			const backLink = document.getElementById("back-link") as HTMLAnchorElement;
 			backLink.addEventListener("click", function (e) {
 				e.preventDefault();
 				if (window.history.length > 1) {
@@ -270,28 +271,28 @@
 				initViewer(safeFile);
 			}
 
-			async function initViewer(file) {
-				const canvas = document.getElementById("pdf-canvas");
-				const ctx = canvas.getContext("2d");
-				const container = document.getElementById("canvas-container");
+			async function initViewer(file: string) {
+			const canvas = document.getElementById("pdf-canvas") as HTMLCanvasElement;
+			const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+			const container = document.getElementById("canvas-container") as HTMLDivElement;
 
-				let pdfDoc = null;
-				let pageNum = 1;
-				let pageRendering = false;
-				let pageNumPending = null;
-				let scale = 1.2;
-				let initialScale = 1.2;
+			let pdfDoc: PDFDocumentProxy | null = null;
+			let pageNum = 1;
+			let pageRendering = false;
+			let pageNumPending: number | null = null;
+			let scale = 1.2;
+			let initialScale = 1.2;
 
-				const prevBtn = document.getElementById("prev-page");
-				const nextBtn = document.getElementById("next-page");
-				const zoomInBtn = document.getElementById("zoom-in");
-				const zoomOutBtn = document.getElementById("zoom-out");
-				const fitWidthBtn = document.getElementById("fit-width");
-				const pageInfo = document.getElementById("page-info");
-				const zoomLevel = document.getElementById("zoom-level");
-				const downloadLink = document.getElementById("download-link");
-				const loadingMsg = document.getElementById("loading-msg");
-				const errorMsg = document.getElementById("error-msg");
+			const prevBtn = document.getElementById("prev-page") as HTMLButtonElement;
+			const nextBtn = document.getElementById("next-page") as HTMLButtonElement;
+			const zoomInBtn = document.getElementById("zoom-in") as HTMLButtonElement;
+			const zoomOutBtn = document.getElementById("zoom-out") as HTMLButtonElement;
+			const fitWidthBtn = document.getElementById("fit-width") as HTMLButtonElement;
+			const pageInfo = document.getElementById("page-info") as HTMLSpanElement;
+			const zoomLevel = document.getElementById("zoom-level") as HTMLSpanElement;
+			const downloadLink = document.getElementById("download-link") as HTMLAnchorElement;
+			const loadingMsg = document.getElementById("loading-msg") as HTMLDivElement;
+			const errorMsg = document.getElementById("error-msg") as HTMLDivElement;
 
 				downloadLink.href = file;
 
@@ -320,21 +321,21 @@
 
 					updatePageInfo();
 				} catch (err) {
-					console.error("PDF 加载失败:", err);
-					loadingMsg.style.display = "none";
-					showError(err.message || "无法加载 PDF 文件");
-				}
+				console.error("PDF 加载失败:", err);
+				loadingMsg.style.display = "none";
+				showError(err instanceof Error ? err.message : "无法加载 PDF 文件");
+			}
 
-				function showError(msg) {
-					loadingMsg.style.display = "none";
-					canvas.style.display = "none";
-					errorMsg.style.display = "block";
-					document.getElementById("error-detail").textContent = msg;
-				}
+			function showError(msg: string) {
+				loadingMsg.style.display = "none";
+				canvas.style.display = "none";
+				errorMsg.style.display = "block";
+				(document.getElementById("error-detail") as HTMLDivElement).textContent = msg;
+			}
 
-				function renderPage(num) {
-					pageRendering = true;
-					pdfDoc.getPage(num).then(function (page) {
+				function renderPage(num: number) {
+				pageRendering = true;
+				pdfDoc!.getPage(num).then(function (page) {
 						const viewport = page.getViewport({ scale: scale });
 						// 处理高 DPI 屏幕（Retina/手机），按设备像素比提高绘制分辨率
 						const outputScale = window.devicePixelRatio || 1;
@@ -364,7 +365,7 @@
 					});
 				}
 
-				function queueRenderPage(num) {
+				function queueRenderPage(num: number) {
 					if (pageRendering) {
 						pageNumPending = num;
 					} else {
@@ -380,7 +381,7 @@
 				}
 
 				function onNextPage() {
-					if (pageNum >= pdfDoc.numPages) return;
+					if (pageNum >= pdfDoc!.numPages) return;
 					pageNum++;
 					queueRenderPage(pageNum);
 					updatePageInfo();
@@ -399,7 +400,7 @@
 				}
 
 				function fitWidth() {
-					pdfDoc.getPage(pageNum).then(function (page) {
+					pdfDoc!.getPage(pageNum).then(function (page) {
 						const containerWidth = container.clientWidth - 32;
 						const viewport = page.getViewport({ scale: 1 });
 						scale = Math.max(containerWidth / viewport.width, 0.3);
@@ -410,7 +411,7 @@
 				}
 
 				function updatePageInfo() {
-					pageInfo.textContent = `${pageNum} / ${pdfDoc.numPages}`;
+					pageInfo.textContent = `${pageNum} / ${pdfDoc!.numPages}`;
 				}
 
 				function updateZoomLevel() {
@@ -441,7 +442,7 @@
 				});
 
 				// 窗口大小变化时重新适应宽度（仅在初始缩放时）
-				let resizeTimer;
+				let resizeTimer: ReturnType<typeof setTimeout> | undefined;
 				window.addEventListener("resize", function () {
 					clearTimeout(resizeTimer);
 					resizeTimer = setTimeout(function () {
@@ -453,7 +454,7 @@
 				});
 			}
 
-			function showError(msg) {
+			function showError(msg: string) {
 				const loadingMsg = document.getElementById("loading-msg");
 				const errorMsg = document.getElementById("error-msg");
 				if (loadingMsg) loadingMsg.style.display = "none";
