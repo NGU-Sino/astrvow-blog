@@ -160,46 +160,46 @@ const statusConfig: Record<string, { label: string; color: string; bg: string }>
 						</div>
 
 						<!-- 章节列表 -->
-						<div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-							{subj.chapters.map((ch) => {
-								const sc = statusConfig[ch.status];
-								return (
-									<div class="flex items-center gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800/50 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
-										<span class="text-sm text-neutral-400 flex-shrink-0 whitespace-nowrap">
-											第{ch.index}章
-										</span>
-										<span class="flex-1 text-sm text-neutral-700 dark:text-neutral-300 truncate">
-											{ch.title}
-										</span>
-										<span class:list={["text-xs px-2 py-0.5 rounded-full flex-shrink-0", sc.bg, sc.color]}>
-											{sc.label}
-										</span>
-										{ch.notesUrl && (
-											<a
-												href={ch.notesUrl}
-												target="_blank"
-												rel="noopener noreferrer"
-												class="text-xs px-2 py-1 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-600 hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors flex-shrink-0"
-												title="查看笔记"
-											>
-												<Icon name="material-symbols:description" class="text-sm" />
-											</a>
-										)}
-										{ch.errorsUrl && (
-											<a
-												href={ch.errorsUrl}
-												target="_blank"
-												rel="noopener noreferrer"
-												class="text-xs px-2 py-1 rounded bg-red-100 dark:bg-red-900/30 text-red-600 hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors flex-shrink-0"
-												title="查看错题"
-											>
-												<Icon name="material-symbols:warning-outline" class="text-sm" />
-											</a>
-										)}
-									</div>
-								);
-							})}
-						</div>
+					<div class="flex flex-col gap-2">
+						{subj.chapters.map((ch) => {
+							const sc = statusConfig[ch.status];
+							return (
+								<div class="flex items-center gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800/50 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
+									<span class="text-sm text-neutral-400 flex-shrink-0 whitespace-nowrap">
+										第{ch.index}章
+									</span>
+									<span class="flex-1 text-sm text-neutral-700 dark:text-neutral-300">
+										{ch.title}
+									</span>
+									<span class:list={["text-xs px-2 py-0.5 rounded-full flex-shrink-0", sc.bg, sc.color]}>
+										{sc.label}
+									</span>
+									{ch.notesUrl && (
+										<a
+											href={`/pdf-viewer/?file=${encodeURIComponent(ch.notesUrl)}`}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="text-xs px-2 py-1 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-600 hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors flex-shrink-0"
+											title="查看笔记"
+										>
+											<Icon name="material-symbols:description" class="text-sm" />
+										</a>
+									)}
+									{ch.errorsUrl && (
+										<a
+											href={`/pdf-viewer/?file=${encodeURIComponent(ch.errorsUrl)}`}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="text-xs px-2 py-1 rounded bg-red-100 dark:bg-red-900/30 text-red-600 hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors flex-shrink-0"
+											title="查看错题"
+										>
+											<Icon name="material-symbols:warning-outline" class="text-sm" />
+										</a>
+									)}
+								</div>
+							);
+						})}
+					</div>
 					</div>
 				))}
 			</div>

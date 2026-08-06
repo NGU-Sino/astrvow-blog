@@ -176,49 +176,49 @@ const statusConfig: Record<string, { label: string; color: string; bg: string }>
 								return (
 									<div class="rounded-lg bg-neutral-50 dark:bg-neutral-800/50 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors overflow-hidden">
 										<!-- 一级目录：章节标题 -->
-										<div class="flex items-center gap-3 p-3">
-											<span class="text-sm text-neutral-400 flex-shrink-0 whitespace-nowrap">
-												第{ch.index}章
-											</span>
-											<span class="flex-1 text-sm font-medium text-neutral-700 dark:text-neutral-300 truncate">
-												{ch.title}
-											</span>
-											<span class="text-xs text-neutral-400 flex-shrink-0 whitespace-nowrap">
-												{doneSubs}/{subs.length}
-											</span>
+									<div class="flex items-center gap-3 p-3">
+										<span class="text-sm text-neutral-400 flex-shrink-0 whitespace-nowrap">
+											第{ch.index}章
+										</span>
+										<span class="flex-1 text-sm font-medium text-neutral-700 dark:text-neutral-300">
+											{ch.title}
+										</span>
+										<span class="text-xs text-neutral-400 flex-shrink-0 whitespace-nowrap">
+											{doneSubs}/{subs.length}
+										</span>
+									</div>
+									<!-- 二级目录：小节列表（含状态和笔记链接） -->
+									{subs.length > 0 && (
+										<div class="px-4 pb-3 pl-12 flex flex-col gap-1.5">
+											{subs.map((sub, i) => {
+												const sc = statusConfig[sub.status];
+												return (
+													<div class="flex items-center gap-2 py-1">
+														<span class="text-xs text-neutral-400 flex-shrink-0 whitespace-nowrap w-8">
+															{ch.index}.{i + 1}
+														</span>
+														<span class="flex-1 text-xs text-neutral-600 dark:text-neutral-400">
+															{sub.title}
+														</span>
+														<span class:list={["text-xs px-1.5 py-0.5 rounded-full flex-shrink-0", sc.bg, sc.color]}>
+															{sc.label}
+														</span>
+														{sub.notesUrl && (
+															<a
+																href={`/pdf-viewer/?file=${encodeURIComponent(sub.notesUrl)}`}
+																target="_blank"
+																rel="noopener noreferrer"
+																class="text-xs px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-600 hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors flex-shrink-0"
+																title="查看笔记"
+															>
+																<Icon name="material-symbols:description" class="text-sm" />
+															</a>
+														)}
+													</div>
+												);
+											})}
 										</div>
-										<!-- 二级目录：小节列表（含状态和笔记链接） -->
-										{subs.length > 0 && (
-											<div class="px-4 pb-3 pl-12 flex flex-col gap-1.5">
-												{subs.map((sub, i) => {
-													const sc = statusConfig[sub.status];
-													return (
-														<div class="flex items-center gap-2 py-1">
-															<span class="text-xs text-neutral-400 flex-shrink-0 whitespace-nowrap w-8">
-																{ch.index}.{i + 1}
-															</span>
-															<span class="flex-1 text-xs text-neutral-600 dark:text-neutral-400 truncate">
-																{sub.title}
-															</span>
-															<span class:list={["text-xs px-1.5 py-0.5 rounded-full flex-shrink-0", sc.bg, sc.color]}>
-																{sc.label}
-															</span>
-															{sub.notesUrl && (
-																<a
-																	href={sub.notesUrl}
-																	target="_blank"
-																	rel="noopener noreferrer"
-																	class="text-xs px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-600 hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors flex-shrink-0"
-																	title="查看笔记"
-																>
-																	<Icon name="material-symbols:description" class="text-sm" />
-																</a>
-															)}
-														</div>
-													);
-												})}
-											</div>
-										)}
+									)}
 									</div>
 								);
 							})}
