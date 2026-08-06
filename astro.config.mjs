@@ -104,6 +104,10 @@ export default defineConfig({
 
 	adapter,
 
+	// Astro 7 默认 static 模式已支持混合渲染：
+	// 默认所有路由 prerender，单独标记 export const prerender = false 的路由走 SSR
+	// 用于 /api/maimemo/* 三个动态 API（需要实时调用墨墨 API，不能构建成静态 JSON）
+
 	// 图像优化配置
 	image: {
 		// 全局响应式布局
