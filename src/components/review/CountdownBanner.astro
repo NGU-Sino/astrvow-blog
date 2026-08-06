@@ -2,11 +2,8 @@
 /**
  * 考研倒计时横幅组件
  * 2027考研初试预计日期：2026年12月19日
+ * 天数用客户端 JS 实时计算，避免 prerender 页面构建后天数不随日期更新
  */
-const EXAM_DATE = new Date("2026-12-19T00:00:00+08:00");
-const now = new Date();
-const diffMs = EXAM_DATE.getTime() - now.getTime();
-const diffDays = Math.max(0, Math.ceil(diffMs / (1000 * 60 * 60 * 24)));
 ---
 
 <div class="card-base p-5 mb-6 bg-gradient-to-r from-(--primary)/10 to-(--primary)/5">
@@ -19,8 +16,19 @@ const diffDays = Math.max(0, Math.ceil(diffMs / (1000 * 60 * 60 * 24)));
 			</div>
 		</div>
 		<div class="text-center">
-			<span class="text-4xl font-bold text-(--primary)">{diffDays}</span>
+			<span id="countdown-days" class="text-4xl font-bold text-(--primary)">-</span>
 			<span class="text-lg text-neutral-600 dark:text-neutral-300 ml-1">天</span>
 		</div>
 	</div>
 </div>
+
+<script is:inline>
+	(function () {
+		const examDate = new Date("2026-12-19T00:00:00+08:00");
+		const now = new Date();
+		const diffMs = examDate.getTime() - now.getTime();
+		const diffDays = Math.max(0, Math.ceil(diffMs / (1000 * 60 * 60 * 24)));
+		const el = document.getElementById("countdown-days");
+		if (el) el.textContent = diffDays;
+	})();
+</script>

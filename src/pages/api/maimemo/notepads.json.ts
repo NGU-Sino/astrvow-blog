@@ -1,6 +1,9 @@
 import type { APIRoute } from "astro";
 import { maimemoConfig } from "@/config";
 
+// 必须设为 SSR：否则会被 prerender 成静态 JSON 文件，数据永不更新
+export const prerender = false;
+
 export const GET: APIRoute = async () => {
 	if (!maimemoConfig.enable || !maimemoConfig.apiToken) {
 		return new Response(

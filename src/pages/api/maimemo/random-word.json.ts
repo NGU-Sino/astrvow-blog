@@ -1,6 +1,10 @@
 import type { APIRoute } from "astro";
 import { maimemoConfig } from "@/config";
 
+// 必须设为 SSR：否则在默认 static 模式下会被 prerender 成静态 JSON 文件，
+// 构建时调用一次墨墨 API 后写死，部署后单词永不更新
+export const prerender = false;
+
 // 内存缓存：5 分钟内复用已拉取的词库，避免每次随机都打墨墨 API
 // 拉取策略：按 next_study_date 筛选未来（不含今天）即将学习的词，最多 1000 个
 let cachedWords: any[] = [];

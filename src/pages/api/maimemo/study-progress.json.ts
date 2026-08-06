@@ -1,6 +1,10 @@
 import type { APIRoute } from "astro";
 import { maimemoConfig } from "@/config";
 
+// 必须设为 SSR：否则在默认 static 模式下会被 prerender 成静态 JSON 文件，
+// 构建时调用一次墨墨 API 后写死，部署后数据永不更新
+export const prerender = false;
+
 // === 服务端内存缓存（5 分钟 TTL）===
 // 目的：控制对墨墨 API 的调用频率，避免触发限流
 // 注意：仅当前 Node 进程有效，PM2 重启或多实例时缓存独立
