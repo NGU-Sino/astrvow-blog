@@ -1,41 +1,345 @@
 {
   "chapters": [
-    { "id": "math-gs-01", "subject": "gaoshu", "subjectLabel": "高等数学", "source": "张宇基础30讲", "index": 1, "title": "函数极限与连续", "status": "completed", "notesUrl": "/review-assets/math/gaoshu/notes/01-函数极限与连续.pdf", "errorsUrl": "/review-assets/math/gaoshu/errors/01-函数极限与连续.pdf" },
-    { "id": "math-gs-02", "subject": "gaoshu", "subjectLabel": "高等数学", "source": "张宇基础30讲", "index": 2, "title": "数列极限", "status": "completed", "notesUrl": "/review-assets/math/gaoshu/notes/02-数列极限.pdf", "errorsUrl": "/review-assets/math/gaoshu/errors/02-数列极限.pdf" },
-    { "id": "math-gs-03", "subject": "gaoshu", "subjectLabel": "高等数学", "source": "张宇基础30讲", "index": 3, "title": "一元函数微分学的概念", "status": "completed", "notesUrl": "/review-assets/math/gaoshu/notes/03-一元函数微分学的概念.pdf", "errorsUrl": "/review-assets/math/gaoshu/errors/03-一元函数微分学的概念.pdf" },
-    { "id": "math-gs-04", "subject": "gaoshu", "subjectLabel": "高等数学", "source": "张宇基础30讲", "index": 4, "title": "一元函数微分学的计算", "status": "completed", "notesUrl": "/review-assets/math/gaoshu/notes/04-一元函数微分学的计算.pdf", "errorsUrl": "/review-assets/math/gaoshu/errors/04-一元函数微分学的计算.pdf" },
-    { "id": "math-gs-05", "subject": "gaoshu", "subjectLabel": "高等数学", "source": "张宇基础30讲", "index": 5, "title": "一元函数微分学的应用（一）——几何应用", "status": "completed", "notesUrl": "/review-assets/math/gaoshu/notes/05-一元函数微分学的几何应用.pdf", "errorsUrl": "/review-assets/math/gaoshu/errors/05-一元函数微分学的几何应用.pdf" },
-    { "id": "math-gs-06", "subject": "gaoshu", "subjectLabel": "高等数学", "source": "张宇基础30讲", "index": 6, "title": "一元函数微分学的应用（二）——中值定理、微分等式与微分不等式", "status": "completed", "notesUrl": "/review-assets/math/gaoshu/notes/06-中值定理、微分等式与微分不等式.pdf", "errorsUrl": "/review-assets/math/gaoshu/errors/06-中值定理、微分等式与微分不等式.pdf" },
-    { "id": "math-gs-07", "subject": "gaoshu", "subjectLabel": "高等数学", "source": "张宇基础30讲", "index": 7, "title": "一元函数微分学的应用（三）——物理应用", "status": "completed", "notesUrl": "/review-assets/math/gaoshu/notes/07-一元函数微分学的物理应用.pdf", "errorsUrl": "/review-assets/math/gaoshu/errors/07-一元函数微分学的物理应用.pdf" },
-    { "id": "math-gs-08", "subject": "gaoshu", "subjectLabel": "高等数学", "source": "张宇基础30讲", "index": 8, "title": "一元函数积分学的概念与性质", "status": "completed", "notesUrl": "/review-assets/math/gaoshu/notes/08-一元函数积分学的概念与性质.pdf", "errorsUrl": "/review-assets/math/gaoshu/errors/08-一元函数积分学的概念与性质.pdf" },
-    { "id": "math-gs-09", "subject": "gaoshu", "subjectLabel": "高等数学", "source": "张宇基础30讲", "index": 9, "title": "一元函数积分学的计算", "status": "completed", "notesUrl": "/review-assets/math/gaoshu/notes/09-一元函数积分学的计算.pdf", "errorsUrl": "/review-assets/math/gaoshu/errors/09-一元函数积分学的计算.pdf" },
-    { "id": "math-gs-10", "subject": "gaoshu", "subjectLabel": "高等数学", "source": "张宇基础30讲", "index": 10, "title": "一元函数积分学的应用（一）——几何应用", "status": "completed", "notesUrl": "/review-assets/math/gaoshu/notes/10-一元函数积分学的几何应用.pdf", "errorsUrl": "/review-assets/math/gaoshu/errors/10-一元函数积分学的几何应用.pdf" },
-    { "id": "math-gs-11", "subject": "gaoshu", "subjectLabel": "高等数学", "source": "张宇基础30讲", "index": 11, "title": "一元函数积分学的应用（二）——积分等式与积分不等式", "status": "completed", "notesUrl": "/review-assets/math/gaoshu/notes/11-积分等式与积分不等式.pdf", "errorsUrl": "/review-assets/math/gaoshu/errors/11-积分等式与积分不等式.pdf" },
-    { "id": "math-gs-12", "subject": "gaoshu", "subjectLabel": "高等数学", "source": "张宇基础30讲", "index": 12, "title": "一元函数积分学的应用（三）——物理应用", "status": "completed", "notesUrl": "/review-assets/math/gaoshu/notes/12-一元函数积分学的物理应用.pdf", "errorsUrl": "/review-assets/math/gaoshu/errors/12-一元函数积分学的物理应用.pdf" },
-    { "id": "math-gs-13", "subject": "gaoshu", "subjectLabel": "高等数学", "source": "张宇基础30讲", "index": 13, "title": "多元函数微分学", "status": "completed", "notesUrl": "/review-assets/math/gaoshu/notes/13-多元函数微分学.pdf", "errorsUrl": "/review-assets/math/gaoshu/errors/13-多元函数微分学.pdf" },
-    { "id": "math-gs-14", "subject": "gaoshu", "subjectLabel": "高等数学", "source": "张宇基础30讲", "index": 14, "title": "二重积分", "status": "completed", "notesUrl": "/review-assets/math/gaoshu/notes/14-二重积分.pdf", "errorsUrl": "/review-assets/math/gaoshu/errors/14-二重积分.pdf" },
-    { "id": "math-gs-15", "subject": "gaoshu", "subjectLabel": "高等数学", "source": "张宇基础30讲", "index": 15, "title": "微分方程", "status": "completed", "notesUrl": "/review-assets/math/gaoshu/notes/15-微分方程.pdf", "errorsUrl": "/review-assets/math/gaoshu/errors/15-微分方程.pdf" },
-    { "id": "math-gs-16", "subject": "gaoshu", "subjectLabel": "高等数学", "source": "张宇基础30讲", "index": 16, "title": "无穷级数", "status": "completed", "notesUrl": "/review-assets/math/gaoshu/notes/16-无穷级数.pdf", "errorsUrl": "/review-assets/math/gaoshu/errors/16-无穷级数.pdf" },
-    { "id": "math-gs-17", "subject": "gaoshu", "subjectLabel": "高等数学", "source": "张宇基础30讲", "index": 17, "title": "多元函数积分学的预备知识", "status": "completed", "notesUrl": "/review-assets/math/gaoshu/notes/17-多元函数积分学的预备知识.pdf", "errorsUrl": "/review-assets/math/gaoshu/errors/17-多元函数积分学的预备知识.pdf" },
-    { "id": "math-gs-18", "subject": "gaoshu", "subjectLabel": "高等数学", "source": "张宇基础30讲", "index": 18, "title": "多元函数积分学", "status": "completed", "notesUrl": "/review-assets/math/gaoshu/notes/18-多元函数积分学.pdf", "errorsUrl": "/review-assets/math/gaoshu/errors/18-多元函数积分学.pdf" },
-    { "id": "math-la-01", "subject": "xiandai", "subjectLabel": "线性代数", "source": "张宇基础30讲", "index": 1, "title": "行列式", "status": "completed" },
-    { "id": "math-la-02", "subject": "xiandai", "subjectLabel": "线性代数", "source": "张宇基础30讲", "index": 2, "title": "矩阵", "status": "completed" },
-    { "id": "math-la-03", "subject": "xiandai", "subjectLabel": "线性代数", "source": "张宇基础30讲", "index": 3, "title": "向量组", "status": "in_progress" },
-    { "id": "math-la-04", "subject": "xiandai", "subjectLabel": "线性代数", "source": "张宇基础30讲", "index": 4, "title": "线性方程组", "status": "not_started" },
-    { "id": "math-la-05", "subject": "xiandai", "subjectLabel": "线性代数", "source": "张宇基础30讲", "index": 5, "title": "特征值与特征向量", "status": "not_started" },
-    { "id": "math-la-06", "subject": "xiandai", "subjectLabel": "线性代数", "source": "张宇基础30讲", "index": 6, "title": "二次型", "status": "not_started" },
-    { "id": "math-prob-01", "subject": "gailvlun", "subjectLabel": "概率论与数理统计", "source": "方浩概率论就这点事", "index": 1, "title": "随机事件与概率", "status": "not_started" },
-    { "id": "math-prob-02", "subject": "gailvlun", "subjectLabel": "概率论与数理统计", "source": "方浩概率论就这点事", "index": 2, "title": "随机变量及其分布", "status": "not_started" },
-    { "id": "math-prob-03", "subject": "gailvlun", "subjectLabel": "概率论与数理统计", "source": "方浩概率论就这点事", "index": 3, "title": "多维随机变量及其分布", "status": "not_started" },
-    { "id": "math-prob-04", "subject": "gailvlun", "subjectLabel": "概率论与数理统计", "source": "方浩概率论就这点事", "index": 4, "title": "随机变量的数字特征", "status": "not_started" },
-    { "id": "math-prob-05", "subject": "gailvlun", "subjectLabel": "概率论与数理统计", "source": "方浩概率论就这点事", "index": 5, "title": "大数定律和中心极限定理", "status": "not_started" },
-    { "id": "math-prob-06", "subject": "gailvlun", "subjectLabel": "概率论与数理统计", "source": "方浩概率论就这点事", "index": 6, "title": "数理统计的基本概念", "status": "not_started" },
-    { "id": "math-prob-07", "subject": "gailvlun", "subjectLabel": "概率论与数理统计", "source": "方浩概率论就这点事", "index": 7, "title": "参数估计", "status": "not_started" },
-    { "id": "math-prob-08", "subject": "gailvlun", "subjectLabel": "概率论与数理统计", "source": "方浩概率论就这点事", "index": 8, "title": "假设检验", "status": "not_started" }
+    {
+      "id": "math-gs-01",
+      "subject": "gaoshu",
+      "subjectLabel": "高等数学",
+      "source": "张宇基础30讲",
+      "index": 1,
+      "title": "函数极限与连续",
+      "status": "completed",
+      "notesUrl": "/review-assets/math/gaoshu/notes/01-函数极限与连续.pdf",
+      "errorsUrl": "/review-assets/math/gaoshu/errors/01-函数极限与连续.pdf"
+    },
+    {
+      "id": "math-gs-02",
+      "subject": "gaoshu",
+      "subjectLabel": "高等数学",
+      "source": "张宇基础30讲",
+      "index": 2,
+      "title": "数列极限",
+      "status": "completed",
+      "notesUrl": "/review-assets/math/gaoshu/notes/02-数列极限.pdf",
+      "errorsUrl": "/review-assets/math/gaoshu/errors/02-数列极限.pdf"
+    },
+    {
+      "id": "math-gs-03",
+      "subject": "gaoshu",
+      "subjectLabel": "高等数学",
+      "source": "张宇基础30讲",
+      "index": 3,
+      "title": "一元函数微分学的概念",
+      "status": "completed",
+      "notesUrl": "/review-assets/math/gaoshu/notes/03-一元函数微分学的概念.pdf",
+      "errorsUrl": "/review-assets/math/gaoshu/errors/03-一元函数微分学的概念.pdf"
+    },
+    {
+      "id": "math-gs-04",
+      "subject": "gaoshu",
+      "subjectLabel": "高等数学",
+      "source": "张宇基础30讲",
+      "index": 4,
+      "title": "一元函数微分学的计算",
+      "status": "completed",
+      "notesUrl": "/review-assets/math/gaoshu/notes/04-一元函数微分学的计算.pdf",
+      "errorsUrl": "/review-assets/math/gaoshu/errors/04-一元函数微分学的计算.pdf"
+    },
+    {
+      "id": "math-gs-05",
+      "subject": "gaoshu",
+      "subjectLabel": "高等数学",
+      "source": "张宇基础30讲",
+      "index": 5,
+      "title": "一元函数微分学的应用（一）——几何应用",
+      "status": "completed",
+      "notesUrl": "/review-assets/math/gaoshu/notes/05-一元函数微分学的几何应用.pdf",
+      "errorsUrl": "/review-assets/math/gaoshu/errors/05-一元函数微分学的几何应用.pdf"
+    },
+    {
+      "id": "math-gs-06",
+      "subject": "gaoshu",
+      "subjectLabel": "高等数学",
+      "source": "张宇基础30讲",
+      "index": 6,
+      "title": "一元函数微分学的应用（二）——中值定理、微分等式与微分不等式",
+      "status": "completed",
+      "notesUrl": "/review-assets/math/gaoshu/notes/06-中值定理、微分等式与微分不等式.pdf",
+      "errorsUrl": "/review-assets/math/gaoshu/errors/06-中值定理、微分等式与微分不等式.pdf"
+    },
+    {
+      "id": "math-gs-07",
+      "subject": "gaoshu",
+      "subjectLabel": "高等数学",
+      "source": "张宇基础30讲",
+      "index": 7,
+      "title": "一元函数微分学的应用（三）——物理应用",
+      "status": "completed",
+      "notesUrl": "/review-assets/math/gaoshu/notes/07-一元函数微分学的物理应用.pdf",
+      "errorsUrl": "/review-assets/math/gaoshu/errors/07-一元函数微分学的物理应用.pdf"
+    },
+    {
+      "id": "math-gs-08",
+      "subject": "gaoshu",
+      "subjectLabel": "高等数学",
+      "source": "张宇基础30讲",
+      "index": 8,
+      "title": "一元函数积分学的概念与性质",
+      "status": "completed",
+      "notesUrl": "/review-assets/math/gaoshu/notes/08-一元函数积分学的概念与性质.pdf",
+      "errorsUrl": "/review-assets/math/gaoshu/errors/08-一元函数积分学的概念与性质.pdf"
+    },
+    {
+      "id": "math-gs-09",
+      "subject": "gaoshu",
+      "subjectLabel": "高等数学",
+      "source": "张宇基础30讲",
+      "index": 9,
+      "title": "一元函数积分学的计算",
+      "status": "completed",
+      "notesUrl": "/review-assets/math/gaoshu/notes/09-一元函数积分学的计算.pdf",
+      "errorsUrl": "/review-assets/math/gaoshu/errors/09-一元函数积分学的计算.pdf"
+    },
+    {
+      "id": "math-gs-10",
+      "subject": "gaoshu",
+      "subjectLabel": "高等数学",
+      "source": "张宇基础30讲",
+      "index": 10,
+      "title": "一元函数积分学的应用（一）——几何应用",
+      "status": "completed",
+      "notesUrl": "/review-assets/math/gaoshu/notes/10-一元函数积分学的几何应用.pdf",
+      "errorsUrl": "/review-assets/math/gaoshu/errors/10-一元函数积分学的几何应用.pdf"
+    },
+    {
+      "id": "math-gs-11",
+      "subject": "gaoshu",
+      "subjectLabel": "高等数学",
+      "source": "张宇基础30讲",
+      "index": 11,
+      "title": "一元函数积分学的应用（二）——积分等式与积分不等式",
+      "status": "completed",
+      "notesUrl": "/review-assets/math/gaoshu/notes/11-积分等式与积分不等式.pdf",
+      "errorsUrl": "/review-assets/math/gaoshu/errors/11-积分等式与积分不等式.pdf"
+    },
+    {
+      "id": "math-gs-12",
+      "subject": "gaoshu",
+      "subjectLabel": "高等数学",
+      "source": "张宇基础30讲",
+      "index": 12,
+      "title": "一元函数积分学的应用（三）——物理应用",
+      "status": "completed",
+      "notesUrl": "/review-assets/math/gaoshu/notes/12-一元函数积分学的物理应用.pdf",
+      "errorsUrl": "/review-assets/math/gaoshu/errors/12-一元函数积分学的物理应用.pdf"
+    },
+    {
+      "id": "math-gs-13",
+      "subject": "gaoshu",
+      "subjectLabel": "高等数学",
+      "source": "张宇基础30讲",
+      "index": 13,
+      "title": "多元函数微分学",
+      "status": "completed",
+      "notesUrl": "/review-assets/math/gaoshu/notes/13-多元函数微分学.pdf",
+      "errorsUrl": "/review-assets/math/gaoshu/errors/13-多元函数微分学.pdf"
+    },
+    {
+      "id": "math-gs-14",
+      "subject": "gaoshu",
+      "subjectLabel": "高等数学",
+      "source": "张宇基础30讲",
+      "index": 14,
+      "title": "二重积分",
+      "status": "completed",
+      "notesUrl": "/review-assets/math/gaoshu/notes/14-二重积分.pdf",
+      "errorsUrl": "/review-assets/math/gaoshu/errors/14-二重积分.pdf"
+    },
+    {
+      "id": "math-gs-15",
+      "subject": "gaoshu",
+      "subjectLabel": "高等数学",
+      "source": "张宇基础30讲",
+      "index": 15,
+      "title": "微分方程",
+      "status": "completed",
+      "notesUrl": "/review-assets/math/gaoshu/notes/15-微分方程.pdf",
+      "errorsUrl": "/review-assets/math/gaoshu/errors/15-微分方程.pdf"
+    },
+    {
+      "id": "math-gs-16",
+      "subject": "gaoshu",
+      "subjectLabel": "高等数学",
+      "source": "张宇基础30讲",
+      "index": 16,
+      "title": "无穷级数",
+      "status": "completed",
+      "notesUrl": "/review-assets/math/gaoshu/notes/16-无穷级数.pdf",
+      "errorsUrl": "/review-assets/math/gaoshu/errors/16-无穷级数.pdf"
+    },
+    {
+      "id": "math-gs-17",
+      "subject": "gaoshu",
+      "subjectLabel": "高等数学",
+      "source": "张宇基础30讲",
+      "index": 17,
+      "title": "多元函数积分学的预备知识",
+      "status": "completed",
+      "notesUrl": "/review-assets/math/gaoshu/notes/17-多元函数积分学的预备知识.pdf",
+      "errorsUrl": "/review-assets/math/gaoshu/errors/17-多元函数积分学的预备知识.pdf"
+    },
+    {
+      "id": "math-gs-18",
+      "subject": "gaoshu",
+      "subjectLabel": "高等数学",
+      "source": "张宇基础30讲",
+      "index": 18,
+      "title": "多元函数积分学",
+      "status": "completed",
+      "notesUrl": "/review-assets/math/gaoshu/notes/18-多元函数积分学.pdf",
+      "errorsUrl": "/review-assets/math/gaoshu/errors/18-多元函数积分学.pdf"
+    },
+    {
+      "id": "math-la-01",
+      "subject": "xiandai",
+      "subjectLabel": "线性代数",
+      "source": "张宇基础30讲",
+      "index": 1,
+      "title": "行列式",
+      "status": "completed"
+    },
+    {
+      "id": "math-la-02",
+      "subject": "xiandai",
+      "subjectLabel": "线性代数",
+      "source": "张宇基础30讲",
+      "index": 2,
+      "title": "矩阵",
+      "status": "completed"
+    },
+    {
+      "id": "math-la-03",
+      "subject": "xiandai",
+      "subjectLabel": "线性代数",
+      "source": "张宇基础30讲",
+      "index": 3,
+      "title": "向量组",
+      "status": "completed"
+    },
+    {
+      "id": "math-la-04",
+      "subject": "xiandai",
+      "subjectLabel": "线性代数",
+      "source": "张宇基础30讲",
+      "index": 4,
+      "title": "线性方程组",
+      "status": "in_progress"
+    },
+    {
+      "id": "math-la-05",
+      "subject": "xiandai",
+      "subjectLabel": "线性代数",
+      "source": "张宇基础30讲",
+      "index": 5,
+      "title": "特征值与特征向量",
+      "status": "not_started"
+    },
+    {
+      "id": "math-la-06",
+      "subject": "xiandai",
+      "subjectLabel": "线性代数",
+      "source": "张宇基础30讲",
+      "index": 6,
+      "title": "二次型",
+      "status": "not_started"
+    },
+    {
+      "id": "math-prob-01",
+      "subject": "gailvlun",
+      "subjectLabel": "概率论与数理统计",
+      "source": "方浩概率论就这点事",
+      "index": 1,
+      "title": "随机事件与概率",
+      "status": "not_started"
+    },
+    {
+      "id": "math-prob-02",
+      "subject": "gailvlun",
+      "subjectLabel": "概率论与数理统计",
+      "source": "方浩概率论就这点事",
+      "index": 2,
+      "title": "随机变量及其分布",
+      "status": "not_started"
+    },
+    {
+      "id": "math-prob-03",
+      "subject": "gailvlun",
+      "subjectLabel": "概率论与数理统计",
+      "source": "方浩概率论就这点事",
+      "index": 3,
+      "title": "多维随机变量及其分布",
+      "status": "not_started"
+    },
+    {
+      "id": "math-prob-04",
+      "subject": "gailvlun",
+      "subjectLabel": "概率论与数理统计",
+      "source": "方浩概率论就这点事",
+      "index": 4,
+      "title": "随机变量的数字特征",
+      "status": "not_started"
+    },
+    {
+      "id": "math-prob-05",
+      "subject": "gailvlun",
+      "subjectLabel": "概率论与数理统计",
+      "source": "方浩概率论就这点事",
+      "index": 5,
+      "title": "大数定律和中心极限定理",
+      "status": "not_started"
+    },
+    {
+      "id": "math-prob-06",
+      "subject": "gailvlun",
+      "subjectLabel": "概率论与数理统计",
+      "source": "方浩概率论就这点事",
+      "index": 6,
+      "title": "数理统计的基本概念",
+      "status": "not_started"
+    },
+    {
+      "id": "math-prob-07",
+      "subject": "gailvlun",
+      "subjectLabel": "概率论与数理统计",
+      "source": "方浩概率论就这点事",
+      "index": 7,
+      "title": "参数估计",
+      "status": "not_started"
+    },
+    {
+      "id": "math-prob-08",
+      "subject": "gailvlun",
+      "subjectLabel": "概率论与数理统计",
+      "source": "方浩概率论就这点事",
+      "index": 8,
+      "title": "假设检验",
+      "status": "not_started"
+    }
   ],
   "stages": [
-    { "id": "basic", "name": "基础", "active": true },
-    { "id": "enhance", "name": "强化", "active": false },
-    { "id": "advanced", "name": "冲刺", "active": false }
+    {
+      "id": "basic",
+      "name": "基础",
+      "active": true
+    },
+    {
+      "id": "enhance",
+      "name": "强化",
+      "active": false
+    },
+    {
+      "id": "advanced",
+      "name": "冲刺",
+      "active": false
+    }
   ]
 }
