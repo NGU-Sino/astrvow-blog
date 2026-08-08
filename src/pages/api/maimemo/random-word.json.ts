@@ -5,11 +5,17 @@ import { maimemoConfig } from "@/config";
 // 构建时调用一次墨墨 API 后写死，部署后单词永不更新
 export const prerender = false;
 
-// 内存缓存：5 分钟内复用已拉取的词库，避免每次随机都打墨墨 API
-// 拉取策略：按 next_study_date 筛选未来（不含今天）即将学习的词，最多 1000 个
+// === 服务端内存缓存（5 分钟 TTL）===
+// 目的：控制对墨墨 API 的调用频率，避免触发限流
+// 注意：仅当前 Node 进程有效，PM2 重启或多实例时缓存独立
 let cachedWords: any[] = [];
 let cacheFetchedAt = 0;
 const CACHE_TTL_MS = 5 * 60 * 1000; // 5 分钟
+// 正在进行的请求去重：防止缓存过期时多个请求同时打 API（thundering herd）
+let inflight: Promise<void> | null = null;
+
+// fetch 超时：墨墨 API 响应慢时防止请求堆积导致 OOM
+const FETCH_TIMEOUT_MS = 8000;
 
 // 获取北京时间（+08:00）的 YYYY-MM-DD 日期字符串
 function getBeijingDateString(date: Date) {
@@ -28,40 +34,63 @@ async function loadWordsIntoCache() {
 		return;
 	}
 
-	// 筛选条件：未来（不含今天）即将学习的词
-	// start = 明天 00:00:00 +08:00，不设 end（覆盖所有未来日期）
-	// 这样拉到的是"接下来要复习的全部词"中按 next_study_date 升序的前 1000 个
-	const tomorrow = new Date();
-	tomorrow.setDate(tomorrow.getDate() + 1);
-	const tomorrowStr = getBeijingDateString(tomorrow);
-	const startStr = `${tomorrowStr}T00:00:00+08:00`;
-
-	const res = await fetch(
-		`${maimemoConfig.apiBaseUrl}/api/v1/memo/study/query_study_records`,
-		{
-			method: "POST",
-			headers: {
-				Authorization: `Bearer ${maimemoConfig.apiToken}`,
-				"Content-Type": "application/json",
-				Accept: "application/json",
-			},
-			body: JSON.stringify({
-				limit: 1000,
-				next_study_date: {
-					start: startStr,
-				},
-			}),
-		}
-	);
-
-	if (!res.ok) {
-		throw new Error(`API error ${res.status}`);
+	// 请求去重：已有进行中的请求时等待其完成
+	if (inflight) {
+		await inflight;
+		return;
 	}
 
-	const data = await res.json();
-	cachedWords = data.data?.records || [];
-	cacheFetchedAt = now;
+	inflight = (async () => {
+		// 筛选条件：未来（不含今天）即将学习的词
+		// start = 明天 00:00:00 +08:00，不设 end（覆盖所有未来日期）
+		// 这样拉到的是"接下来要复习的全部词"中按 next_study_date 升序的前 1000 个
+		const tomorrow = new Date();
+		tomorrow.setDate(tomorrow.getDate() + 1);
+		const tomorrowStr = getBeijingDateString(tomorrow);
+		const startStr = `${tomorrowStr}T00:00:00+08:00`;
+
+		const res = await fetch(
+			`${maimemoConfig.apiBaseUrl}/api/v1/memo/study/query_study_records`,
+			{
+				method: "POST",
+				headers: {
+					Authorization: `Bearer ${maimemoConfig.apiToken}`,
+					"Content-Type": "application/json",
+					Accept: "application/json",
+				},
+				body: JSON.stringify({
+					limit: 1000,
+					next_study_date: {
+						start: startStr,
+					},
+				}),
+				signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+			}
+		);
+
+		if (!res.ok) {
+			throw new Error(`API error ${res.status}`);
+		}
+
+		const data = await res.json();
+		cachedWords = data.data?.records || [];
+		cacheFetchedAt = Date.now();
+	})();
+
+	try {
+		await inflight;
+	} finally {
+		inflight = null;
+	}
 }
+
+const NO_STORE_HEADERS = {
+	"Content-Type": "application/json",
+	// 禁止中间层缓存：缓存由本进程内存管理（5 分钟 TTL）
+	"Cache-Control": "no-store, max-age=0",
+	"Surrogate-Control": "no-store",
+	Pragma: "no-cache",
+} as const;
 
 export const GET: APIRoute = async () => {
 	if (!maimemoConfig.enable || !maimemoConfig.apiToken) {
@@ -88,7 +117,7 @@ export const GET: APIRoute = async () => {
 				}),
 				{
 					status: 404,
-					headers: { "Content-Type": "application/json" },
+					headers: NO_STORE_HEADERS,
 				}
 			);
 		}
@@ -115,12 +144,7 @@ export const GET: APIRoute = async () => {
 			}),
 			{
 				status: 200,
-				headers: {
-					"Content-Type": "application/json",
-					// 5 分钟缓存：与内存缓存 TTL 一致
-					// 客户端本地随机选词，缓存整个词库不影响切换体验
-					"Cache-Control": "public, max-age=300",
-				},
+				headers: { ...NO_STORE_HEADERS, "X-Cache": "HIT" },
 			}
 		);
 	} catch (error) {
