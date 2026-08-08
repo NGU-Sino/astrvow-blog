@@ -1,6 +1,17 @@
 {
   "friends": [
     {
+      "title": "星诺的图床",
+      "imgurl": "https://blog.astrvow.com/_astro/logo.DuHgmi9I_1k5uPc.webp",
+      "desc": "星诺的图床站，欢迎大家访问！",
+      "siteurl": "https://image.astrvow.com/",
+      "tags": [
+        "图床"
+      ],
+      "weight": 999,
+      "enabled": true
+    },
+    {
       "title": "番茄主理人",
       "imgurl": "https://q1.qlogo.cn/g?b=qq&nk=20447289&s=640",
       "desc": "躬身入局，心为主理，行有尺度，自持本心.",
