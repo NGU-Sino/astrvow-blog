@@ -66,8 +66,11 @@ function getQrLqipProps(qrCode: string) {
       <!-- 打赏方式 -->
       <div class="mb-8">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    {enabledMethods.map((method) => (
-                      <div class="flex flex-col items-center card-base p-6 rounded-lg bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 hover:border-(--primary) transition-colors">
+                    {enabledMethods.map((method, index) => {
+                      // 启用方式数量为奇数时，最后一项跨两列居中显示
+                      const isLastOdd = enabledMethods.length % 2 === 1 && index === enabledMethods.length - 1;
+                      return (
+                      <div class={`flex flex-col items-center card-base p-6 rounded-lg bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 hover:border-(--primary) transition-colors${isLastOdd ? " sm:col-span-2 sm:max-w-md sm:mx-auto" : ""}`}>
                         <!-- 图标和名称 -->
                         <div class="flex items-center gap-3 mb-4">
                           {method.icon && (
@@ -110,7 +113,8 @@ function getQrLqipProps(qrCode: string) {
                           </a>
                         )}
                       </div>
-                    ))}
+                      );
+                    })}
         </div>
       </div>
     </div>

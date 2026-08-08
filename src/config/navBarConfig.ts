@@ -121,6 +121,13 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 				external: true,
 				icon: "fa7-brands:bilibili",
 			},
+			// 图床
+			{
+				name: "图床",
+				url: "https://image.astrvow.com/",
+				external: true,
+				icon: "material-symbols:image",
+			},
 			// 友链
 			LinkPresets.Friends,
 

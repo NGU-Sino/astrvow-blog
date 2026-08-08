@@ -26,7 +26,7 @@ export const sponsorConfig: SponsorConfig = {
 			name: "支付宝",
 			icon: "fa7-brands:alipay",
 			// 收款码图片路径（需要放在 public 目录下）
-			qrCode: "/assets/images/sponsor/alipay.jpg",
+			qrCode: "https://image.astrvow.com/file/sponsor/1786176794655_alipay.jpg",
 			link: "",
 			description: "使用“支付宝”扫码打赏",
 			enabled: true,
@@ -34,7 +34,7 @@ export const sponsorConfig: SponsorConfig = {
 		{
 			name: "微信",
 			icon: "fa7-brands:weixin",
-			qrCode: "/assets/images/sponsor/WeChat.jpg",
+			qrCode: "https://image.astrvow.com/file/sponsor/1786176794737_WeChat.jpg",
 			link: "",
 			description: "使用“微信”扫码打赏",
 			enabled: true,
@@ -62,7 +62,7 @@ export const sponsorConfig: SponsorConfig = {
 		{
 			name: "爱在西元前",
 			avatar:
-				"/assets/images/sponsor/avatar/1.jpg",
+				"https://image.astrvow.com/file/sponsor/avatar/1786176796495_1.jpg",
 			amount: "¥0.02",
 			date: "2026-07-26",
 		},
