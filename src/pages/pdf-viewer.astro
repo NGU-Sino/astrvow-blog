@@ -111,19 +111,22 @@
 				text-decoration: none;
 			}
 			.canvas-container {
-				flex: 1;
-				overflow: auto;
-				display: flex;
-				justify-content: center;
-				padding: 16px;
-			}
-			#pdf-canvas {
-				display: block;
-				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-				background: white;
-				/* 防止 flex 容器压缩 canvas，确保显示尺寸等于绘制缓冲区尺寸 */
-				flex-shrink: 0;
-			}
+			flex: 1;
+			overflow: auto;
+			display: flex;
+			padding: 16px;
+		}
+		#pdf-canvas {
+			display: block;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+			background: white;
+			/* 防止 flex 容器压缩 canvas，确保显示尺寸等于绘制缓冲区尺寸 */
+			flex-shrink: 0;
+			/* 用 margin:auto 代替容器的 justify-content:center：
+			   canvas 小于容器时居中显示；放大后超过容器时 margin 归零，
+			   canvas 从左边界开始，左右两侧都能通过滚动条访问 */
+			margin: auto;
+		}
 			.error-msg,
 			.loading-msg {
 				position: absolute;
