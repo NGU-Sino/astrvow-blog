@@ -1,5 +1,6 @@
 // PM2 进程管理配置
-// 在 /www/wwwroot/20.2.139.66 目录下执行 pm2 start dist/ecosystem.config.cjs
+// 此文件位于项目根目录（非 dist/），需上传到 /www/wwwroot/20.2.139.66/ecosystem.config.cjs
+// 在该目录下执行: pm2 start ecosystem.config.cjs
 // 敏感信息（KEYSTATIC_*）请放在同目录的 .env 文件中，不会随部署覆盖
 module.exports = {
 	apps: [
