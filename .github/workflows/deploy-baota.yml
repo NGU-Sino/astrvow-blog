@@ -59,9 +59,9 @@ jobs:
             sudo sed -i 's/expires: new Date(Date.now() + tokenData.expires_in ?? 3600 \* 1000)/expires: new Date(Date.now() + (tokenData.expires_in ?? 3600) * 1000)/' node_modules/@keystatic/core/dist/keystatic-core-api-generic.node.js 2>/dev/null
             sudo sed -i 's/expires: new Date(Date.now() + tokenData.refresh_token_expires_in ?? 3600 \* 100)/expires: new Date(Date.now() + (tokenData.refresh_token_expires_in ?? 3600) * 100)/' node_modules/@keystatic/core/dist/keystatic-core-api-generic.node.js 2>/dev/null
             sudo sed -i 's/await encryptValue(tokenData.refresh_token, config.secret)/await encryptValue(tokenData.refresh_token ?? "", config.secret)/' node_modules/@keystatic/core/dist/keystatic-core-api-generic.node.js 2>/dev/null
-            pm2 delete blog-astrvow 2>/dev/null
-            KEYSTATIC_GITHUB_CLIENT_ID="${{ secrets.KEYSTATIC_GITHUB_CLIENT_ID }}" \
-            KEYSTATIC_GITHUB_CLIENT_SECRET="${{ secrets.KEYSTATIC_GITHUB_CLIENT_SECRET }}" \
-            KEYSTATIC_SECRET="${{ secrets.KEYSTATIC_SECRET }}" \
-            pm2 start dist/ecosystem.config.cjs
-            pm2 save
+            # 统一用 sudo pm2（root），避免 blog-deploy 和 root 两个 PM2 daemon 并存
+            # 两个实例会抢同一个 4321 端口，且内存翻倍占用，导致服务器 OOM
+            # KEYSTATIC_* 环境变量由 ecosystem.config.cjs 通过 fs.readFileSync(.env) 加载
+            sudo pm2 delete blog-astrvow 2>/dev/null
+            sudo pm2 start dist/ecosystem.config.cjs
+            sudo pm2 save
