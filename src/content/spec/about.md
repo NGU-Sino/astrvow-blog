@@ -1,3 +1,6 @@
+---
+title: 关于
+---
 # 关于我 / About Me
 
 你好，欢迎访问我的博客，我是 **星诺**！
@@ -22,7 +25,7 @@
 
 如果你想与我交流、合作或只是闲聊几句，可以通过以下方式找到我：
 
-- **邮箱**：[sino.shi@qq.com](mailto:sino.shi@qq.com)
+- **邮箱**：[sino@astrvow.com](mailto:sino@astrvow.com)
 - **Bilibili**：[星诺Astrvow](https://space.bilibili.com/2002388434)
 
 ## 🛠️ 关于本站
