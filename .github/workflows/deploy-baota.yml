@@ -46,6 +46,10 @@ jobs:
           REMOTE_HOST: ${{ secrets.BAOTA_HOST }}
           REMOTE_USER: "blog-deploy"
           TARGET: "/www/wwwroot/20.2.139.66/dist/"
+          # rsync 前修复权限：之前 sudo 操作残留了 root 拥有的文件，
+          # blog-deploy 用户无法删除/覆盖，导致 Permission denied
+          SCRIPT_BEFORE: |
+            sudo chown -R blog-deploy:blog-deploy /www/wwwroot/20.2.139.66/dist
           SCRIPT_AFTER: |
             cd /www/wwwroot/20.2.139.66
             npm install react react-dom @keystatic/core @keystatic/astro 2>/dev/null
@@ -55,8 +59,6 @@ jobs:
             sudo sed -i 's/expires: new Date(Date.now() + tokenData.expires_in ?? 3600 \* 1000)/expires: new Date(Date.now() + (tokenData.expires_in ?? 3600) * 1000)/' node_modules/@keystatic/core/dist/keystatic-core-api-generic.node.js 2>/dev/null
             sudo sed -i 's/expires: new Date(Date.now() + tokenData.refresh_token_expires_in ?? 3600 \* 100)/expires: new Date(Date.now() + (tokenData.refresh_token_expires_in ?? 3600) * 100)/' node_modules/@keystatic/core/dist/keystatic-core-api-generic.node.js 2>/dev/null
             sudo sed -i 's/await encryptValue(tokenData.refresh_token, config.secret)/await encryptValue(tokenData.refresh_token ?? "", config.secret)/' node_modules/@keystatic/core/dist/keystatic-core-api-generic.node.js 2>/dev/null
-            # 修复 Astro Node adapter 协议检测（使用 X-Forwarded-Proto 头，确保 OAuth 回调使用 https）
-            sudo sed -i 's/const protocol = "encrypted" in req.socket && req.socket.encrypted ? "https" : "http";/const protocol = req.headers["x-forwarded-proto"] || ("encrypted" in req.socket \&\& req.socket.encrypted ? "https" : "http");/' dist/server/entry.mjs 2>/dev/null
             pm2 delete blog-astrvow 2>/dev/null
             KEYSTATIC_GITHUB_CLIENT_ID="${{ secrets.KEYSTATIC_GITHUB_CLIENT_ID }}" \
             KEYSTATIC_GITHUB_CLIENT_SECRET="${{ secrets.KEYSTATIC_GITHUB_CLIENT_SECRET }}" \
