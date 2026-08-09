@@ -1,31 +1,31 @@
 {
-	"avatar": "assets/images/logo.png",
-	"name": "星诺Astrvow",
-	"bio": "只要热爱，太阳就会升起！",
-	"links": [
-		{
-			"name": "qq",
-			"icon": "fa7-brands:qq",
-			"url": "http://wpa.qq.com/msgrd?v=3&uin=2849903832&site=qq&menu=yes",
-			"showName": false
-		},
-		{
-			"name": "GitHub",
-			"icon": "fa7-brands:github",
-			"url": "https://github.com/NGU-Sino",
-			"showName": false
-		},
-		{
-			"name": "Email",
-			"icon": "fa7-solid:envelope",
-			"url": "mailto:sino.shi@qq.com",
-			"showName": false
-		},
-		{
-			"name": "RSS",
-			"icon": "fa7-solid:rss",
-			"url": "/rss/",
-			"showName": false
-		}
-	]
+  "avatar": "assets/images/logo.png",
+  "name": "星诺Astrvow",
+  "bio": "只要热爱，太阳就会升起！",
+  "links": [
+    {
+      "name": "qq",
+      "icon": "fa7-brands:qq",
+      "url": "http://wpa.qq.com/msgrd?v=3&uin=2849903832&site=qq&menu=yes",
+      "showName": false
+    },
+    {
+      "name": "GitHub",
+      "icon": "fa7-brands:github",
+      "url": "https://github.com/NGU-Sino",
+      "showName": false
+    },
+    {
+      "name": "Email",
+      "icon": "fa7-solid:envelope",
+      "url": "mailto:sino@astrvow.com",
+      "showName": false
+    },
+    {
+      "name": "RSS",
+      "icon": "fa7-solid:rss",
+      "url": "/rss/",
+      "showName": false
+    }
+  ]
 }
