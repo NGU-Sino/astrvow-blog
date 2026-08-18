@@ -232,7 +232,7 @@
       "source": "张宇基础30讲",
       "index": 4,
       "title": "线性方程组",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "id": "math-la-05",
@@ -241,7 +241,7 @@
       "source": "张宇基础30讲",
       "index": 5,
       "title": "特征值与特征向量",
-      "status": "not_started"
+      "status": "in_progress"
     },
     {
       "id": "math-la-06",
@@ -334,7 +334,7 @@
     {
       "id": "enhance",
       "name": "强化",
-      "active": false
+      "active": true
     },
     {
       "id": "advanced",
