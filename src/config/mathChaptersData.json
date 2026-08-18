@@ -334,7 +334,7 @@
     {
       "id": "enhance",
       "name": "强化",
-      "active": true
+      "active": false
     },
     {
       "id": "advanced",
