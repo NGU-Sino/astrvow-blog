@@ -616,13 +616,13 @@
         {
           "id": "cs408-os-03-01",
           "title": "内存管理概念",
-          "status": "in_progress",
+          "status": "completed",
           "notesUrl": "/review-assets/cs408/operating-system/03-01-内存管理概念.pdf"
         },
         {
           "id": "cs408-os-03-02",
           "title": "虚拟内存管理",
-          "status": "not_started",
+          "status": "in_progress",
           "notesUrl": "/review-assets/cs408/operating-system/03-02-虚拟内存管理.pdf"
         }
       ]
