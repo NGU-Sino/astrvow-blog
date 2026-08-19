@@ -344,7 +344,7 @@
       "source": "2027王道",
       "index": 3,
       "title": "存储系统",
-      "status": "in_progress",
+      "status": "completed",
       "subChapters": [
         {
           "id": "cs408-co-03-01",
@@ -379,7 +379,7 @@
         {
           "id": "cs408-co-03-06",
           "title": "虚拟存储器",
-          "status": "not_started"
+          "status": "completed"
         }
       ]
     },
@@ -611,7 +611,7 @@
       "source": "2027王道",
       "index": 3,
       "title": "内存管理",
-      "status": "in_progress",
+      "status": "completed",
       "subChapters": [
         {
           "id": "cs408-os-03-01",
@@ -622,7 +622,7 @@
         {
           "id": "cs408-os-03-02",
           "title": "虚拟内存管理",
-          "status": "in_progress",
+          "status": "completed",
           "notesUrl": "/review-assets/cs408/operating-system/03-02-虚拟内存管理.pdf"
         }
       ]
@@ -634,12 +634,12 @@
       "source": "2027王道",
       "index": 4,
       "title": "文件管理",
-      "status": "not_started",
+      "status": "in_progress",
       "subChapters": [
         {
           "id": "cs408-os-04-01",
           "title": "文件系统基础",
-          "status": "not_started",
+          "status": "in_progress",
           "notesUrl": "/review-assets/cs408/operating-system/04-01-文件系统基础.pdf"
         },
         {
