@@ -68,61 +68,6 @@ const statusConfig: Record<string, { label: string; color: string; bg: string }>
 		<!-- 考研倒计时 -->
 		<CountdownBanner />
 
-		<!-- 学习数据概览（按小节统计） -->
-		<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-			<div class="card-base p-5 text-center">
-				<Icon name="material-symbols:check-circle-outline" class="text-3xl text-green-500 mb-2" />
-				<div class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
-					{completedSubChapters}
-				</div>
-				<div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">
-					已学小节
-				</div>
-			</div>
-			<div class="card-base p-5 text-center">
-				<Icon name="material-symbols:menu-book-outline" class="text-3xl text-(--primary) mb-2" />
-				<div class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
-					{totalSubChapters}
-				</div>
-				<div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">
-					基础阶段总小节
-				</div>
-			</div>
-			<div class="card-base p-5 text-center">
-				<Icon name="material-symbols:percent" class="text-3xl text-blue-500 mb-2" />
-				<div class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
-					{totalPercent}%
-				</div>
-				<div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">
-					总完成率
-				</div>
-			</div>
-		</div>
-
-		<!-- 各科完成率（按小节统计） -->
-		<div class="card-base p-6">
-			<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-4 flex items-center gap-2">
-				<Icon name="material-symbols:analytics" class="text-2xl text-(--primary)" />
-				各科完成率
-			</h2>
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-				{subjectStats.map((s) => (
-					<div>
-						<div class="flex items-center justify-between mb-2">
-							<span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">{s.label}</span>
-							<span class="text-sm text-neutral-500 dark:text-neutral-400">{s.completed} / {s.total}</span>
-						</div>
-						<div class="w-full h-3 bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden">
-							<div
-								class="h-full bg-(--primary) rounded-full transition-all duration-1000"
-								style={`width: ${s.percent}%`}
-							></div>
-						</div>
-					</div>
-				))}
-			</div>
-		</div>
-
 		<!-- 阶段标签 -->
 		<div class="card-base p-6">
 			<div class="flex gap-2 mb-6 border-b border-neutral-200 dark:border-neutral-700 pb-4">
@@ -143,6 +88,61 @@ const statusConfig: Record<string, { label: string; color: string; bg: string }>
 
 			<!-- 基础阶段 -->
 			<div id="stage-basic" class="stage-content">
+				<!-- 基础阶段学习数据概览（按小节统计） -->
+				<div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+					<div class="card-base p-5 text-center">
+						<Icon name="material-symbols:check-circle-outline" class="text-3xl text-green-500 mb-2" />
+						<div class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+							{completedSubChapters}
+						</div>
+						<div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">
+							已学小节
+						</div>
+					</div>
+					<div class="card-base p-5 text-center">
+						<Icon name="material-symbols:menu-book-outline" class="text-3xl text-(--primary) mb-2" />
+						<div class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+							{totalSubChapters}
+						</div>
+						<div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">
+							基础阶段总小节
+						</div>
+					</div>
+					<div class="card-base p-5 text-center">
+						<Icon name="material-symbols:percent" class="text-3xl text-blue-500 mb-2" />
+						<div class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+							{totalPercent}%
+						</div>
+						<div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">
+							总完成率
+						</div>
+					</div>
+				</div>
+
+				<!-- 基础阶段各科完成率（按小节统计） -->
+				<div class="card-base p-6 mb-6">
+					<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-4 flex items-center gap-2">
+						<Icon name="material-symbols:analytics" class="text-2xl text-(--primary)" />
+						各科完成率
+					</h2>
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+						{subjectStats.map((s) => (
+							<div>
+								<div class="flex items-center justify-between mb-2">
+									<span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">{s.label}</span>
+									<span class="text-sm text-neutral-500 dark:text-neutral-400">{s.completed} / {s.total}</span>
+								</div>
+								<div class="w-full h-3 bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden">
+									<div
+										class="h-full bg-(--primary) rounded-full transition-all duration-1000"
+										style={`width: ${s.percent}%`}
+									></div>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+
 				{chaptersBySubject.map((subj) => (
 					<div class="mb-8">
 						<div class="flex items-center justify-between mb-3">

@@ -35,4 +35,5 @@ export interface ReviewStage {
 }
 
 export const mathChapters: ReviewChapter[] = mathChaptersData.chapters as ReviewChapter[];
+export const mathEnhanceChapters: ReviewChapter[] = (mathChaptersData as any).enhanceChapters as ReviewChapter[];
 export const mathStages: ReviewStage[] = mathChaptersData.stages as ReviewStage[];
