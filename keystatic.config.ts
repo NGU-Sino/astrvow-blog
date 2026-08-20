@@ -435,7 +435,39 @@ export default config({
 						}),
 					}),
 					{
-						label: "章节列表",
+						label: "基础章节列表",
+						itemLabel: (props) =>
+							`${props.fields.subjectLabel.value || ""} - ${props.fields.title.value || "新章节"}`,
+					},
+				),
+				enhanceChapters: fields.array(
+					fields.object({
+						id: fields.text({ label: "ID" }),
+						subject: fields.text({ label: "科目标识" }),
+						subjectLabel: fields.text({ label: "科目名称" }),
+						source: fields.text({ label: "教辅来源" }),
+						index: fields.number({ label: "序号" }),
+						title: fields.text({ label: "章节标题" }),
+						status: fields.select({
+							label: "状态",
+							options: [
+								{ label: "未开始", value: "not_started" },
+								{ label: "进行中", value: "in_progress" },
+								{ label: "已完成", value: "completed" },
+							],
+							defaultValue: "not_started",
+						}),
+						notesUrl: fields.text({
+							label: "笔记PDF路径",
+							description: "例如：/review-assets/math/enhance/极限-笔记.pdf",
+						}),
+						errorsUrl: fields.text({
+							label: "错题PDF路径",
+							description: "例如：/review-assets/math/enhance/极限-错题.pdf",
+						}),
+					}),
+					{
+						label: "强化章节列表",
 						itemLabel: (props) =>
 							`${props.fields.subjectLabel.value || ""} - ${props.fields.title.value || "新章节"}`,
 					},
