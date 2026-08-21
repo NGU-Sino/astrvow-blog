@@ -639,19 +639,19 @@
         {
           "id": "cs408-os-04-01",
           "title": "文件系统基础",
-          "status": "in_progress",
+          "status": "completed",
           "notesUrl": "/review-assets/cs408/operating-system/04-01-文件系统基础.pdf"
         },
         {
           "id": "cs408-os-04-02",
           "title": "目录与文件",
-          "status": "not_started",
+          "status": "completed",
           "notesUrl": "/review-assets/cs408/operating-system/04-02-目录与文件.pdf"
         },
         {
           "id": "cs408-os-04-03",
           "title": "文件系统",
-          "status": "not_started",
+          "status": "in_progress",
           "notesUrl": "/review-assets/cs408/operating-system/04-03-文件系统.pdf"
         }
       ]
