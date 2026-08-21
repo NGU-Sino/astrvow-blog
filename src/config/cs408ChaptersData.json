@@ -634,7 +634,7 @@
       "source": "2027王道",
       "index": 4,
       "title": "文件管理",
-      "status": "in_progress",
+      "status": "completed",
       "subChapters": [
         {
           "id": "cs408-os-04-01",
@@ -651,7 +651,7 @@
         {
           "id": "cs408-os-04-03",
           "title": "文件系统",
-          "status": "in_progress",
+          "status": "completed",
           "notesUrl": "/review-assets/cs408/operating-system/04-03-文件系统.pdf"
         }
       ]
@@ -663,12 +663,12 @@
       "source": "2027王道",
       "index": 5,
       "title": "输入/输出管理",
-      "status": "not_started",
+      "status": "in_progress",
       "subChapters": [
         {
           "id": "cs408-os-05-01",
           "title": "I/O管理概述",
-          "status": "not_started",
+          "status": "in_progress",
           "notesUrl": "/review-assets/cs408/operating-system/05-01-I-O管理概述.pdf"
         },
         {
