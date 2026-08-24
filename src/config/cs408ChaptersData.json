@@ -663,24 +663,24 @@
       "source": "2027王道",
       "index": 5,
       "title": "输入/输出管理",
-      "status": "in_progress",
+      "status": "completed",
       "subChapters": [
         {
           "id": "cs408-os-05-01",
           "title": "I/O管理概述",
-          "status": "in_progress",
+          "status": "completed",
           "notesUrl": "/review-assets/cs408/operating-system/05-01-I-O管理概述.pdf"
         },
         {
           "id": "cs408-os-05-02",
           "title": "设备独立性软件",
-          "status": "not_started",
+          "status": "completed",
           "notesUrl": "/review-assets/cs408/operating-system/05-02-设备独立性软件.pdf"
         },
         {
           "id": "cs408-os-05-03",
           "title": "磁盘和固态硬盘",
-          "status": "not_started",
+          "status": "completed",
           "notesUrl": "/review-assets/cs408/operating-system/05-03-磁盘和固态硬盘.pdf"
         }
       ]
@@ -924,12 +924,12 @@
     {
       "id": "basic",
       "name": "基础",
-      "active": true
+      "active": false
     },
     {
       "id": "enhance",
       "name": "强化",
-      "active": false
+      "active": true
     },
     {
       "id": "advanced",
