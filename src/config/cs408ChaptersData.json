@@ -924,12 +924,12 @@
     {
       "id": "basic",
       "name": "基础",
-      "active": false
+      "active": true
     },
     {
       "id": "enhance",
       "name": "强化",
-      "active": true
+      "active": false
     },
     {
       "id": "advanced",
