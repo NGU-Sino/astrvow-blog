@@ -241,7 +241,7 @@
       "source": "张宇基础30讲",
       "index": 5,
       "title": "特征值与特征向量",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "id": "math-la-06",
@@ -250,7 +250,7 @@
       "source": "张宇基础30讲",
       "index": 6,
       "title": "二次型",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-prob-01",
@@ -259,7 +259,7 @@
       "source": "方浩概率论就这点事",
       "index": 1,
       "title": "随机事件与概率",
-      "status": "not_started"
+      "status": "in_progress"
     },
     {
       "id": "math-prob-02",
@@ -549,7 +549,7 @@
       "source": "方浩概率论就这点事",
       "index": 1,
       "title": "随机事件与概率",
-      "status": "not_started"
+      "status": "in_progress"
     },
     {
       "id": "math-enhance-prob-02",
