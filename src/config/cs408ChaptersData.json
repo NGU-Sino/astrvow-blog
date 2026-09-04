@@ -920,6 +920,34 @@
       ]
     }
   ],
+  "enhanceChapters": [
+    { "id": "cs408-enhance-ds-01", "subject": "data_structure", "subjectLabel": "数据结构", "source": "2027王道", "index": 1, "title": "绪论", "status": "in_progress" },
+    { "id": "cs408-enhance-ds-02", "subject": "data_structure", "subjectLabel": "数据结构", "source": "2027王道", "index": 2, "title": "线性表", "status": "not_started" },
+    { "id": "cs408-enhance-ds-03", "subject": "data_structure", "subjectLabel": "数据结构", "source": "2027王道", "index": 3, "title": "栈、队列和数组", "status": "not_started" },
+    { "id": "cs408-enhance-ds-04", "subject": "data_structure", "subjectLabel": "数据结构", "source": "2027王道", "index": 4, "title": "串", "status": "not_started" },
+    { "id": "cs408-enhance-ds-05", "subject": "data_structure", "subjectLabel": "数据结构", "source": "2027王道", "index": 5, "title": "树与二叉树", "status": "not_started" },
+    { "id": "cs408-enhance-ds-06", "subject": "data_structure", "subjectLabel": "数据结构", "source": "2027王道", "index": 6, "title": "图", "status": "not_started" },
+    { "id": "cs408-enhance-ds-07", "subject": "data_structure", "subjectLabel": "数据结构", "source": "2027王道", "index": 7, "title": "查找", "status": "not_started" },
+    { "id": "cs408-enhance-ds-08", "subject": "data_structure", "subjectLabel": "数据结构", "source": "2027王道", "index": 8, "title": "排序", "status": "not_started" },
+    { "id": "cs408-enhance-co-01", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 1, "title": "计算机系统概述", "status": "not_started" },
+    { "id": "cs408-enhance-co-02", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 2, "title": "数据的表示和运算", "status": "not_started" },
+    { "id": "cs408-enhance-co-03", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 3, "title": "存储系统", "status": "not_started" },
+    { "id": "cs408-enhance-co-04", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 4, "title": "指令系统", "status": "not_started" },
+    { "id": "cs408-enhance-co-05", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 5, "title": "中央处理器", "status": "not_started" },
+    { "id": "cs408-enhance-co-06", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 6, "title": "总线", "status": "not_started" },
+    { "id": "cs408-enhance-co-07", "subject": "computer_organization", "subjectLabel": "计算机组成原理", "source": "2027王道", "index": 7, "title": "输入/输出系统", "status": "not_started" },
+    { "id": "cs408-enhance-os-01", "subject": "operating_system", "subjectLabel": "操作系统", "source": "2027王道", "index": 1, "title": "计算机系统概述", "status": "not_started" },
+    { "id": "cs408-enhance-os-02", "subject": "operating_system", "subjectLabel": "操作系统", "source": "2027王道", "index": 2, "title": "进程与线程", "status": "not_started" },
+    { "id": "cs408-enhance-os-03", "subject": "operating_system", "subjectLabel": "操作系统", "source": "2027王道", "index": 3, "title": "内存管理", "status": "not_started" },
+    { "id": "cs408-enhance-os-04", "subject": "operating_system", "subjectLabel": "操作系统", "source": "2027王道", "index": 4, "title": "文件管理", "status": "not_started" },
+    { "id": "cs408-enhance-os-05", "subject": "operating_system", "subjectLabel": "操作系统", "source": "2027王道", "index": 5, "title": "输入/输出管理", "status": "not_started" },
+    { "id": "cs408-enhance-cn-01", "subject": "computer_network", "subjectLabel": "计算机网络", "source": "2027王道", "index": 1, "title": "计算机网络体系结构", "status": "not_started" },
+    { "id": "cs408-enhance-cn-02", "subject": "computer_network", "subjectLabel": "计算机网络", "source": "2027王道", "index": 2, "title": "物理层", "status": "not_started" },
+    { "id": "cs408-enhance-cn-03", "subject": "computer_network", "subjectLabel": "计算机网络", "source": "2027王道", "index": 3, "title": "数据链路层", "status": "not_started" },
+    { "id": "cs408-enhance-cn-04", "subject": "computer_network", "subjectLabel": "计算机网络", "source": "2027王道", "index": 4, "title": "网络层", "status": "not_started" },
+    { "id": "cs408-enhance-cn-05", "subject": "computer_network", "subjectLabel": "计算机网络", "source": "2027王道", "index": 5, "title": "传输层", "status": "not_started" },
+    { "id": "cs408-enhance-cn-06", "subject": "computer_network", "subjectLabel": "计算机网络", "source": "2027王道", "index": 6, "title": "应用层", "status": "not_started" }
+  ],
   "stages": [
     {
       "id": "basic",

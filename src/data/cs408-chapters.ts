@@ -9,4 +9,5 @@ import cs408ChaptersData from "@/config/cs408ChaptersData.json";
 import type { ReviewChapter, ReviewStage } from "./math-chapters";
 
 export const cs408Chapters: ReviewChapter[] = cs408ChaptersData.chapters as ReviewChapter[];
+export const cs408EnhanceChapters: ReviewChapter[] = (cs408ChaptersData as any).enhanceChapters as ReviewChapter[];
 export const cs408Stages: ReviewStage[] = cs408ChaptersData.stages as ReviewStage[];

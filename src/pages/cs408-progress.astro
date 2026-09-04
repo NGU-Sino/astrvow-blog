@@ -8,7 +8,7 @@ import { Icon } from "astro-icon/components";
 import MainGridLayout from "@/layouts/MainGridLayout.astro";
 import CountdownBanner from "@/components/review/CountdownBanner.astro";
 import SubjectSwitcher from "@/components/review/SubjectSwitcher.astro";
-import { cs408Chapters, cs408Stages } from "@/data/cs408-chapters";
+import { cs408Chapters, cs408EnhanceChapters, cs408Stages } from "@/data/cs408-chapters";
 import type { SubChapter } from "@/data/math-chapters";
 
 const pageTitle = "408进度";
@@ -45,6 +45,23 @@ const statusConfig: Record<string, { label: string; color: string; bg: string }>
 	in_progress: { label: "进行中", color: "text-orange-600", bg: "bg-orange-100 dark:bg-orange-900/30" },
 	completed: { label: "已完成", color: "text-green-600", bg: "bg-green-100 dark:bg-green-900/30" },
 };
+
+// 强化阶段：按科目分组（一级目录，无二级目录）
+const enhanceChaptersBySubject = subjects.map((s) => ({
+	...s,
+	chapters: cs408EnhanceChapters.filter((c) => c.subject === s.key),
+}));
+
+// 强化阶段统计（按章节统计）
+const enhanceTotal = cs408EnhanceChapters.length;
+const enhanceCompleted = cs408EnhanceChapters.filter((c) => c.status === "completed").length;
+const enhancePercent = enhanceTotal > 0 ? Math.round((enhanceCompleted / enhanceTotal) * 100) : 0;
+
+const enhanceSubjectStats = subjects.map((s) => {
+	const list = cs408EnhanceChapters.filter((c) => c.subject === s.key);
+	const done = list.filter((c) => c.status === "completed").length;
+	return { ...s, total: list.length, completed: done, percent: list.length > 0 ? Math.round((done / list.length) * 100) : 0 };
+});
 ---
 
 <MainGridLayout title={pageTitle} description={pageDescription}>
@@ -229,10 +246,103 @@ const statusConfig: Record<string, { label: string; color: string; bg: string }>
 
 			<!-- 强化阶段 -->
 			<div id="stage-enhance" class="stage-content hidden">
-				<div class="text-center py-16">
-					<Icon name="material-symbols:lock-outline" class="text-5xl text-neutral-300 dark:text-neutral-600 mb-4" />
-					<p class="text-lg text-neutral-400 dark:text-neutral-500">暂未开始</p>
+				<!-- 强化阶段学习数据概览 -->
+				<div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+					<div class="card-base p-5 text-center">
+						<Icon name="material-symbols:check-circle-outline" class="text-3xl text-green-500 mb-2" />
+						<div class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+							{enhanceCompleted}
+						</div>
+						<div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">
+							已学章节
+						</div>
+					</div>
+					<div class="card-base p-5 text-center">
+						<Icon name="material-symbols:menu-book-outline" class="text-3xl text-(--primary) mb-2" />
+						<div class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+							{enhanceTotal}
+						</div>
+						<div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">
+							强化阶段总章节
+						</div>
+					</div>
+					<div class="card-base p-5 text-center">
+						<Icon name="material-symbols:percent" class="text-3xl text-blue-500 mb-2" />
+						<div class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+							{enhancePercent}%
+						</div>
+						<div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">
+							总完成率
+						</div>
+					</div>
 				</div>
+
+				<!-- 强化阶段各科完成率 -->
+				<div class="card-base p-6 mb-6">
+					<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-4 flex items-center gap-2">
+						<Icon name="material-symbols:analytics" class="text-2xl text-(--primary)" />
+						各科完成率
+					</h2>
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+						{enhanceSubjectStats.map((s) => (
+							<div>
+								<div class="flex items-center justify-between mb-2">
+									<span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">{s.label}</span>
+									<span class="text-sm text-neutral-500 dark:text-neutral-400">{s.completed} / {s.total}</span>
+								</div>
+								<div class="w-full h-3 bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden">
+									<div
+										class="h-full bg-(--primary) rounded-full transition-all duration-1000"
+										style={`width: ${s.percent}%`}
+									></div>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+
+				{enhanceChaptersBySubject.map((subj) => (
+					<div class="mb-8">
+						<div class="flex items-center justify-between mb-3">
+							<h3 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
+								<span class="w-1 h-5 bg-(--primary) rounded-full"></span>
+								{subj.label}
+							</h3>
+							<span class="text-sm text-neutral-500 dark:text-neutral-400">
+								{subj.chapters.filter((c) => c.status === "completed").length} / {subj.chapters.length}
+							</span>
+						</div>
+
+						<!-- 进度条 -->
+						<div class="w-full h-2 bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden mb-4">
+							{(() => {
+								const done = subj.chapters.filter((c) => c.status === "completed").length;
+								const pct = subj.chapters.length > 0 ? (done / subj.chapters.length) * 100 : 0;
+								return <div class="h-full bg-(--primary) rounded-full transition-all duration-1000" style={`width: ${pct}%`}></div>;
+							})()}
+						</div>
+
+						<!-- 章节列表（一级目录） -->
+						<div class="flex flex-col gap-2">
+							{subj.chapters.map((ch) => {
+								const sc = statusConfig[ch.status];
+								return (
+									<div class="flex items-center gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800/50 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
+										<span class="text-sm text-neutral-400 flex-shrink-0 whitespace-nowrap">
+											第{ch.index}章
+										</span>
+										<span class="flex-1 text-sm text-neutral-700 dark:text-neutral-300">
+											{ch.title}
+										</span>
+										<span class:list={["text-xs px-2 py-0.5 rounded-full flex-shrink-0", sc.bg, sc.color]}>
+											{sc.label}
+										</span>
+									</div>
+								);
+							})}
+						</div>
+					</div>
+				))}
 			</div>
 
 			<!-- 冲刺阶段 -->
