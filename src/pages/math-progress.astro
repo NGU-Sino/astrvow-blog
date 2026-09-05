@@ -332,21 +332,3 @@ const statusConfig: Record<string, { label: string; color: string; bg: string }>
 		</div>
 	</div>
 </MainGridLayout>
-
-<script is:inline>
-	document.querySelectorAll(".stage-tab").forEach((tab) => {
-		tab.addEventListener("click", () => {
-			const stageId = tab.getAttribute("data-stage");
-			document.querySelectorAll(".stage-tab").forEach((t) => {
-				t.classList.remove("bg-(--primary)", "text-white");
-				t.classList.add("bg-neutral-100", "dark:bg-neutral-800", "text-neutral-500", "dark:text-neutral-400");
-			});
-			tab.classList.remove("bg-neutral-100", "dark:bg-neutral-800", "text-neutral-500", "dark:text-neutral-400");
-			tab.classList.add("bg-(--primary)", "text-white");
-
-			document.querySelectorAll(".stage-content").forEach((c) => c.classList.add("hidden"));
-			const target = document.getElementById(`stage-${stageId}`);
-			if (target) target.classList.remove("hidden");
-		});
-	});
-</script>

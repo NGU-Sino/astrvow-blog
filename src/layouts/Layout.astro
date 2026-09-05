@@ -748,6 +748,9 @@ const siteLang = lang.replace("_", "-");
     // MAIN_PANEL_OVERLAPS_BANNER_HEIGHT,
   } from "@/constants/constants";
   import { backgroundWallpaper, expressiveCodeConfig, siteConfig } from "@/config";
+  // 阶段标签切换（基础/强化/冲刺）：全局加载，监听 astro:page-load
+  // 以便 Swup 客户端路由切换页面后能重新绑定 .stage-tab 事件
+  import "@/scripts/stage-tabs";
 
   /* Preload fonts */
   // (async function() {
