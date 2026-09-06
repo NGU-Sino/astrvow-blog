@@ -946,7 +946,7 @@
       "source": "2027王道",
       "index": 3,
       "title": "树与二叉树算法题专项强化",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "id": "cs408-enhance-ds-04",
@@ -955,7 +955,7 @@
       "source": "2027王道",
       "index": 4,
       "title": "图算法题专项强化",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "cs408-enhance-ds-05",
@@ -964,7 +964,7 @@
       "source": "2027王道",
       "index": 5,
       "title": "应用题专项强化（一）",
-      "status": "not_started"
+      "status": "in_progress"
     },
     {
       "id": "cs408-enhance-ds-06",
