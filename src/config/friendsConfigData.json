@@ -131,6 +131,17 @@
       ],
       "weight": 0,
       "enabled": true
+    },
+    {
+      "title": "奇怪の博客",
+      "imgurl": "https://qiguai.net/favicon/safari-pinned-tab.svg",
+      "desc": "这博客真的有这么奇怪？",
+      "siteurl": "https://qiguai.net",
+      "tags": [
+        "Blog"
+      ],
+      "weight": 0,
+      "enabled": true
     }
   ]
 }
