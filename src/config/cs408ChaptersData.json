@@ -1072,7 +1072,7 @@
       "source": "2027王道",
       "index": 1,
       "title": "物理层&链路层大题专项强化",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "id": "cs408-enhance-cn-02",
@@ -1081,7 +1081,7 @@
       "source": "2027王道",
       "index": 2,
       "title": "网络层大题专项强化",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "cs408-enhance-cn-03",
@@ -1090,7 +1090,7 @@
       "source": "2027王道",
       "index": 3,
       "title": "传输层&应用层大题专项强化（一）",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "cs408-enhance-cn-04",
@@ -1099,7 +1099,7 @@
       "source": "2027王道",
       "index": 4,
       "title": "传输层&应用层大题专项强化（二）",
-      "status": "not_started"
+      "status": "in_progress"
     },
     {
       "id": "cs408-enhance-cn-05",
