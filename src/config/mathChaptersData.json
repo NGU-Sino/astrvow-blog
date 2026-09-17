@@ -277,7 +277,7 @@
       "source": "方浩概率论就这点事",
       "index": 3,
       "title": "多维随机变量及其分布",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "id": "math-prob-04",
@@ -286,7 +286,7 @@
       "source": "方浩概率论就这点事",
       "index": 4,
       "title": "随机变量的数字特征",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-prob-05",
@@ -295,7 +295,7 @@
       "source": "方浩概率论就这点事",
       "index": 5,
       "title": "大数定律和中心极限定理",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-prob-06",
@@ -304,7 +304,7 @@
       "source": "方浩概率论就这点事",
       "index": 6,
       "title": "数理统计的基本概念",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-prob-07",
@@ -313,7 +313,7 @@
       "source": "方浩概率论就这点事",
       "index": 7,
       "title": "参数估计",
-      "status": "not_started"
+      "status": "in_progress"
     },
     {
       "id": "math-prob-08",
