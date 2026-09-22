@@ -982,7 +982,7 @@
       "source": "2027王道",
       "index": 1,
       "title": "数据的表示和运算",
-      "status": "not_started"
+      "status": "in_progress"
     },
     {
       "id": "cs408-enhance-co-02",
@@ -1108,7 +1108,7 @@
       "source": "2027王道",
       "index": 5,
       "title": "各层协议封装串讲、路由选择协议",
-      "status": "in_progress"
+      "status": "completed"
     }
   ],
   "stages": [
