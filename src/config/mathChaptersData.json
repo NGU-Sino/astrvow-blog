@@ -313,7 +313,7 @@
       "source": "方浩概率论就这点事",
       "index": 7,
       "title": "参数估计",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "id": "math-prob-08",
@@ -322,7 +322,7 @@
       "source": "方浩概率论就这点事",
       "index": 8,
       "title": "假设检验",
-      "status": "not_started"
+      "status": "completed"
     }
   ],
   "enhanceChapters": [
@@ -549,7 +549,7 @@
       "source": "方浩概率论就这点事",
       "index": 1,
       "title": "随机事件与概率",
-      "status": "not_started"
+      "status": "in_progress"
     },
     {
       "id": "math-enhance-prob-02",
