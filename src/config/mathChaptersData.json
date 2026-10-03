@@ -351,7 +351,7 @@
       "source": "张宇基础30讲",
       "index": 3,
       "title": "一元函数微分学的概念",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "id": "math-enhance-gs-04",
@@ -360,7 +360,7 @@
       "source": "张宇基础30讲",
       "index": 4,
       "title": "一元函数微分学的计算",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-gs-05",
@@ -369,7 +369,7 @@
       "source": "张宇基础30讲",
       "index": 5,
       "title": "一元函数微分学的应用（一）——几何应用",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-gs-06",
@@ -378,7 +378,7 @@
       "source": "张宇基础30讲",
       "index": 6,
       "title": "一元函数微分学的应用（二）——中值定理、微分等式与微分不等式",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-gs-07",
@@ -387,7 +387,7 @@
       "source": "张宇基础30讲",
       "index": 7,
       "title": "一元函数微分学的应用（三）——物理应用",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-gs-08",
@@ -396,7 +396,7 @@
       "source": "张宇基础30讲",
       "index": 8,
       "title": "一元函数积分学的概念与性质",
-      "status": "not_started"
+      "status": "in_progress"
     },
     {
       "id": "math-enhance-gs-09",
@@ -549,7 +549,7 @@
       "source": "方浩概率论就这点事",
       "index": 1,
       "title": "随机事件与概率",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "id": "math-enhance-prob-02",
@@ -558,7 +558,7 @@
       "source": "方浩概率论就这点事",
       "index": 2,
       "title": "随机变量及其分布",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-prob-03",
@@ -567,7 +567,7 @@
       "source": "方浩概率论就这点事",
       "index": 3,
       "title": "多维随机变量及其分布",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-prob-04",
@@ -576,7 +576,7 @@
       "source": "方浩概率论就这点事",
       "index": 4,
       "title": "随机变量的数字特征",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-prob-05",
@@ -585,7 +585,7 @@
       "source": "方浩概率论就这点事",
       "index": 5,
       "title": "大数定律和中心极限定理",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-prob-06",
@@ -594,7 +594,7 @@
       "source": "方浩概率论就这点事",
       "index": 6,
       "title": "数理统计的基本概念",
-      "status": "not_started"
+      "status": "in_progress"
     },
     {
       "id": "math-enhance-prob-07",
