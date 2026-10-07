@@ -1045,7 +1045,7 @@
       "source": "2027王道",
       "index": 2,
       "title": "内存管理大题专项强化",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "id": "cs408-enhance-os-03",
@@ -1054,7 +1054,7 @@
       "source": "2027王道",
       "index": 3,
       "title": "文件系统大串讲",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "cs408-enhance-os-04",
@@ -1063,7 +1063,7 @@
       "source": "2027王道",
       "index": 4,
       "title": "文件系统、输入输出管理大题专项强化",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "cs408-enhance-cn-01",
