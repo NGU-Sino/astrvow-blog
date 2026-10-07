@@ -396,7 +396,7 @@
       "source": "张宇基础30讲",
       "index": 8,
       "title": "一元函数积分学的概念与性质",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "id": "math-enhance-gs-09",
@@ -405,7 +405,7 @@
       "source": "张宇基础30讲",
       "index": 9,
       "title": "一元函数积分学的计算",
-      "status": "not_started"
+      "status": "in_progress"
     },
     {
       "id": "math-enhance-gs-10",
@@ -594,7 +594,7 @@
       "source": "方浩概率论就这点事",
       "index": 6,
       "title": "数理统计的基本概念",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "id": "math-enhance-prob-07",
@@ -603,7 +603,7 @@
       "source": "方浩概率论就这点事",
       "index": 7,
       "title": "参数估计",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-prob-08",
@@ -612,7 +612,7 @@
       "source": "方浩概率论就这点事",
       "index": 8,
       "title": "假设检验",
-      "status": "not_started"
+      "status": "completed"
     }
   ],
   "stages": [
