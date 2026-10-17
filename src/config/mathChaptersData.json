@@ -405,7 +405,7 @@
       "source": "张宇基础30讲",
       "index": 9,
       "title": "一元函数积分学的计算",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "id": "math-enhance-gs-10",
@@ -414,7 +414,7 @@
       "source": "张宇基础30讲",
       "index": 10,
       "title": "一元函数积分学的应用（一）——几何应用",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-gs-11",
@@ -423,7 +423,7 @@
       "source": "张宇基础30讲",
       "index": 11,
       "title": "一元函数积分学的应用（二）——积分等式与积分不等式",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-gs-12",
@@ -432,7 +432,7 @@
       "source": "张宇基础30讲",
       "index": 12,
       "title": "一元函数积分学的应用（三）——物理应用",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-gs-13",
@@ -441,7 +441,7 @@
       "source": "张宇基础30讲",
       "index": 13,
       "title": "多元函数微分学",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-gs-14",
@@ -450,7 +450,7 @@
       "source": "张宇基础30讲",
       "index": 14,
       "title": "二重积分",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-gs-15",
@@ -459,7 +459,7 @@
       "source": "张宇基础30讲",
       "index": 15,
       "title": "微分方程",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-gs-16",
@@ -468,7 +468,7 @@
       "source": "张宇基础30讲",
       "index": 16,
       "title": "无穷级数",
-      "status": "not_started"
+      "status": "in_progress"
     },
     {
       "id": "math-enhance-gs-17",
@@ -495,7 +495,7 @@
       "source": "张宇基础30讲",
       "index": 1,
       "title": "行列式",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-la-02",
@@ -504,7 +504,7 @@
       "source": "张宇基础30讲",
       "index": 2,
       "title": "矩阵",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-la-03",
@@ -513,7 +513,7 @@
       "source": "张宇基础30讲",
       "index": 3,
       "title": "向量组",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-la-04",
@@ -522,7 +522,7 @@
       "source": "张宇基础30讲",
       "index": 4,
       "title": "线性方程组",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-la-05",
@@ -531,7 +531,7 @@
       "source": "张宇基础30讲",
       "index": 5,
       "title": "特征值与特征向量",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-la-06",
@@ -540,7 +540,7 @@
       "source": "张宇基础30讲",
       "index": 6,
       "title": "二次型",
-      "status": "not_started"
+      "status": "completed"
     },
     {
       "id": "math-enhance-prob-01",
